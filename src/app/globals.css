@@ -1,26 +1,307 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------
+   Tokens — sanvithi.com register.
+   White paper, black ink, one electric blue, and grey rules. No
+   borders-plus-hard-shadow "sticker" treatment, no checker strips,
+   no rotations: those read as cartoony and are exactly what this
+   revision removes. Restraint is the aesthetic.
+   --------------------------------------------------------------- */
+@theme {
+  /* Cool greys, per sideways.co.in: a light ground for the body and a
+     deeper one for the close. Grey rather than cream is also what keeps
+     this clear of the cream-plus-serif default. */
+  --color-paper: #f2f2f0;
+  --color-paper-deep: #e7e7e4;
+  --color-paper-dim: #d8d8d5;
+
+  /* Text steps, all clearing WCAG AA (4.5:1) on white. */
+  --color-ink: #111111; /* 17.6:1 on paper */
+  --color-ink-2: #444444; /*  8.9:1 */
+  --color-ink-3: #6c6c6c; /*  5.2:1 */
+
+  --color-rule: #cfcfcc;
+  --color-rule-strong: #b6b6b2;
+
+  /* Structural accent stays near-black so body copy and headings keep their
+     crispness. Clay is lifted straight off the bowl's rim in the
+     illustration and carries the interactive elements — filled buttons, the
+     active nav pill — so the page and the picture share a palette.
+     White on clay is 6.2:1; the softer tone is for fills only. */
+  --color-accent: #1a1712;
+  /* One vermilion, used sparingly: arrows, links, the active nav. The
+     -soft tone is fills only (5.1:1 fails as text), -ink is the text-safe
+     darkening at 5.1:1 on the light ground. */
+  --color-clay: #a5330f;
+  --color-clay-soft: #d2451e;
+  --color-clay-wash: #ece7e4;
+
+  /* A radius scale by role. One maximal value on everything reads as a
+     default; a chip, a control and a panel should not share a radius. */
+  --radius-chip: 3px;
+  --radius-control: 9px;
+  --radius-panel: 18px;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Every font token must live in `inline`: next/font defines --font-* on
+   <body>, and a plain @theme resolves the var() at :root where they are
+   undefined — which invalidates the whole declaration and silently falls
+   back to the inherited family. Caught this twice; keep them all here. */
+@theme inline {
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-hand: var(--font-caveat), ui-sans-serif, cursive;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Display setting.
+   Averia is drawn for tight optical setting: sanvithi runs 40px type
+   on 38px leading with -3px tracking. Lines interlock rather than
+   stack, which is most of why the hero reads as composed rather than
+   typed. Applied as a utility so every display size inherits it.
+   --------------------------------------------------------------- */
+@utility display {
+  font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+/* Small letterspaced label — tabs, eyebrows, meta. */
+@utility label {
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility rise-in {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+/* ---------------------------------------------------------------
+   Intro curtain — pixel dissolve.
+   A solid black field covers the viewport, holds, then breaks into a
+   grid of squares that snap out in a scattered order. Each cell uses
+   `steps(1, end)` so it vanishes instantly rather than fading: a fade
+   reads as a dissolve of the whole sheet, a snap reads as pixels.
+   CSS-only and server-rendered, so it runs before hydration and mounts
+   once — client-side navigation never replays it.
+   --------------------------------------------------------------- */
+/* An explicit hold-then-snap. A `steps(1, end)` animation on a ~1ms
+   duration sits below the browser's frame granularity and silently never
+   commits, leaving most cells stuck visible — so the snap is spelled out
+   over a real duration instead. */
+@keyframes pixel-out {
+  0%,
+  92% {
+    opacity: 1;
+  }
+  93%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes curtain-mark {
+  0%,
+  10% {
+    opacity: 0;
+  }
+  28% {
+    opacity: 1;
+  }
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@utility curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+@utility curtain-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+}
+
+@utility curtain-cell {
+  background: var(--color-accent);
+  animation: pixel-out 140ms linear forwards;
+}
+
+@utility curtain-mark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  animation: curtain-mark 1.5s ease forwards;
+}
+
+/* Nothing to reveal if the viewer has asked for less motion — drop the
+   curtain out of the way immediately rather than animating it. */
+@media (prefers-reduced-motion: reduce) {
+  .curtain {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Skills kitchen.
+   A POV scene: hands chop labelled ingredients and sweep them into a
+   broth. Animations sit dormant until the section scrolls into view —
+   `.kitchen.is-playing` is the gate — so the sequence is never missed
+   by playing to an empty viewport.
+   --------------------------------------------------------------- */
+@keyframes chop {
+  0%, 8%   { transform: translateY(0) rotate(0deg); }
+  16%      { transform: translateY(-26px) rotate(-7deg); }
+  24%      { transform: translateY(10px) rotate(3deg); }
+  32%, 100%{ transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes hand-in {
+  from { transform: translateY(120px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* Chopped pieces arc up out of the board before dropping into the pot,
+   so the path reads as a toss rather than a slide across the table. */
+@keyframes fly {
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+  14%  { transform: translate(0, -16px) scale(1.05) rotate(-3deg); opacity: 1; }
+  55%  { transform: translate(calc(var(--dx) * 0.5), calc(var(--dy) - 70px)) scale(0.85) rotate(var(--rot)); opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.42) rotate(calc(var(--rot) * 2)); opacity: 0; }
+}
+
+@keyframes slice-spread {
+  0%, 10% { transform: translateX(0); }
+  30%     { transform: translateX(var(--sx)); }
+  100%    { transform: translateX(var(--sx)); }
+}
+
+@keyframes steam-rise {
+  0%   { transform: translateY(10px) scaleY(0.6); opacity: 0; }
+  35%  { opacity: 0.75; }
+  100% { transform: translateY(-70px) scaleY(1.25); opacity: 0; }
+}
+
+@keyframes broth-ripple {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.035); }
+}
+
+@keyframes scene-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.kitchen svg { opacity: 0; }
+
+.kitchen.is-playing svg {
+  animation: scene-in 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+.kitchen.is-playing .k-hand   { animation: hand-in 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) 0.25s both; }
+.kitchen.is-playing .k-knife  { animation: chop 3.9s ease-in-out 0.95s 1 both; }
+.kitchen.is-playing .k-ing    { animation: fly 1.15s cubic-bezier(0.4, 0, 0.5, 1) var(--d) both; }
+.kitchen.is-playing .k-slice  { animation: slice-spread 1.15s ease-out var(--d) both; }
+.kitchen.is-playing .k-steam  { animation: steam-rise 2.6s ease-out var(--d) infinite; }
+.kitchen.is-playing .k-broth  { animation: broth-ripple 2.4s ease-in-out 1.2s infinite; }
+
+/* Reduced motion: no gate class is ever added, so the scene simply sits
+   at rest with every ingredient still on the board. */
+@media (prefers-reduced-motion: reduce) {
+  .kitchen svg { opacity: 1; }
+  .kitchen.is-playing svg,
+  .kitchen.is-playing .k-hand,
+  .kitchen.is-playing .k-knife,
+  .kitchen.is-playing .k-ing,
+  .kitchen.is-playing .k-slice,
+  .kitchen.is-playing .k-steam,
+  .kitchen.is-playing .k-broth {
+    animation: none;
+  }
+}
+
+/* Jars settle onto the shelf before the bowl is offered below them. */
+@keyframes jar-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.kitchen.is-playing .k-jar {
+  animation: jar-in 0.6s cubic-bezier(0.2, 0.7, 0.3, 1) var(--d) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kitchen.is-playing .k-jar { animation: none; }
+}
+
+/* Broth keeps a slow simmer once the scene has settled — the only moving
+   colour on the page, so it reads as the thing still going. */
+@keyframes brew {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50%      { transform: scale(1.03) translateY(-1.5px); }
+}
+
+.kitchen.is-playing .k-brew {
+  animation: brew 3.4s ease-in-out 1.4s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kitchen.is-playing .k-brew { animation: none; }
 }
