@@ -5,16 +5,19 @@ import { caseStudies } from "@/content/case-studies";
 import { site } from "@/content/site";
 
 export default function Home() {
-  /* Generated from the studies so the ticker can never drift out of sync. */
-  const ticker = caseStudies
-    .filter((study) => study.deltas.length > 0)
-    .map((study) => ({ ...study.deltas[0], slug: study.slug }));
+  /* Generated from the studies so the ticker can never drift out of sync.
+     Every delta, not just the first of each — with a small number of studies,
+     one-per-study leaves the row looking half-empty. */
+  const ticker = caseStudies.flatMap((study) =>
+    study.deltas.map((delta, i) => ({ ...delta, key: `${study.slug}-${i}` })),
+  );
 
   return (
     <>
       <Hero />
 
       {/* Evidence ticker */}
+      {ticker.length > 0 && (
       <section
         aria-label="Headline outcomes"
         className="mx-auto max-w-6xl px-6 sm:px-8"
@@ -22,7 +25,7 @@ export default function Home() {
         <div className="rounded-panel bg-paper-deep px-6 py-7">
         <ul className="flex flex-wrap items-baseline justify-center gap-x-12 gap-y-4 text-[0.9rem] tabular-nums">
           {ticker.map((item) => (
-            <li key={item.slug} className="flex items-baseline gap-2">
+            <li key={item.key} className="flex items-baseline gap-2">
               {item.from && (
                 <>
                   <span className="sr-only">from </span>
@@ -40,6 +43,7 @@ export default function Home() {
           </ul>
         </div>
       </section>
+      )}
 
       {/* Work */}
       <section
@@ -81,12 +85,12 @@ export default function Home() {
           </p>
 
           <ul className="mt-14 flex flex-wrap gap-x-2 gap-y-2">
-            {site.clients.map((client) => (
+            {site.sectors.map((sector) => (
               <li
-                key={client}
+                key={sector}
                 className="rounded-chip bg-paper-deep px-3 py-1 text-[0.8rem] text-ink-2"
               >
-                {client}
+                {sector}
               </li>
             ))}
           </ul>

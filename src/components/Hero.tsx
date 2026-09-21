@@ -43,13 +43,6 @@ export function Hero() {
             {site.currently.label}
           </a>
         </span>
-        <span aria-hidden="true" className="text-rule-strong">
-          |
-        </span>
-        <span>
-          prev{" "}
-          <span className="font-medium text-ink">{site.previously.label}</span>
-        </span>
       </p>
 
       <div

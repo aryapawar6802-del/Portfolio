@@ -1,7 +1,6 @@
 import type { CaseStudy } from "./types";
 
 /* ============================================================================
- * PLACEHOLDER CONTENT — replace before this site goes anywhere near a recruiter.
  *
  * Every company, metric, quote, and teammate below is invented to exercise the
  * layout. None of it describes real work. Swap in your own; the design assumes
@@ -11,13 +10,12 @@ import type { CaseStudy } from "./types";
 
 export const caseStudies: CaseStudy[] = [
   {
-    /* REAL — Arya's own work. Everything below this entry is still placeholder. */
-    slug: "walmart-calibration",
+    slug: "market-share-calibration",
     accent: "amber",
-    company: "Walmart (with MathCo)",
+    company: "Fortune 1 US retailer",
     title: "Market-share calibration",
     summary:
-      "A calibration system for Walmart — where the software learned to hold the order, so four teams didn\u2019t have to.",
+      "A calibration system for a Fortune 1 US retailer — where the software learned to hold the order, so four teams didn\u2019t have to.",
     tags: ["B2B web app", "Agentic AI", "Human-in-the-loop", "Enterprise"],
     question:
       "If the math only took days, why did the numbers take three weeks?",
@@ -86,16 +84,16 @@ export const caseStudies: CaseStudy[] = [
       {
         type: "prose",
         eyebrow: "The product",
-        heading: "What Milky Way actually does",
+        heading: "What the platform actually does",
         body: [
-          "Every month, Walmart has to say how much of each market it holds. Not its sales — its share. Milky Way is the tool that takes the raw, calculated estimates and lets a human calibrate them into numbers leadership can defend.",
+          "Every month, the retailer has to say how much of each market it holds. Not its sales — its share. The platform takes the raw, calculated estimates and lets a human calibrate them into numbers leadership can defend.",
           "It runs the calibration pipeline automatically, then hands the results to the person: here\u2019s what changed, here\u2019s why, here\u2019s what still needs you. The person adjusts, reviews the impact, and signs off — one level at a time, in an order the tool enforces.",
         ],
       },
       {
         type: "prose",
         eyebrow: "The situation",
-        heading: "Walmart runs on market share, and market share is a guess",
+        heading: "The business runs on market share, and market share is a guess",
         body: [
           "The company knows its own sales exactly. It does not know its competitors\u2019. So to size a market — Women\u2019s Apparel, Electronics, Pet Care — it estimates the whole from the outside: surveys, credit-card panels, external retail feeds. That data covers a sliver of real sales, it disagrees with itself, and it moves every month.",
           "Before any of it reaches leadership, a human has to calibrate it. Catch the unrealistic jumps. Keep the year-on-year movement believable. Make sure a subcategory and its parent still add up.",
@@ -157,6 +155,9 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "image",
+        src: "/work/calibration/00-orca-board.png",
+        ratio: 1.5814,
+        alt: "The ORCA board: four columns of sticky notes headed Objects, Relationships, Core CTAs and Attributes. Objects include User, Metric, Rule, Workflow, Approval and Published Result. The Relationships column spells out the hierarchy — SBU to Department to Category Group to Category, feeding into the Calibration Slice and its metrics, rules, rule violations, status, change logs, review task and approval task.",
         caption:
           "The ORCA board. The Calibration Slice and its relationships drove every navigation and state decision downstream.",
       },
@@ -204,14 +205,53 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        type: "image",
-        caption:
-          "Home screen with locked cards; on return, the same screen is a progress tracker.",
+        type: "prose",
+        eyebrow: "The screens",
+        body: [
+          "Client branding is removed from the screens below. Everything else is as built.",
+        ],
       },
       {
         type: "image",
+        src: "/work/calibration/01-home.png",
+        alt: "Home screen. Six calibration cards — Department, Category Group and Category, each against Total Market and Competitor. Only Department · Total Market has an active Calibrate button; the other five are locked.",
+        caption:
+          "Home screen with locked cards. You can only start where the data model says you may.",
+      },
+      {
+        type: "image",
+        src: "/work/calibration/02-home-progress.png",
+        alt: "The same home screen after the first calibration is finished. Department · Total Market now reads Completed with a View Details button, and the next two cards have unlocked.",
+        caption:
+          "On return, the same screen is a progress tracker — one of six steps done, and the next level has opened on its own.",
+      },
+      {
+        type: "image",
+        src: "/work/calibration/03-summary.png",
+        alt: "Department Calibration Summary. A headline stating that seven departments remain blocked due to pricing issues, with View Blocked and View All actions, a calibration health breakdown, and a list of the top department blockers.",
+        caption:
+          "The summary names the situation in a sentence, with two ways in: the blocked ones, or all of them.",
+      },
+      {
+        type: "image",
+        src: "/work/calibration/04-department-list.png",
+        alt: "Department Calibration list filtered to the seven blocked departments, each row showing the fiscal months affected.",
+        caption:
+          "The blocked queue. Filters carry their counts, so the size of the job is visible before you open anything.",
+      },
+      {
+        type: "image",
+        src: "/work/calibration/05-calibration-table.png",
+        alt: "A department expanded in the calibration table, showing Market Share, Market Share YoY, GMV, GMV YoY and Digital Mix, each split into LM Reported, Calibrated and Uncalibrated columns across October, November and December, with a Rules column flagging blocking violations.",
         caption:
           "Department Calibration table — LM Reported / Calibrated / Uncalibrated on every metric, so the delta is always legible.",
+      },
+      {
+        type: "image",
+        src: "/work/calibration/06-review.png",
+        alt: "Calibration Review screen listing every department with its GMV and market-share impact before finalising, with Go back and edit and Finalize actions.",
+        caption:
+          "The review step shows the impact of each department's calibration before you finalise — while you can still change your mind.",
       },
       {
         type: "prose",
@@ -223,11 +263,19 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
+        type: "image",
+        src: "/work/calibration/07-calibration-flow.png",
+        ratio: 1.5,
+        alt: "Calibration flow diagram, titled “Every screen answers a question the calibrator was already asking.” Three stages: Orient, where home doubles as a progress tracker; Calibrate the level, running Summary, Compare, Edit and Approve, with a Blocked branch that loops back to the summary when a rule conflict stops the level; and Unlock, where finalising a level locks it in and opens the one beneath. A return line reads “next level, same four steps”.",
+        caption:
+          "Each screen tied to the question it answers. The loop back to the summary is the rule conflict; the line along the bottom is the next level, running the same four steps.",
+      },
+      {
         type: "beforeAfter",
         eyebrow: "Impact",
         heading: "Measured month over month against the manual baseline",
         pairs: [
-          { aspect: "Time per cycle (FC + GM)", before: "~210 hours", after: "~45 hours" },
+          { aspect: "Time per cycle (both business units)", before: "~210 hours", after: "~45 hours" },
           { aspect: "Calibration runs", before: "Manual, iterative", after: "Automated, parallel" },
           { aspect: "Team dependency", before: "Sequential", after: "Parallel" },
           { aspect: "Leadership readiness", before: "Late-stage", after: "Early, iterative" },
@@ -253,31 +301,31 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    /* REAL — Arya's own work. Still carries her own [FILL] notes; those render
-       as flagged TODOs rather than as prose. */
-    slug: "unilever-rapid-roi",
+    /* Still carries Arya's own [FILL] notes; those render as flagged TODOs
+       rather than as prose. */
+    slug: "media-investment-optimisation",
     accent: "blue",
-    company: "Unilever",
+    company: "Global CPG company",
     title: "Rapid ROI — media investment optimisation",
     summary:
       "The model was sound and planners kept going back to their spreadsheets. A five-stage wizard asked for structure before it knew what they were solving for, then handed back a number without an argument.",
     tags: ["B2B web app", "Marketing Mix Modeling", "Enterprise", "Data product"],
     question:
-      "Unilever had the model. So why were planners still deciding in spreadsheets?",
+      "The model worked. So why were planners still deciding in spreadsheets?",
     headline:
       "Rebuilt a five-stage optimisation flow around the argument, not the inputs",
     standfirst:
-      "Marketing Mix Modeling could tell Unilever\u2019s planners what worked. Rapid ROI put it directly in their hands \u2014 no data science queue. The math was sound. The model worked. And planners kept going back to their spreadsheets.",
+      "Marketing Mix Modeling could tell the client\u2019s planners what worked. Rapid ROI put it directly in their hands \u2014 no data science queue. The math was sound. The model worked. And planners kept going back to their spreadsheets.",
     role: "[FILL: e.g. Design lead on the optimization flow \u2014 owned it end to end across Phases 1\u20132]",
     timeline: "[FILL]",
     status: "[FILL]",
     platform: "B2B web app · Marketing Mix Modeling",
     years: "",
     team: [
-      { name: "Gopinath", scope: "Data science" },
+      { name: "DS lead", scope: "Data science" },
       { name: "PM [FILL]", scope: "Product" },
       { name: "Engineering [FILL]", scope: "Build" },
-      { name: "Surya Ramkumar", scope: "Client stakeholder" },
+      { name: "Client stakeholders", scope: "Requirements and sign-off" },
     ],
     deltas: [],
     framework: "SCQA",
@@ -304,7 +352,7 @@ export const caseStudies: CaseStudy[] = [
           {
             label: "Team",
             value:
-              "Data science (Gopinath), PM [FILL], engineering [FILL], client stakeholders incl. Surya Ramkumar.",
+              "Data science, PM [FILL], engineering [FILL], and client stakeholders.",
           },
           {
             label: "Impact",
@@ -318,7 +366,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "The situation",
         heading: "The model worked. Planners kept using spreadsheets",
         body: [
-          "Unilever\u2019s media planners decide where hundreds of crores go \u2014 across brands, across markets, across channels. Marketing Mix Modeling can tell them what worked. It accounts for adstock, for saturation, for the fact that the tenth crore in a channel never returns what the first one did.",
+          "The client\u2019s media planners decide where hundreds of crores go \u2014 across brands, across markets, across channels. Marketing Mix Modeling can tell them what worked. It accounts for adstock, for saturation, for the fact that the tenth crore in a channel never returns what the first one did.",
           "Rapid ROI was built to put that model directly in planners\u2019 hands. No data science queue. Ask a question, get an allocation.",
           "The math was sound. The model worked. And planners kept going back to their spreadsheets.",
         ],
@@ -375,7 +423,7 @@ export const caseStudies: CaseStudy[] = [
           "Planners weren\u2019t rejecting MMM. They were rejecting a black box that produced allocations without a defensible argument. Every planner I [FILL: spoke to / observed] had the same underlying job: not give me the right answer, but give me an answer I can defend upstairs.",
           "That changed what the interface was for. It wasn\u2019t a form that collected inputs and returned an output. It was an argument the planner had to be able to reconstruct.",
           "The second thing I found \u2014 this one from going into the model itself rather than from users \u2014 was that the two intents weren\u2019t variations. Spend Based and Goal Based are inverse operations. Treating them as one flow with conditional fields wasn\u2019t a simplification. It was the source of most of the ambiguity downstream.",
-          "[FILL: the MMM depth \u2014 adstock, saturation curves, Bayesian vs frequentist, Robyn and Meridian, working with Gopinath. This is the most differentiating thing in the study and it is currently a placeholder.]",
+          "[FILL: the MMM depth \u2014 adstock, saturation curves, Bayesian vs frequentist, Robyn and Meridian, working with the DS lead. This is the most differentiating thing in the study and it is currently a placeholder.]",
         ],
       },
       {
@@ -409,7 +457,7 @@ export const caseStudies: CaseStudy[] = [
             before:
               "Charts that displayed, and a metric that explained buried where nobody used it.",
             after:
-              "A waterfall showing how you got from current to recommended spend; grouped bars putting current against recommended per channel; a heatmap with Pareto ordering so the vital few channels surface first. MROI consolidated to Results and only Results. Per-channel saturation tags. And the MAT bar promoted to a full peer on the Results Breakdown \u2014 a client request from Surya, and a good one. [FILL: describe what each of these replaced.]",
+              "A waterfall showing how you got from current to recommended spend; grouped bars putting current against recommended per channel; a heatmap with Pareto ordering so the vital few channels surface first. MROI consolidated to Results and only Results. Per-channel saturation tags. And the MAT bar promoted to a full peer on the Results Breakdown \u2014 a client request, and a good one. [FILL: describe what each of these replaced.]",
           },
           {
             aspect: "05 \u00b7 When the answer is no, hand back a decision",
@@ -476,7 +524,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "What changed",
         heading: "Outcomes",
         body: [
-          "[FILL: quantitative \u2014 adoption, task completion, abandonment on infeasible targets, portfolio combinations manageable in a single session. Qualitative \u2014 a line from Surya, Gopinath or your PM. Client sign-off is itself a legitimate result.]",
+          "[FILL: quantitative \u2014 adoption, task completion, abandonment on infeasible targets, portfolio combinations manageable in a single session. Qualitative \u2014 a line from the client stakeholder, the DS lead or your PM. Client sign-off is itself a legitimate result.]",
           "[FILL: still open \u2014 name what didn\u2019t ship. It reads as maturity.]",
         ],
       },
@@ -490,466 +538,10 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
-  {
-    slug: "self-serve-onboarding",
-    accent: "orange",
-    company: "PLACEHOLDER Co.",
-    title: "Self-serve onboarding",
-    summary:
-      "The product sold well and the guided demo worked. But left alone in an empty workspace, new users did nothing at all — and nobody could agree what “doing something” would even mean.",
-    tags: ["B2B SaaS", "PLG", "Onboarding", "Activation"],
-    question:
-      "Every account that got a walkthrough did fine. So why could nobody get started alone?",
-    headline:
-      "Rebuilt onboarding so new users reach value without a sales call",
-    standfirst:
-      "Activation moved from 26% to 32% and a fifth of new accounts began buying without ever speaking to sales. The work started with a definition, not a flow.",
-    role: "Product Designer",
-    timeline: "V1 → teardown → V2 → measured over 5 months",
-    status: "Shipped",
-    platform: "B2B web app",
-    years: "2025–2026",
-    team: [
-      { name: "You", scope: "End-to-end design, activation metric" },
-      { name: "A PM", scope: "Scope, instrumentation" },
-      { name: "Two engineers", scope: "Front end, events pipeline" },
-    ],
-    tools: ["Figma", "Amplitude", "Dovetail", "Maze"],
-    deltas: [
-      { from: "26%", to: "32%", label: "activation" },
-      { to: "20%", label: "self-serve purchase" },
-    ],
-    framework: "SCQA",
-    body: [
-      {
-        type: "tldr",
-        eyebrow: "TL;DR",
-        rows: [
-          {
-            label: "Product",
-            value:
-              "A B2B sales-intelligence platform — find, engage, and automate outreach.",
-          },
-          {
-            label: "Problem",
-            value:
-              "Onboarding depended on human guidance. Activation was low, there was no self-serve purchase path, and support carried the load.",
-          },
-          {
-            label: "My contribution",
-            value:
-              "End-to-end design of the self-serve onboarding flow, plus the definition of the activation metric itself.",
-          },
-          { label: "Team", value: "One PM, two engineers, me." },
-          {
-            label: "Result",
-            value:
-              "Activation 26% → 32%. A fifth of new accounts bought without contacting sales.",
-          },
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "My role",
-        heading: "What I owned",
-        body: [
-          "I led design end to end: the first-run flow, the empty states, the purchase path, and the definition of the metric everything was judged against.",
-          "I did not own pricing or the billing integration. Where those constrained the design I have said so rather than claiming the whole outcome.",
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "The product",
-        heading: "What the platform actually does",
-        body: [
-          "Sales teams use it to find accounts worth pursuing, reach them across email and phone, and automate the follow-up sequence in between.",
-          "It sold well through a sales-led motion. Every new account got a guided walkthrough from a human, and the accounts that got that walkthrough did fine.",
-        ],
-      },
-      {
-        type: "numbered",
-        eyebrow: "The problem",
-        heading: "What broke when we watched",
-        intro:
-          "We ran a teardown of the unguided path with fourteen new accounts, watching without intervening. The same four failures showed up in nearly every session.",
-        items: [
-          {
-            heading: "The workspace opened empty",
-            body: "New users landed on a blank state with no seeded data, so the product could not demonstrate what it was for before asking them to configure it.",
-            quote: "I don't know what I'm supposed to put here, or why.",
-          },
-          {
-            heading: "Twelve next actions, all weighted equally",
-            body: "The home screen offered twelve entry points with identical visual weight. Most users did none of them and left to check email.",
-            quote: "I'll come back to this when I have more time.",
-          },
-          {
-            heading: "Nobody agreed what success meant",
-            body: "Product, growth, and sales each counted activation differently, so no one could say whether any previous change had helped.",
-          },
-          {
-            heading: "There was no way to buy",
-            body: "An account that did reach value had to book a call to convert, which put a human back in the loop we were trying to remove.",
-          },
-        ],
-      },
-      {
-        type: "stats",
-        eyebrow: "Overall impact",
-        heading: "Where it landed",
-        items: [
-          { value: "32%", label: "Activation, against a 26% baseline" },
-          { value: "20%", label: "Of new accounts purchased without sales contact" },
-          { value: "3", label: "Actions in the first session, down from twelve" },
-          { value: "14", label: "User sessions run across the teardown" },
-        ],
-      },
-      {
-        type: "numbered",
-        eyebrow: "The ICP",
-        heading: "Who we were actually designing for",
-        intro:
-          "Three roles sign up, and they arrive with different questions. The flow had been built for the third and used mostly by the first.",
-        items: [
-          {
-            heading: "The individual rep",
-            body: "Signs up alone, often mid-quarter and under pressure. Wants one usable list of accounts today, not a configured workspace.",
-          },
-          {
-            heading: "The team lead",
-            body: "Evaluating on behalf of four to eight people. Needs to see whether the data is good enough before committing anyone else's time.",
-          },
-          {
-            heading: "The ops buyer",
-            body: "Arrives last, cares about integration and billing, and was the only one the previous flow was designed around.",
-          },
-        ],
-      },
-      {
-        type: "numbered",
-        eyebrow: "JTBD",
-        heading: "The jobs, and how we checked them",
-        intro:
-          "We wrote the jobs from the teardown sessions, then tested each against behaviour in the product rather than against opinion.",
-        items: [
-          {
-            heading: "Show me this data is real",
-            body: "Validated by watching where users first paused: every one of them went looking for a known account to check the data against.",
-            quote: "Let me look up my own customer and see if you've got them right.",
-          },
-          {
-            heading: "Get me one usable list today",
-            body: "Validated against retention — accounts that exported or saved a list in week one returned at roughly twice the rate.",
-          },
-          {
-            heading: "Let me pay without a meeting",
-            body: "Assumed rather than validated up front. The self-serve purchase path was the test, and it held.",
-          },
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "Define activation",
-        heading: "The definition was the deliverable",
-        body: [
-          "Before designing anything we agreed a single observable event across product, growth, and sales, and instrumented it.",
-          "Picking it was the hard part. We needed something a user could plausibly reach alone in one session, that predicted week-four retention, and that no team could quietly reinterpret later.",
-          "Everything downstream — the flow, the empty states, the ordering of steps — is an argument about how to reach that one event faster.",
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "Shipped V1",
-        heading: "What went out first",
-        body: [
-          "A shortened sign-up, a workspace seeded from the user's own email domain so the product was never empty on arrival, and one clear next action per screen instead of twelve equal ones.",
-          "We shipped without the purchase path. That was a deliberate sequencing call: prove people could reach value alone before building the way to pay for it.",
-        ],
-      },
-      {
-        type: "metrics",
-        eyebrow: "Impact on D7",
-        items: [
-          { from: "26%", to: "29%", label: "activation after V1" },
-          { from: "18%", to: "31%", label: "day-7 return rate" },
-        ],
-      },
-      {
-        type: "beforeAfter",
-        eyebrow: "V2",
-        heading: "What the second pass changed",
-        pairs: [
-          {
-            aspect: "The empty workspace",
-            before: "A blank state asking for configuration before showing any value.",
-            after:
-              "Seeded from the user's own domain, so the first screen already contains accounts they recognise.",
-          },
-          {
-            aspect: "Twelve equal actions",
-            before: "A home screen of twelve entry points with identical weight and no ordering.",
-            after: "One clear next action per screen, sequenced toward the activation event.",
-          },
-          {
-            aspect: "Converting",
-            before: "Book a call with sales to upgrade.",
-            after:
-              "A self-serve purchase path at the end of the flow, so an account that reaches value converts in the same session.",
-            note: "the piece we deliberately held back from V1",
-          },
-        ],
-      },
-      {
-        type: "themes",
-        eyebrow: "Highlights",
-        heading: "Three decisions worth pulling out",
-        groups: [
-          {
-            theme: "Sequencing",
-            items: [
-              {
-                heading: "Value before configuration",
-                body: "Every setup step that could be deferred was deferred until after the user had seen something real.",
-              },
-              {
-                heading: "One action per screen",
-                body: "Where a screen had to offer more than one path, the secondary options moved behind a single overflow.",
-              },
-            ],
-          },
-          {
-            theme: "Trust",
-            items: [
-              {
-                heading: "Let people check the data",
-                body: "The seeded workspace deliberately included accounts the user would recognise, because the first thing every tester did was fact-check us.",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        type: "stats",
-        eyebrow: "After 5 months",
-        heading: "Measured, not projected",
-        items: [
-          { value: "32%", label: "Activation, sustained across five months" },
-          { value: "20%", label: "Self-serve purchase rate" },
-          { value: "−41%", label: "Onboarding tickets per new account" },
-        ],
-      },
-      {
-        type: "quote",
-        eyebrow: "Outcome",
-        text:
-          "The metric definition was the actual deliverable. The flow was downstream of finally agreeing what \u201cactivated\u201d meant.",
-        author: "A colleague",
-        role: "Placeholder testimonial — replace with a real one",
-      },
-    ],
-  },
-  {
-    slug: "ai-for-sales-teams",
-    accent: "purple",
-    company: "PLACEHOLDER Co.",
-    title: "AI for sales teams",
-    summary:
-      "The data was all there, spread across eight tabs. We wrote a summary that pulled it together — and reps ignored it, because they had no way to check whether it was true.",
-    tags: ["B2B SaaS", "AI", "Sales Intelligence", "Enterprise"],
-    question:
-      "Everything a rep needed was already in the product. Why did they keep going somewhere else to find it?",
-    headline: "Turned account research from a reading task into a decision",
-    standfirst:
-      "Reps were assembling eight tabs of context before they could judge whether an account was worth pursuing. The fix was not a better summary — it was making the summary checkable.",
-    role: "Product Designer",
-    timeline: "Discovery → prototype → staged rollout",
-    status: "Shipped",
-    platform: "B2B web app",
-    years: "2025",
-    team: [
-      { name: "You", scope: "Summary layer, trust affordances" },
-      { name: "An ML engineer", scope: "Retrieval and sourcing" },
-    ],
-    tools: ["Figma", "Dovetail", "Retool"],
-    deltas: [{ from: "15 min", to: "9 min", label: "per account" }],
-    framework: "SCQA",
-    body: [
-      {
-        type: "stats",
-        eyebrow: "At a glance",
-        heading: "Where the time went",
-        items: [
-          { value: "9 min", label: "Median time to a go/no-go call, from ~15" },
-          { value: "8 → 1", label: "Tabs needed to reach a decision" },
-          { value: "100%", label: "Of claims carry an inline source" },
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "Situation",
-        heading: "Research before decision",
-        body: [
-          "Everything a rep needed was technically in the product. It was spread across eight tabs, and assembling it was the job.",
-        ],
-      },
-      {
-        type: "numbered",
-        eyebrow: "Complication",
-        heading: "Summaries people would not trust",
-        intro:
-          "An early prototype generated a clean paragraph per account. Reps ignored it, and the reasons were consistent.",
-        items: [
-          {
-            heading: "No way to check a claim",
-            body: "Without visible sourcing, reps re-did the research anyway — so the summary cost them time rather than saving it.",
-            quote: "If I can't see where it got that, I have to go look myself.",
-          },
-          {
-            heading: "No way to correct a claim",
-            body: "Stale or wrong facts had no repair path, so one bad summary discredited the whole feature.",
-          },
-        ],
-      },
-      {
-        type: "beforeAfter",
-        eyebrow: "Answer",
-        heading: "Sourcing as a first-class element",
-        pairs: [
-          {
-            aspect: "Provenance",
-            before: "A clean paragraph with no indication of where anything came from.",
-            after:
-              "Every claim carries its source inline and expands to the underlying record in one action.",
-          },
-          {
-            aspect: "Correction",
-            before: "Wrong facts were unfixable and discredited the feature.",
-            after:
-              "Any rep can correct a claim, and the correction persists for the whole team.",
-            note: "turned it from something done to them into something they maintained",
-          },
-        ],
-      },
-      {
-        type: "metrics",
-        eyebrow: "Impact",
-        items: [{ from: "15 min", to: "9 min", label: "median time to a go/no-go call" }],
-      },
-    ],
-  },
-  {
-    slug: "invoice-reconciliation",
-    accent: "green",
-    company: "PLACEHOLDER Co.",
-    title: "Invoice reconciliation",
-    summary:
-      "Matching worked. What did not work was the screen: one row per invoice, every row weighted the same, so the handful that needed judgement were buried among thousands that did not.",
-    tags: ["Enterprise", "Workflow", "Fintech"],
-    question:
-      "The system matched every invoice correctly. So why did it still take a person eleven steps?",
-    headline: "Cut an eleven-step reconciliation down to a review queue",
-    standfirst:
-      "The old screen was a faithful rendering of the database: one row per invoice, every row weighted identically. The work was teaching it to have an opinion.",
-    role: "Product Designer",
-    timeline: "Research → pilot with two customers → GA",
-    status: "Shipped",
-    platform: "Enterprise web",
-    years: "2024–2025",
-    tools: ["Figma", "FullStory"],
-    deltas: [{ from: "1100 h", to: "330 h", label: "quarterly effort" }],
-    framework: "SCQA",
-    body: [
-      {
-        type: "stats",
-        eyebrow: "At a glance",
-        heading: "Effort removed",
-        items: [
-          { value: "70%", label: "Reduction in quarterly reconciliation effort" },
-          { value: "11 → 3", label: "Steps in the operator's path" },
-          { value: "2", label: "Pilot customers before general availability" },
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "Situation",
-        heading: "Everything looked equally urgent",
-        body: [
-          "The existing screen was a faithful representation of the database: one row per invoice, every row identical in weight.",
-        ],
-      },
-      {
-        type: "beforeAfter",
-        eyebrow: "Answer",
-        heading: "Only show what needs a decision",
-        pairs: [
-          {
-            aspect: "What reaches a person",
-            before: "Every invoice, matched or not, in one undifferentiated table.",
-            after:
-              "Clean matches clear themselves and are logged. Only genuine exceptions reach a human.",
-          },
-          {
-            aspect: "How an exception opens",
-            before: "A row you had to diff by eye against two other systems.",
-            after: "Each exception opens with the specific discrepancy already named.",
-          },
-        ],
-      },
-      {
-        type: "metrics",
-        eyebrow: "Impact",
-        items: [{ from: "1100 h", to: "330 h", label: "effort per quarter" }],
-      },
-    ],
-  },
-  {
-    slug: "design-system",
-    accent: "red",
-    company: "PLACEHOLDER Co.",
-    title: "Design system foundations",
-    summary:
-      "Adoption was never the problem — everyone wanted the system. The problem was that a team needing something it did not contain had nowhere to put it except back into their own code.",
-    tags: ["Design Systems", "Tooling"],
-    question:
-      "Four teams adopted the design system in a fortnight. Why had it drifted apart again by the next quarter?",
-    headline: "Built the token layer that stopped four products drifting apart",
-    standfirst:
-      "The first version was adopted in a fortnight and began drifting again within a quarter. The fix turned out to be procedural, not visual.",
-    role: "Product Designer",
-    timeline: "Audit → tokens → adoption",
-    status: "Shipped",
-    platform: "Cross-platform",
-    years: "2024",
-    tools: ["Figma", "Style Dictionary", "Storybook"],
-    deltas: [{ from: "60+", to: "12", label: "greys in production" }],
-    framework: "SCQA",
-    body: [
-      {
-        type: "stats",
-        eyebrow: "At a glance",
-        heading: "What consolidation looked like",
-        items: [
-          { value: "60 → 12", label: "Distinct greys shipping in production" },
-          { value: "4", label: "Product surfaces brought onto one token layer" },
-          { value: "1 qtr", label: "Until the first version began drifting again" },
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "Complication",
-        heading: "Systems fail at contribution, not at launch",
-        body: [
-          "The first version of the system was adopted quickly and then began drifting again within a quarter, because there was no path for a team to add something it needed.",
-          "The fix was procedural rather than visual: a documented way to propose a component, and a standing review that met whether or not there was much to discuss.",
-        ],
-      },
-      {
-        type: "metrics",
-        eyebrow: "Impact",
-        items: [{ from: "60+", to: "12", label: "distinct greys shipping in production" }],
-      },
-    ],
-  },
+
+
+
+
 ];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {

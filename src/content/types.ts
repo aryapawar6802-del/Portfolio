@@ -87,7 +87,17 @@ export type Block =
    * slot — useful while a study is written but the screens are not yet
    * exported, so the layout shows exactly what is still missing.
    */
-  | { type: "image"; src?: string; alt?: string; caption?: string };
+  | {
+      type: "image";
+      src?: string;
+      alt?: string;
+      caption?: string;
+      /**
+       * Native width ÷ height. The frame matches the artwork so nothing is
+       * ever cropped; screens are 16:9, boards and diagrams are not.
+       */
+      ratio?: number;
+    };
 
 export type CaseStudy = {
   slug: string;

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 960" width="1440" height="960">
+<style>@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Inter+Tight:wght@400;500&amp;family=JetBrains+Mono&amp;display=swap");</style>
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#1A1917" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="aa" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#C4442E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="1440" height="960" fill="#FCFBF8"/>
+<text x="80" y="84" font-family="'JetBrains Mono', Menlo, monospace" font-size="12" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Calibration flow</text>
+<text x="80" y="132" font-family="Newsreader, Georgia, serif" font-size="38" fill="#1A1917" font-weight="400" text-anchor="start" letter-spacing="-0.6" opacity="1">Every screen answers a question</text>
+<text x="80" y="178" font-family="Newsreader, Georgia, serif" font-size="38" fill="#1A1917" font-weight="400" text-anchor="start" letter-spacing="-0.6" opacity="1">the calibrator was already asking.</text>
+<text x="1060" y="98" font-family="Newsreader, Georgia, serif" font-size="20" fill="#1A1917" font-weight="400" font-style="italic" text-anchor="start" letter-spacing="0" opacity="1">“ ”</text>
+<text x="1100" y="96" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="13" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">the calibrator’s question</text>
+<rect x="1060" y="116" width="28" height="18" rx="4" fill="#fff" stroke="#1A1917" stroke-width="1.2"/>
+<text x="1100" y="130" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="13" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">where the tool answers it</text>
+<rect x="1060" y="148" width="28" height="18" rx="4" fill="none" stroke="#6F6A62" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="1100" y="162" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="13" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">not reachable yet</text>
+<line x1="80" y1="220" x2="1360" y2="220" stroke="#DAD6CD"/>
+<text x="80" y="272" font-family="'JetBrains Mono', Menlo, monospace" font-size="13" fill="#C4442E" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">1</text>
+<text x="102" y="274" font-family="Newsreader, Georgia, serif" font-size="26" fill="#1A1917" font-weight="400" text-anchor="start" letter-spacing="-0.3" opacity="1">Orient</text>
+<text x="440" y="272" font-family="'JetBrains Mono', Menlo, monospace" font-size="13" fill="#C4442E" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">2</text>
+<text x="462" y="274" font-family="Newsreader, Georgia, serif" font-size="26" fill="#1A1917" font-weight="400" text-anchor="start" letter-spacing="-0.3" opacity="1">Calibrate the level</text>
+<text x="1170" y="272" font-family="'JetBrains Mono', Menlo, monospace" font-size="13" fill="#C4442E" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">3</text>
+<text x="1192" y="274" font-family="Newsreader, Georgia, serif" font-size="26" fill="#1A1917" font-weight="400" text-anchor="start" letter-spacing="-0.3" opacity="1">Unlock</text>
+<text x="80" y="312" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="13" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Coming back to a cycle already underway</text>
+<text x="80" y="346" font-family="Newsreader, Georgia, serif" font-size="19" fill="#1A1917" font-weight="400" font-style="italic" text-anchor="start" letter-spacing="0" opacity="1">“What has already been done?”</text>
+<text x="80" y="376" font-family="Newsreader, Georgia, serif" font-size="19" fill="#1A1917" font-weight="400" font-style="italic" text-anchor="start" letter-spacing="0" opacity="1">“Where do I start from?”</text>
+<line x1="230" y1="390" x2="230" y2="414" stroke="#1A1917" stroke-width="1.3" marker-end="url(#ar)"/>
+<rect x="80" y="420" width="300" height="320" rx="14" fill="#fff" stroke="#1A1917" stroke-width="1.3"/>
+<text x="100" y="452" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="14" fill="#1A1917" font-weight="500" text-anchor="start" letter-spacing="0" opacity="1">Home</text>
+<text x="360" y="452" font-family="'JetBrains Mono', Menlo, monospace" font-size="11" fill="#6F6A62" font-weight="400" text-anchor="end" letter-spacing="0" opacity="1">1 of 6 completed</text>
+<rect x="100" y="466" width="260" height="5" rx="2.5" fill="#F1EEE7"/><rect x="100" y="466" width="44" height="5" rx="2.5" fill="#C4442E"/>
+<rect x="100" y="495" width="260" height="62" rx="9" fill="#F1EEE7"/>
+<circle cx="340" cy="526" r="9" fill="#C4442E"/><path d="M336 526 l3 3 l5 -6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="116" y="522" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="15" fill="#1A1917" font-weight="500" text-anchor="start" letter-spacing="0" opacity="1">Department</text>
+<text x="116" y="541" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">calibrated</text>
+<rect x="100" y="569" width="260" height="62" rx="9" fill="#fff" stroke="#1A1917" stroke-width="1.6"/>
+<path d="M332 600 h16" stroke="#C4442E" stroke-width="1.8" marker-end="url(#aa)"/>
+<text x="116" y="596" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="15" fill="#1A1917" font-weight="500" text-anchor="start" letter-spacing="0" opacity="1">Category Group</text>
+<text x="116" y="615" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">open, start here</text>
+<rect x="100" y="643" width="260" height="62" rx="9" fill="none" stroke="#6F6A62" stroke-width="1.2" stroke-dasharray="4 4"/>
+<path d="M336 668 v-3 a4 4 0 0 1 8 0 v3" fill="none" stroke="#6F6A62" stroke-width="1.5"/><rect x="334" y="668" width="12" height="9" rx="2" fill="#6F6A62"/>
+<text x="116" y="670" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="15" fill="#1A1917" font-weight="500" text-anchor="start" letter-spacing="0" opacity="0.5">Category</text>
+<text x="116" y="689" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="0.5">locked until the level above is done</text>
+<text x="80" y="774" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="13.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">On return, home doubles as a progress tracker.</text>
+<text x="80" y="794" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="13.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Only the next step that’s safe to take is open.</text>
+<path d="M382 600 C 412 600, 408 462, 436 462" fill="none" stroke="#1A1917" stroke-width="1.3" marker-end="url(#ar)"/>
+<rect x="440" y="330" width="155" height="270" rx="14" fill="#fff" stroke="#1A1917" stroke-width="1.3"/>
+<text x="456" y="360" font-family="'JetBrains Mono', Menlo, monospace" font-size="12" fill="#C4442E" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">a</text>
+<text x="456" y="392" font-family="Newsreader, Georgia, serif" font-size="23" fill="#1A1917" font-weight="400" text-anchor="start" letter-spacing="-0.3" opacity="1">Summary</text>
+<text x="456" y="422" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1917" font-weight="400" font-style="italic" text-anchor="start" letter-spacing="0" opacity="1">“What needs me?”</text>
+<line x1="456" y1="466" x2="579" y2="466" stroke="#DAD6CD"/>
+<text x="456" y="490" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Names what’s blocked</text>
+<text x="456" y="508" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">in one sentence. Rule</text>
+<text x="456" y="526" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">violations become a</text>
+<text x="456" y="544" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">short triage list.</text>
+<rect x="615" y="330" width="155" height="270" rx="14" fill="#fff" stroke="#1A1917" stroke-width="1.3"/>
+<text x="631" y="360" font-family="'JetBrains Mono', Menlo, monospace" font-size="12" fill="#C4442E" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">b</text>
+<text x="631" y="392" font-family="Newsreader, Georgia, serif" font-size="23" fill="#1A1917" font-weight="400" text-anchor="start" letter-spacing="-0.3" opacity="1">Compare</text>
+<text x="631" y="422" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1917" font-weight="400" font-style="italic" text-anchor="start" letter-spacing="0" opacity="1">“Why did this</text>
+<text x="631" y="442" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1917" font-weight="400" font-style="italic" text-anchor="start" letter-spacing="0" opacity="1">number move?”</text>
+<line x1="631" y1="466" x2="754" y2="466" stroke="#DAD6CD"/>
+<text x="631" y="490" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Last month, calibrated,</text>
+<text x="631" y="508" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">and raw, side by side</text>
+<text x="631" y="526" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">on every metric.</text>
+<rect x="790" y="330" width="155" height="270" rx="14" fill="#fff" stroke="#1A1917" stroke-width="1.3"/>
+<text x="806" y="360" font-family="'JetBrains Mono', Menlo, monospace" font-size="12" fill="#C4442E" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">c</text>
+<text x="806" y="392" font-family="Newsreader, Georgia, serif" font-size="23" fill="#1A1917" font-weight="400" text-anchor="start" letter-spacing="-0.3" opacity="1">Edit</text>
+<text x="806" y="422" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1917" font-weight="400" font-style="italic" text-anchor="start" letter-spacing="0" opacity="1">“Can I change it</text>
+<text x="806" y="442" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1917" font-weight="400" font-style="italic" text-anchor="start" letter-spacing="0" opacity="1">safely?”</text>
+<line x1="806" y1="466" x2="929" y2="466" stroke="#DAD6CD"/>
+<text x="806" y="490" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Changes are saved or</text>
+<text x="806" y="508" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">discarded on purpose.</text>
+<text x="806" y="526" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Nothing half-finished</text>
+<text x="806" y="544" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">leaks into a published</text>
+<text x="806" y="562" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">number.</text>
+<rect x="965" y="330" width="155" height="270" rx="14" fill="#fff" stroke="#1A1917" stroke-width="1.3"/>
+<text x="981" y="360" font-family="'JetBrains Mono', Menlo, monospace" font-size="12" fill="#C4442E" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">d</text>
+<text x="981" y="392" font-family="Newsreader, Georgia, serif" font-size="23" fill="#1A1917" font-weight="400" text-anchor="start" letter-spacing="-0.3" opacity="1">Approve</text>
+<text x="981" y="422" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1917" font-weight="400" font-style="italic" text-anchor="start" letter-spacing="0" opacity="1">“What happens if</text>
+<text x="981" y="442" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1917" font-weight="400" font-style="italic" text-anchor="start" letter-spacing="0" opacity="1">I commit?”</text>
+<line x1="981" y1="466" x2="1104" y2="466" stroke="#DAD6CD"/>
+<text x="981" y="490" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">GMV and share impact</text>
+<text x="981" y="508" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">before you finalise,</text>
+<text x="981" y="526" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">while you can still</text>
+<text x="981" y="544" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">back out.</text>
+<line x1="598" y1="560" x2="612" y2="560" stroke="#1A1917" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="773" y1="560" x2="787" y2="560" stroke="#1A1917" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="948" y1="560" x2="962" y2="560" stroke="#1A1917" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="517.5" y1="606" x2="517.5" y2="654" stroke="#C4442E" stroke-width="1.4" stroke-dasharray="4 4" marker-start="url(#aa)" marker-end="url(#aa)"/>
+<rect x="458" y="660" width="119" height="40" rx="20" fill="#fff" stroke="#C4442E" stroke-width="1.4"/>
+<text x="517.5" y="685" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="14" fill="#C4442E" font-weight="500" text-anchor="middle" letter-spacing="0" opacity="1">Blocked</text>
+<text x="596" y="676" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="13" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">A rule conflict stops the level.</text>
+<text x="596" y="694" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="13" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Resolve it, then back to the summary.</text>
+<line x1="1123" y1="438" x2="1166" y2="438" stroke="#1A1917" stroke-width="1.3" marker-end="url(#ar)"/>
+<text x="1144" y="428" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12" fill="#6F6A62" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">finalise</text>
+<rect x="1170" y="330" width="190" height="64" rx="10" fill="#1A1917"/>
+<circle cx="1338" cy="362" r="9" fill="#C4442E"/><path d="M1334 362 l3 3 l5 -6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1186" y="358" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="15" fill="#fff" font-weight="500" text-anchor="start" letter-spacing="0" opacity="1">Department</text>
+<text x="1186" y="377" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12" fill="#BDB7AD" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">locked in</text>
+<rect x="1170" y="406" width="190" height="64" rx="10" fill="#fff" stroke="#1A1917" stroke-width="1.6"/>
+<text x="1186" y="434" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="15" fill="#1A1917" font-weight="500" text-anchor="start" letter-spacing="0" opacity="1">Category Group</text>
+<text x="1186" y="453" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">unlocks</text>
+<rect x="1170" y="482" width="190" height="64" rx="10" fill="none" stroke="#6F6A62" stroke-width="1.2" stroke-dasharray="4 4"/>
+<path d="M1334 510 v-3 a4 4 0 0 1 8 0 v3" fill="none" stroke="#6F6A62" stroke-width="1.5"/><rect x="1332" y="510" width="12" height="9" rx="2" fill="#6F6A62"/>
+<text x="1186" y="510" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="15" fill="#1A1917" font-weight="500" text-anchor="start" letter-spacing="0" opacity="0.5">Category</text>
+<text x="1186" y="529" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="0.5">waits its turn</text>
+<text x="1170" y="584" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="13.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">A finished level can’t be</text>
+<text x="1170" y="603" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="13.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">undone by a late edit.</text>
+<path d="M1265 612 V 800 Q 1265 830 1235 830 H 450 Q 420 830 420 800 V 598 Q 420 582 434 582" fill="none" stroke="#C4442E" stroke-width="1.6" marker-end="url(#aa)"/>
+<rect x="730" y="816" width="220" height="28" fill="#FCFBF8"/>
+<text x="840" y="835" font-family="Newsreader, Georgia, serif" font-size="19" fill="#C4442E" font-weight="400" font-style="italic" text-anchor="middle" letter-spacing="0" opacity="1">Next level, same four steps</text>
+<line x1="80" y1="890" x2="1360" y2="890" stroke="#DAD6CD"/>
+<text x="80" y="922" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Phase 1 calibration</text>
+<text x="1360" y="922" font-family="'Inter Tight', Helvetica, Arial, sans-serif" font-size="12.5" fill="#6F6A62" font-weight="400" text-anchor="end" letter-spacing="0" opacity="1">Redrawn from the working whiteboard</text>
+</svg>

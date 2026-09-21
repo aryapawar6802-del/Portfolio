@@ -269,7 +269,10 @@ export function BlockRenderer({
       return (
         <figure {...anchor}>
           <div className="overflow-hidden bg-paper-deep">
-            <div className="relative aspect-16/10">
+            <div
+              className="relative"
+              style={{ aspectRatio: String(block.ratio ?? 16 / 9) }}
+            >
               {block.src ? (
                 <Image
                   src={block.src}
