@@ -67,7 +67,7 @@ export default function Home() {
       <section className="bg-paper-dim">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
           <h2 className="display max-w-[16ch] text-[2.6rem] sm:text-[4rem]">
-            Let&rsquo;s build something together.
+            I&rsquo;d like to hear what you&rsquo;re working on.
           </h2>
 
           <div className="my-14">

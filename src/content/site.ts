@@ -2,10 +2,10 @@ export const site = {
   name: "Arya Pawar",
   role: "Product Designer",
   /** Hero statement. Kept short — it sets at ~5rem on desktop. */
-  headline: "Product designer for high growth B2B companies.",
+  headline: "I design products people use every day.",
   /** Two clauses under the statement. */
   subtitle:
-    "Enterprise workflow and data products, and the unglamorous screens in between. I define the metric before I design the flow.",
+    "I work on enterprise workflow and data products, including the plain internal screens between the big features. I start by defining what we’re measuring, and then design the flow.",
   currently: { label: "MathCo", href: "https://mathco.com" },
   email: "arya.pawar6802@gmail.com",
   resumeHref: "#",

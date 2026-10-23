@@ -2,9 +2,9 @@ import { site } from "@/content/site";
 
 /* PLACEHOLDER copy — replace with your own. */
 const paragraphs = [
-  "I design B2B products: enterprise workflow, sales tooling, and the unglamorous internal screens that decide whether a company's software actually gets used.",
-  "Most of my work starts before there is anything to draw. Teams usually know something is wrong and disagree about what to measure, so the first deliverable is often a definition rather than a flow.",
-  "I care about the screens nobody demos — the reconciliation queue, the exception state, the third step of an eleven-step process. That is where the time goes.",
+  "I'm a product designer. So far most of my work has been enterprise workflow and sales tooling, plus the internal screens that end up deciding whether people use a company's software at all.",
+  "A lot of my projects start before there's anything to draw. The team usually knows something is wrong but can't agree on what to measure, so the first thing I hand over is often a definition of what to measure. The flow comes after that.",
+  "I like working on the screens nobody puts in a demo, like the reconciliation queue, the exception state, or the third step of an eleven-step process. That's where people spend most of their time.",
 ];
 
 export default function About() {
