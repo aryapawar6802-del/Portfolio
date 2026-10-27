@@ -2,8 +2,7 @@ export const site = {
   name: "Arya Pawar",
   role: "Product Designer",
   /** Hero statement, and the site's meta description. */
-  headline:
-    "Product design for when the data is dense and the stakes are real. I work from first question to working prototype.",
+  headline: "I design products for people who spend their days knee-deep in data.",
   currently: { label: "MathCo", href: "https://mathco.com" },
   email: "arya.pawar6802@gmail.com",
   resumeHref: "#",

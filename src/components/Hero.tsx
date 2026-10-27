@@ -15,7 +15,7 @@ export function Hero() {
   return (
     <section className="mx-auto max-w-6xl px-6 pt-6 pb-4 sm:px-8 sm:pt-8">
       <h1
-        className="display rise-in max-w-[24ch] text-[2.1rem] sm:text-[3rem] lg:text-[3.6rem]"
+        className="display rise-in max-w-[24ch] text-balance text-[2.1rem] sm:text-[3rem] lg:text-[3.6rem]"
         style={{ animationDelay: "1480ms" }}
       >
         {site.headline}
