@@ -1,6 +1,5 @@
 import { Hero } from "@/components/Hero";
 import { WorkCard } from "@/components/WorkCard";
-import { PantryScene } from "@/components/PantryScene";
 import { caseStudies } from "@/content/case-studies";
 import { site } from "@/content/site";
 
@@ -63,18 +62,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The one food beat: what goes in, and the invitation, in a single image */}
+      {/* Closing invitation */}
       <section className="bg-paper-dim">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
           <h2 className="display max-w-[16ch] text-[2.6rem] sm:text-[4rem]">
             I&rsquo;d like to hear what you&rsquo;re working on.
           </h2>
 
-          <div className="my-14">
-            <PantryScene />
-          </div>
-
-          <p className="label text-ink-3">Reach out</p>
+          <p className="label mt-12 text-ink-3">Reach out</p>
           <p className="mt-2">
             <a
               href={`mailto:${site.email}`}
