@@ -4,45 +4,9 @@ import { caseStudies } from "@/content/case-studies";
 import { site } from "@/content/site";
 
 export default function Home() {
-  /* Generated from the studies so the ticker can never drift out of sync.
-     Every delta, not just the first of each — with a small number of studies,
-     one-per-study leaves the row looking half-empty. */
-  const ticker = caseStudies.flatMap((study) =>
-    study.deltas.map((delta, i) => ({ ...delta, key: `${study.slug}-${i}` })),
-  );
-
   return (
     <>
       <Hero />
-
-      {/* Evidence ticker */}
-      {ticker.length > 0 && (
-      <section
-        aria-label="Headline outcomes"
-        className="mx-auto max-w-6xl px-6 sm:px-8"
-      >
-        <div className="rounded-panel bg-paper-deep px-6 py-7">
-        <ul className="flex flex-wrap items-baseline justify-center gap-x-12 gap-y-4 text-[0.9rem] tabular-nums">
-          {ticker.map((item) => (
-            <li key={item.key} className="flex items-baseline gap-2">
-              {item.from && (
-                <>
-                  <span className="sr-only">from </span>
-                  <span className="text-ink-3">{item.from}</span>
-                  <span className="text-ink-3" aria-hidden="true">
-                    →
-                  </span>
-                  <span className="sr-only"> to </span>
-                </>
-              )}
-              <span className="text-accent">{item.to}</span>
-              <span className="text-[0.82rem] text-ink-3">{item.label}</span>
-            </li>
-          ))}
-          </ul>
-        </div>
-      </section>
-      )}
 
       {/* Work */}
       <section
