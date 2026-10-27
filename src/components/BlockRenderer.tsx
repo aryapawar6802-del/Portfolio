@@ -144,7 +144,7 @@ export function BlockRenderer({
           {block.heading && <Heading>{block.heading}</Heading>}
           {block.intro && (
             <p className="mt-6 max-w-prose leading-[1.75] text-ink-2">
-              {block.intro}
+              <Marked text={block.intro} />
             </p>
           )}
           <ol className="mt-9 grid gap-8 sm:grid-cols-2">

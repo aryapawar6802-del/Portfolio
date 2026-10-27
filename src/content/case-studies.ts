@@ -307,10 +307,10 @@ export const caseStudies: CaseStudy[] = [
     company: "Global CPG company",
     title: "Rapid ROI — media investment optimisation",
     summary:
-      "Planners kept going back to their spreadsheets even though the model was sound. The five-stage wizard asked them for structure before it knew what they were trying to solve, and its results gave a number with no reasoning behind it.",
+      "Planners kept going back to their spreadsheets even though the model was sound. I rebuilt the five-stage flow around what they needed to defend a plan to their leadership.",
     tags: ["B2B web app", "Marketing Mix Modeling", "Enterprise", "Data product"],
     question:
-      "The model worked, so why were planners still deciding in spreadsheets?",
+      "The client had the model, so why were planners still deciding in spreadsheets?",
     headline:
       "Rebuilt a five-stage optimisation flow so planners could explain its results",
     standfirst:
@@ -353,6 +353,7 @@ export const caseStudies: CaseStudy[] = [
             value:
               "Data science, PM [FILL], engineering [FILL], and client stakeholders.",
           },
+          { label: "Timeline", value: "[FILL]" },
           {
             label: "Impact",
             value:
@@ -411,7 +412,7 @@ export const caseStudies: CaseStudy[] = [
           "Where does trust break: at the input, or at the output?",
           "What does “set your constraints” mean when there are two hundred of them?",
           "And when the honest answer is that the target isn’t reachable, what’s the useful thing to say next?",
-          "[FILL: name the method concretely — usability sessions, stakeholder interviews, watching a planner work. Without it these questions read as rhetorical.]",
+          "[FILL: this section should reflect how you really approached it. Was this framed through usability sessions, stakeholder interviews, watching a planner work? Name your method concretely and honestly, whatever it was.]",
         ],
       },
       {
@@ -422,74 +423,122 @@ export const caseStudies: CaseStudy[] = [
           "Planners had no problem with MMM itself. What they pushed back on was a black box that produced allocations without an argument they could defend. Every planner I [FILL: spoke to / observed] had the same job underneath: they needed an answer they could defend upstairs, and that mattered more to them than the best answer on paper.",
           "That changed how I thought about the interface. It had to lay out an argument the planner could reconstruct, instead of collecting inputs and returning an output.",
           "I learned the second thing from studying the model, not from users. Spend Based and Goal Based are inverse operations. Building them as one flow with conditional fields had caused most of the ambiguity further down.",
-          "[FILL: the MMM depth — adstock, saturation curves, Bayesian vs frequentist, Robyn and Meridian, working with the DS lead. This is the most differentiating thing in the study and it is currently a placeholder.]",
+          "[FILL: I went deep on MMM fundamentals here — adstock, saturation curves, Bayesian vs frequentist approaches, open-source implementations like Robyn and Meridian — working closely with the DS lead on the data science side. Write this up properly. Most designers can’t discuss saturation curves. It’s the reason you could design the explanation layer at all, and it’s the most differentiating thing in this case study.]",
+        ],
+      },
+      {
+        type: "numbered",
+        eyebrow: "The jobs",
+        heading: "What planners were hiring it to do",
+        intro:
+          "Planners open Rapid ROI to prepare for a conversation they’ll have later, with someone more senior, about money. Five jobs came out of that. [FILL: name where these came from — sessions, stakeholder interviews, watching planners work. The jobs are only as credible as their source.]",
+        items: [
+          {
+            heading: "“Ask me what I’m solving for before you ask me anything else.”",
+            body: "When I start a planning cycle, I want to state my business question first, so the tool only asks me what’s relevant to it. [FILL: validated or assumed?]",
+          },
+          {
+            heading: "“Show me what I actually selected.”",
+            body: "When I define scope, I want to see exactly which brand-market combinations I’ve picked, so I can trust the model ran on what I meant. [FILL: validated or assumed?]",
+          },
+          {
+            heading: "“Let me set a rule once.”",
+            body: "When I apply constraints across a portfolio, I want to work at the level I think at, brand first and then combination, so I’m not editing forty rows by hand. [FILL: validated or assumed?]",
+          },
+          {
+            heading: "“Tell me why this channel got what it got.”",
+            body: "When I read a recommendation, I want to understand the reasoning behind the split, so I can defend the plan to my leadership. [FILL: validated or assumed?]",
+          },
+          {
+            heading: "“When it’s not possible, tell me which lever to pull.”",
+            body: "When my target can’t be reached, I want to know what’s blocking it and what moving it would cost, so I can make an informed trade instead of guessing. [FILL: validated or assumed?]",
+          },
+        ],
+      },
+      {
+        type: "prose",
+        body: [
+          "Four of the five jobs are about being able to defend the plan. Planners wanted to be able to explain the number they’d been given more than they wanted a better one.",
+          "[FILL: be honest about which of these you actually validated and which stayed assumptions. “Three validated, two inferred from stakeholder input” is a stronger sentence than five unqualified claims — reviewers trust stated limits more than uniform confidence.]",
         ],
       },
       {
         type: "beforeAfter",
         eyebrow: "The solutions",
-        heading: "Five changes to the flow",
+        heading: "Five changes, one for each job",
         pairs: [
           {
             aspect: "01 · Ask what they’re solving for, first",
             before:
               "A single flow that asked everyone the same questions and hoped they’d ignore the ones that didn’t apply.",
             after:
-              "Planners now state their intent at the start. Goal Based and Spend Based branch straight away, and every later stage adapts its fields, defaults and results to match. I moved flighting into Configure, where it fits better, and granularity into Constraints, because granularity only means something once you know what you’re constraining.",
-            note: "the pivot in 05 only works because the two modes are modelled as siblings",
+              "Planners now state their intent at the start. Goal Based and Spend Based branch straight away, and every later stage adapts its fields, defaults and results to match. I moved flighting into Configure, because it describes how spend is spread over time and belongs with the setup of the run. Granularity moved into Constraints, because it only means something once you know what you’re constraining. Modelling the two modes as siblings from the start is also the only reason the pivot in 05 was possible.",
+            note: "answers job 01",
           },
           {
             aspect: "02 · Stop asking planners to multiply in their heads",
             before: "Two selectors, with an unstated relationship between them.",
             after:
-              "A flat combination table. The system generates every combination your selection produces and lists them, so what you see selected is exactly what the model runs on. [FILL: what else was on the table — nested tree, dependent dropdowns, a matrix grid? Say what you rejected and why.]",
+              "A flat combination table. The system generates every combination your selection produces and lists them, so what you see selected is exactly what the model runs on. [FILL: what else was on the table — nested tree, dependent dropdowns, a matrix grid? Say what you rejected and why. Showing the discarded options is the clearest proof that you decided rather than defaulted.]",
+            note: "answers job 02",
           },
           {
             aspect: "03 · Setting rules across a whole portfolio",
             before: "One flat list, however long the portfolio was.",
             after:
-              "Two-level searchable navigation, brand first and then combination, so planners find things the way they already think about them. Smart filters on the constraints table [FILL: which ones, and what job each does]. And a portfolio cascade, where you set a rule once at portfolio level, let it flow down, and override it wherever reality differs.",
-            note: "at portfolio scale, planners work with rules more than with single rows",
+              "Two-level searchable navigation, brand first and then combination, so planners find things the way they already think about them. Smart filters on the constraints table [FILL: which ones, and what job each does]. And a portfolio cascade, where you set a rule once at portfolio level, let it flow down, and override it wherever reality differs. All three let a planner state an intention once instead of making the same edit forty times.",
+            note: "answers job 03",
           },
           {
             aspect: "04 · Results that explain the recommendation",
             before:
               "Charts that only displayed numbers, and the one metric that explained them buried where nobody used it.",
             after:
-              "A waterfall shows how you get from current spend to recommended spend. Grouped bars put current against recommended for each channel, and a heatmap with Pareto ordering brings the few channels that matter most to the top. MROI now appears on Results and nowhere else, and each channel has a saturation tag. The MAT bar became a full peer on the Results Breakdown at the client’s request, and it was a good request. [FILL: describe what each of these replaced.]",
+              "A waterfall shows how you get from current spend to recommended spend. Grouped bars put current and recommended side by side for each channel. The heatmap now uses Pareto ordering, so the few channels that matter most come first and nobody has to hunt for them. [FILL: describe what each of these replaced] MROI now lives on Results and nowhere else, so there’s one place to answer why a channel got what it got. I took it out of the earlier steps, where it added weight without helping anyone decide. Each channel has a saturation tag, so planners can see which channels still have room before they hit a wall. The MAT bar became a full peer on the Results Breakdown at the client’s request, and it was a good request: a new recommendation is easier to believe when it sits next to a number you already trust.",
+            note: "answers job 04",
           },
           {
             aspect: "05 · When the answer is no, hand back a decision",
             before:
               "A screen called Target Not Achievable. It was correct, and it didn’t help anyone.",
             after:
-              "Every outcome, reachable or not, now lands on the same Results screen. When a target can’t be met, the planner has two ways forward. They can edit the constraints, with MROI-ranked guidance inline so the lever with the most effect is already at the top. Or they can switch to Spend Based, pre-filled with the numbers already on screen, so nothing is lost and they don’t have to start over. I also removed the Maximum Budget field. In a goal-based flow the system works out the budget ceiling, so the user shouldn’t have to cap it by hand.",
-            note: "an unreachable target still tells the planner something useful",
+              "Every outcome, reachable or not, now lands on the same Results screen. When a target can’t be met, the planner has two ways forward. They can edit the constraints, with MROI-ranked guidance inline so the lever with the most effect is already at the top. Or they can switch to Spend Based, pre-filled with the numbers already on screen, so nothing is lost and they don’t have to start over. Editing the target happens in a modal instead of on a separate screen, so the planner never leaves the flow to change their mind. I also removed the Maximum Budget field. In a goal-based flow the system works out the budget ceiling itself, and asking the user to cap it by hand broke their picture of how the flow worked.",
+            note: "answers job 05, and it’s the change I’d defend hardest",
           },
         ],
+      },
+      {
+        type: "quote",
+        text: "When a target can’t be reached, the system’s job is to hand the planner their next decision.",
       },
       {
         type: "prose",
         heading: "Getting a deletion agreed",
         body: [
-          "[FILL: how did you get alignment on removing the Maximum Budget field? Removing things is harder than adding them, and getting a data science lead and a client to agree to a deletion is a real influence story. Tell it.]",
+          "[FILL: how did you get alignment on deleting a field? Removing things is harder than adding them, and getting both a data science lead and a client to agree to a deletion is a real influence story. Tell it.]",
+        ],
+      },
+      {
+        type: "prose",
+        eyebrow: "Prioritisation",
+        heading: "How I decided what to fix first",
+        body: [
+          "There were over a hundred open decisions across the five stages, and the client had to sign off. So I looked for the decisions that had to be right before anything downstream could be built, and sorted everything by impact and by how expensive it would be to undo.",
         ],
       },
       {
         type: "themes",
-        eyebrow: "Prioritisation",
-        heading: "How I decided what to fix first",
         groups: [
           {
             theme: "Expensive to reverse: resolve first",
             items: [
               {
                 heading: "High impact",
-                body: "Intent-first architecture, the scope model, and removing Maximum Budget. I settled these with data science and the client in the room, because reversing the scope model after engineering had built against it would have cost weeks.",
+                body: "Intent-first architecture, the scope model, and removing Maximum Budget. I settled these first, with data science and the client in the room. Reversing the scope model after engineering had built against it would have meant reopening it with data science and re-briefing the client, which takes weeks.",
               },
               {
                 heading: "Low impact",
-                body: "Market Share as a KPI, and budget ceiling logic. These were deferred on purpose and documented as open at [FILL: milestone], so they weren’t forced into a flow that wasn’t ready for them.",
+                body: "Market Share as a KPI, and budget ceiling logic. These were deferred on purpose and documented as open gaps at [FILL: milestone], so they weren’t forced into a flow that wasn’t ready for them.",
               },
             ],
           },
@@ -498,7 +547,7 @@ export const caseStudies: CaseStudy[] = [
             items: [
               {
                 heading: "High impact",
-                body: "Banner copy, chart sorting and saturation tag styling. Changing a banner headline back takes an afternoon.",
+                body: "Banner copy, chart sorting and saturation tag styling. These could ship early and change later, since reversing a banner headline takes an afternoon.",
               },
               { heading: "Low impact", body: "Visual polish and micro-copy." },
             ],
@@ -507,12 +556,19 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "prose",
+        body: [
+          "Sorting the decisions this way also gave me a clear reason not to solve everything at once.",
+          "[OPTIONAL: if your real-time prioritization was looser than this, say so. “This is the logic I was applying, which I’ve since formalized” reads as self-aware. A framework retrofitted for effect gets probed hard in interviews.]",
+        ],
+      },
+      {
+        type: "prose",
         eyebrow: "What it took",
         heading: "I logged every decision, from D1 to D103",
         body: [
           "Each entry recorded what was considered and what was rejected, along with what was chosen.",
-          "[FILL: pull two or three entries. Reasoning frozen at a point in time is unusually strong evidence — most portfolios claim process, very few can show it.]",
-          "[FILL: milestone versions — V1 → what broke → V2 → shipped. The three comparisons that earn their space: Scope Setup, Constraints at portfolio scale, and the dead-end screen against the unified Results screen.]",
+          "[FILL: pull two or three entries. Reasoning frozen at a point in time is unusually strong evidence. Most portfolios claim process. Very few can show it.]",
+          "[FILL: milestone versions here. V1 → what broke → V2 → shipped. Even rough frames. The three comparisons that earn their space: Scope Setup, Constraints at portfolio scale, and the dead-end screen against the unified Results screen.]",
         ],
       },
       { type: "image", caption: "Scope Setup: V1 next to the shipped combination table." },
@@ -523,7 +579,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "What changed",
         heading: "Outcomes",
         body: [
-          "[FILL: quantitative — adoption, task completion, abandonment on infeasible targets, portfolio combinations manageable in a single session. Qualitative — a line from the client stakeholder, the DS lead or your PM. Client sign-off is itself a legitimate result.]",
+          "[FILL: be honest here — inflated numbers are the fastest way to lose a senior reviewer, and they get probed. Quantitative: adoption, task completion, abandonment on infeasible targets, portfolio combinations manageable in a single session. Qualitative: a line from the client stakeholder, the DS lead, or your PM. Client sign-off is itself a legitimate result.]",
           "[FILL: still open — name what didn’t ship. It reads as maturity.]",
         ],
       },
@@ -532,7 +588,7 @@ export const caseStudies: CaseStudy[] = [
         eyebrow: "Reflection",
         heading: "What I’d do differently",
         body: [
-          "[FILL: two or three sentences. Strong angles — what designing on top of a statistical model taught you about explanation as a design material; how portfolio scale moved your unit of design from the screen to the rule; what you couldn’t validate given client-facing enterprise constraints, and how you’d fight for it next time.]",
+          "[FILL: two or three sentences. Strong angles available: what designing on top of a statistical model taught you about explanation as a design material; how portfolio scale moved your unit of design from the screen to the rule; what you couldn’t validate, given the constraints of client-facing enterprise work, and how you’d fight for it next time.]",
         ],
       },
     ],
