@@ -28,7 +28,7 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: `${site.name} — ${site.role}`,
-  description: site.subtitle,
+  description: site.headline,
 };
 
 export default function RootLayout({

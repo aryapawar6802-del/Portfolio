@@ -3,8 +3,8 @@ import { site } from "@/content/site";
 /**
  * Full-viewport centred hero.
  *
- * Hierarchy follows the reference: statement first at full weight, then the
- * subtitle, then where I work, then the two ways in. Each step drops a clear
+ * Hierarchy follows the reference: statement first at full weight, then
+ * where I work, then the two ways in. Each step drops a clear
  * tier in size and tone so the eye lands in that order — the palette is
  * monochrome, so scale, weight, and grey step carry it with no colour help.
  *
@@ -15,18 +15,11 @@ export function Hero() {
   return (
     <section className="mx-auto flex min-h-[calc(100svh-18rem)] max-w-6xl flex-col justify-center px-6 pt-4 pb-10 sm:px-8">
       <h1
-        className="display rise-in max-w-[15ch] text-[2.8rem] sm:text-[4.4rem] lg:text-[5.6rem]"
+        className="display rise-in max-w-[24ch] text-[2.1rem] sm:text-[3rem] lg:text-[3.6rem]"
         style={{ animationDelay: "1480ms" }}
       >
         {site.headline}
       </h1>
-
-      <p
-        className="rise-in mt-10 max-w-xl text-[1.1rem] leading-[1.6] text-ink-2"
-        style={{ animationDelay: "1580ms" }}
-      >
-        {site.subtitle}
-      </p>
 
       <p
         className="rise-in mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.95rem] text-ink-3"
