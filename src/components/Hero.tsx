@@ -1,7 +1,7 @@
 import { site } from "@/content/site";
 
 /**
- * Full-viewport centred hero.
+ * Compact hero, so the first case study shows above the fold.
  *
  * Hierarchy follows the reference: statement first at full weight, then
  * where I work, then the two ways in. Each step drops a clear
@@ -13,7 +13,7 @@ import { site } from "@/content/site";
  */
 export function Hero() {
   return (
-    <section className="mx-auto flex min-h-[calc(100svh-18rem)] max-w-6xl flex-col justify-center px-6 pt-4 pb-10 sm:px-8">
+    <section className="mx-auto max-w-6xl px-6 pt-6 pb-4 sm:px-8 sm:pt-8">
       <h1
         className="display rise-in max-w-[24ch] text-[2.1rem] sm:text-[3rem] lg:text-[3.6rem]"
         style={{ animationDelay: "1480ms" }}
@@ -22,7 +22,7 @@ export function Hero() {
       </h1>
 
       <p
-        className="rise-in mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.95rem] text-ink-3"
+        className="rise-in mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.95rem] text-ink-3"
         style={{ animationDelay: "1660ms" }}
       >
         <span>
@@ -39,7 +39,7 @@ export function Hero() {
       </p>
 
       <div
-        className="rise-in mt-12 flex flex-wrap items-center gap-3"
+        className="rise-in mt-8 flex flex-wrap items-center gap-3"
         style={{ animationDelay: "1740ms" }}
       >
         {/* The only pill on the site: one earned emphasis against a scale of

@@ -11,9 +11,9 @@ export default function Home() {
       {/* Work */}
       <section
         id="work"
-        className="mx-auto max-w-6xl scroll-mt-24 px-6 pt-16 pb-24 sm:px-8 sm:pb-32"
+        className="mx-auto max-w-6xl scroll-mt-24 px-6 pt-14 pb-24 sm:px-8 sm:pb-32"
       >
-        <header className="mb-16">
+        <header className="mb-10">
           <h2 className="display text-[2.6rem] sm:text-[3.6rem]">
             Selected work
           </h2>
