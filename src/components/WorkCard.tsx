@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { HandRule } from "./HandRule";
 import { ACCENTS } from "@/content/palette";
 import type { CaseStudy, Delta as DeltaType } from "@/content/types";
 
@@ -27,7 +26,6 @@ export function WorkCard({
 
   return (
     <article>
-      <HandRule className="mb-12" />
       <Link
         href={`/work/${study.slug}`}
         className={`group flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-16 ${
@@ -83,7 +81,7 @@ export function WorkCard({
             ))}
           </ul>
 
-          <h3 className="display mt-4 max-w-[20ch] text-[1.9rem] decoration-1 underline-offset-[0.18em] group-hover:underline sm:text-[2.5rem]">
+          <h3 className="display mt-4 max-w-[22ch] text-[1.6rem] decoration-1 underline-offset-[0.18em] group-hover:underline sm:text-[1.9rem]">
             {study.question}
           </h3>
 

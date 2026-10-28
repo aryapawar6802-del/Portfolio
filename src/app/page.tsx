@@ -14,7 +14,7 @@ export default function Home() {
         className="mx-auto max-w-6xl scroll-mt-24 px-6 pt-14 pb-24 sm:px-8 sm:pb-32"
       >
         <header className="mb-10">
-          <h2 className="display text-[2.6rem] sm:text-[3.6rem]">
+          <h2 className="display text-[2rem] sm:text-[2.6rem]">
             Work
           </h2>
         </header>
@@ -27,9 +27,9 @@ export default function Home() {
       </section>
 
       {/* Closing invitation */}
-      <section className="border-t border-rule">
+      <section>
         <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
-          <h2 className="display max-w-[16ch] text-[2.6rem] sm:text-[4rem]">
+          <h2 className="display text-balance text-[2rem] sm:text-[2.6rem]">
             What are you working on?
           </h2>
 

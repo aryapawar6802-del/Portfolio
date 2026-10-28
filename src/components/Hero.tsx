@@ -3,23 +3,21 @@ import { site } from "@/content/site";
 /**
  * Compact hero, so the first case study shows above the fold.
  *
- * Statement first at full weight, then a row of facts. Every fact shares
- * one type size so the row sits on a single baseline; experience is
- * picked out by weight alone. The work sits right below, so the hero
- * carries no buttons.
+ * Three tiers, each a clear step down: the statement, then one running
+ * line of facts set at reading size with the facts themselves in full
+ * ink, then the work below. Writing the facts as a sentence keeps them out
+ * of a ruled grid, and the emphasis does the job the labels used to.
+ * The work sits right below, so the hero carries no buttons.
  *
  * Entrance is delayed past the intro curtain's dissolve so the text arrives
  * on a cleared screen rather than animating behind falling pixels.
  */
-export function Hero() {
-  const facts = [
-    { label: "Experience", value: site.experience, strong: true },
-    { label: "Currently", value: site.currently },
-    { label: "Previously", value: site.previously },
-    { label: "Education", value: site.education },
-    { label: "Domains", value: site.domains.join(", ") },
-  ];
+/** A fact inside the bio line, lifted to full ink. */
+function Fact({ children }: { children: React.ReactNode }) {
+  return <span className="font-medium text-ink">{children}</span>;
+}
 
+export function Hero() {
   return (
     <section className="mx-auto max-w-6xl px-6 pt-6 pb-4 sm:px-8 sm:pt-8">
       <h1
@@ -29,24 +27,16 @@ export function Hero() {
         {site.headline}
       </h1>
 
-      {/* Education gets the wider track so it holds one line on desktop. */}
-      <dl
-        className="rise-in mt-9 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-rule pt-6 sm:grid-cols-3 lg:grid-cols-[1fr_1fr_1fr_1.5fr_1fr]"
+      <p
+        className="rise-in mt-6 max-w-[52ch] text-pretty text-[1.1rem] leading-[1.6] text-ink-3 sm:text-[1.3rem]"
         style={{ animationDelay: "1660ms" }}
       >
-        {facts.map((fact) => (
-          <div key={fact.label}>
-            <dt className="label text-ink-3">{fact.label}</dt>
-            <dd
-              className={`mt-2 text-[0.95rem] leading-snug ${
-                fact.strong ? "font-semibold text-ink" : "text-ink-2"
-              }`}
-            >
-              {fact.value}
-            </dd>
-          </div>
-        ))}
-      </dl>
+        <Fact>{site.experience}</Fact> working across{" "}
+        <Fact>{site.domains.join(", ")}</Fact>. Currently at{" "}
+        <Fact>{site.currently}</Fact>, previously at{" "}
+        <Fact>{site.previously}</Fact>. {site.education.degree} from{" "}
+        <Fact>{site.education.school}</Fact>.
+      </p>
     </section>
   );
 }
