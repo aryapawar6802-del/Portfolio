@@ -3,15 +3,17 @@ import { site } from "@/content/site";
 /**
  * Compact hero, so the first case study shows above the fold.
  *
- * Statement first at full weight, then a row of facts. Experience is the
- * one fact set large in clay, so it's the second thing the eye lands on.
- * The work sits right below, so the hero carries no buttons.
+ * Statement first at full weight, then a row of facts. Every fact shares
+ * one type size so the row sits on a single baseline; experience is
+ * picked out by weight alone. The work sits right below, so the hero
+ * carries no buttons.
  *
  * Entrance is delayed past the intro curtain's dissolve so the text arrives
  * on a cleared screen rather than animating behind falling pixels.
  */
 export function Hero() {
   const facts = [
+    { label: "Experience", value: site.experience, strong: true },
     { label: "Currently", value: site.currently },
     { label: "Previously", value: site.previously },
     { label: "Education", value: site.education },
@@ -27,20 +29,19 @@ export function Hero() {
         {site.headline}
       </h1>
 
+      {/* Education gets the wider track so it holds one line on desktop. */}
       <dl
-        className="rise-in mt-9 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-rule pt-6 sm:grid-cols-3 lg:grid-cols-[auto_repeat(4,minmax(0,1fr))] lg:gap-x-10"
+        className="rise-in mt-9 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-rule pt-6 sm:grid-cols-3 lg:grid-cols-[1fr_1fr_1fr_1.5fr_1fr]"
         style={{ animationDelay: "1660ms" }}
       >
-        <div className="col-span-2 sm:col-span-1">
-          <dt className="label text-ink-3">Experience</dt>
-          <dd className="display mt-1.5 text-[2rem] leading-none text-clay sm:text-[2.3rem]">
-            {site.experience}
-          </dd>
-        </div>
         {facts.map((fact) => (
           <div key={fact.label}>
             <dt className="label text-ink-3">{fact.label}</dt>
-            <dd className="mt-2 text-[0.95rem] leading-snug text-ink">
+            <dd
+              className={`mt-2 text-[0.95rem] leading-snug ${
+                fact.strong ? "font-semibold text-ink" : "text-ink-2"
+              }`}
+            >
               {fact.value}
             </dd>
           </div>

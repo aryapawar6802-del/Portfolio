@@ -28,12 +28,12 @@
      active nav pill — so the page and the picture share a palette.
      White on clay is 6.2:1; the softer tone is for fills only. */
   --color-accent: #1a1712;
-  /* One vermilion, used sparingly: arrows, links, the active nav. The
-     -soft tone is fills only (5.1:1 fails as text), -ink is the text-safe
-     darkening at 5.1:1 on the light ground. */
-  --color-clay: #a5330f;
-  --color-clay-soft: #d2451e;
-  --color-clay-wash: #ece7e4;
+  /* Interactive elements — the active nav pill, links, the "Read case
+     study" cue — are black, the same as body ink. The token keeps its old
+     name so components don't change; -wash is the neutral hover fill. */
+  --color-clay: #111111;
+  --color-clay-soft: #333333;
+  --color-clay-wash: #e7e7e4;
 
   /* A radius scale by role. One maximal value on everything reads as a
      default; a chip, a control and a panel should not share a radius. */
