@@ -27,8 +27,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Closing invitation — written for hiring teams. */}
-      <section>
+      {/* Closing invitation — written for hiring teams. A grey band, so it
+          reads as the footer rather than as more of the work above. */}
+      <footer className="mt-8 border-t border-rule bg-paper-deep">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 sm:px-8 sm:py-24 lg:grid-cols-[1fr_22rem] lg:gap-16">
           <div>
             <h2 className="display text-balance text-[2rem] sm:text-[2.6rem]">
@@ -59,7 +60,7 @@ export default function Home() {
               {site.domains.map((domain) => (
                 <li
                   key={domain}
-                  className="rounded-chip bg-paper-deep px-3 py-1 text-[0.8rem] text-ink-2"
+                  className="rounded-chip bg-paper px-3 py-1 text-[0.8rem] text-ink-2"
                 >
                   {domain}
                 </li>
@@ -69,7 +70,7 @@ export default function Home() {
 
           <SkillPot className="mx-auto w-full max-w-[22rem]" />
         </div>
-      </section>
+      </footer>
     </>
   );
 }

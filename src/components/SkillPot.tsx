@@ -1,7 +1,6 @@
 /**
- * Footer illustration: skill tags hop into a pot one at a time, the pot
- * bubbles, and the finished dish pops out. Then the tags come back and it
- * starts again.
+ * Footer illustration: skill tags hop into a pot one at a time while it
+ * bubbles away. Then the tags come back and it starts again.
  *
  * Line-work in ink on white, like the rest of the site. Each tag gets its
  * own keyframes (generated below) so the hops can be staggered within one
@@ -20,9 +19,9 @@ const SKILLS = [
   { word: "Research", x: 70, y: 34, tilt: -10 },
   { word: "Systems thinking", x: 196, y: 30, tilt: 8 },
   { word: "Figma", x: 306, y: 38, tilt: -6 },
-  { word: "Prototyping", x: 86, y: 80, tilt: 12 },
-  { word: "Excel (sadly)", x: 204, y: 78, tilt: -12 },
-  { word: "Coffee", x: 302, y: 86, tilt: 6 },
+  { word: "Prototyping", x: 74, y: 80, tilt: 12 },
+  { word: "Design systems", x: 196, y: 78, tilt: -12 },
+  { word: "OOUX", x: 302, y: 86, tilt: 6 },
 ];
 
 const chipWidth = (word: string) => Math.round(word.length * 6.7 + 26);
@@ -45,12 +44,6 @@ function keyframes() {
 
 const STYLES = `
 ${keyframes()}
-@keyframes dish {
-  0%, 60% { transform: translateY(26px) scale(0.5); opacity: 0; }
-  66% { transform: translateY(0) scale(1.06); opacity: 1; }
-  70%, 86% { transform: translateY(0) scale(1); opacity: 1; }
-  91%, 100% { transform: translateY(-8px) scale(1); opacity: 0; }
-}
 @keyframes pot-steam {
   0% { transform: translateY(8px); opacity: 0; }
   30% { opacity: 0.55; }
@@ -69,11 +62,10 @@ ${keyframes()}
   0%, 100% { transform: scaleY(1); }
   50% { transform: scaleY(0.72); }
 }
-.sp-chip, .sp-dish, .sp-steam, .sp-bubble, .sp-spoon, .sp-flame {
+.sp-chip, .sp-steam, .sp-bubble, .sp-spoon, .sp-flame {
   transform-box: fill-box;
 }
 .sp-chip { transform-origin: center; }
-.sp-dish { transform-origin: center bottom; animation: dish ${LOOP} ease-in-out infinite; }
 .sp-steam { animation: pot-steam 2.6s ease-out infinite; }
 .sp-bubble { transform-origin: center; animation: bubble 1.8s ease-in-out infinite; }
 .sp-spoon { transform-origin: 0% 100%; animation: stir 2.2s ease-in-out infinite; }
@@ -86,7 +78,7 @@ export function SkillPot({ className = "" }: { className?: string }) {
       viewBox="0 0 360 320"
       className={className}
       role="img"
-      aria-label="Skill tags (research, systems thinking, Figma, prototyping, Excel, coffee) hop one by one into a bubbling pot, and out pops a product people actually use."
+      aria-label="Skill tags (research, systems thinking, Figma, prototyping, design systems, OOUX) hop one by one into a bubbling pot."
     >
       <style>{STYLES}</style>
 
@@ -102,21 +94,6 @@ export function SkillPot({ className = "" }: { className?: string }) {
         ))}
       </g>
 
-      {/* the finished dish */}
-      <g className="sp-dish">
-        <rect x={68} y={118} width={224} height={30} rx={15} fill={INK} />
-        <text
-          x={180}
-          y={137.5}
-          textAnchor="middle"
-          fontSize={12.5}
-          fontWeight={600}
-          fill="#ffffff"
-          fontFamily="var(--font-archivo), system-ui, sans-serif"
-        >
-          ✦ A product people actually use ✦
-        </text>
-      </g>
 
       {/* spoon, behind the rim */}
       <g className="sp-spoon">
