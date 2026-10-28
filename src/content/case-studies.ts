@@ -12,32 +12,38 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "market-share-calibration",
     accent: "amber",
-    company: "Fortune 1 US retailer",
-    title: "Market-share calibration",
+    company: "A global retailer",
+    title: "Moving a four-team Excel process into one tool",
     summary:
-      "I designed a calibration tool for a Fortune 1 US retailer. It keeps four teams’ edits in the right order, which they used to manage by hand over email.",
+      "I designed a calibration tool for a global retailer. It keeps four teams’ edits in the right order, which they used to manage by hand over email.",
     tags: ["B2B web app", "Agentic AI", "Human-in-the-loop", "Enterprise"],
-    question:
-      "If the math only took days, why did the numbers take three weeks?",
+    question: "Moving a four-team Excel process into one tool",
     headline:
       "Cut a three-week calibration cycle to a few days by letting four teams work in parallel",
     standfirst:
-      "Calibration used to take two to three weeks a cycle, and now it takes a few days. Time spent on it is tracking down from about 210 hours a cycle to about 45. I started by modelling the data, and the flow came after.",
-    role: "Product Designer · Discovery, IA, Interaction & Visual Design",
-    timeline: "[add duration] · Phase 1 (Calibration)",
+      "A global retailer had four teams running one huge process on Excel. This tool replaced it, with an AI agent that flags what’s off, so nobody has to go through every single number.",
+    role: "Sole designer, end to end",
+    timeline: "3–4 months",
     status: "Shipped",
     platform: "B2B web app · agentic AI, human-in-the-loop",
     years: "[year]",
-    team: [
-      { name: "Me", scope: "End-to-end UX, IA, interaction and visual design" },
-      { name: "One DS lead", scope: "Calibration engine and agentic pipeline" },
-      { name: "Product and client stakeholders", scope: "Scope and sign-off" },
+    details: [
+      { label: "Client", value: "A global retailer (enterprise retail)" },
+      { label: "Role", value: "Sole designer, end to end" },
+      { label: "Process", value: "Analyst interviews, OOUX, flows, testing" },
+      { label: "Timeline", value: "3–4 months" },
     ],
+    heroVideo: {
+      mp4: "/work/calibration/four-team-excel-to-tool.mp4",
+      gif: "/work/calibration/four-team-excel-to-tool.gif",
+      alt: "Animation: four teams passing one Excel file around, replaced by one tool.",
+      ratio: 1080 / 608,
+    },
     deltas: [
       { from: "~210 h", to: "~45 h", label: "per cycle" },
       { from: "2–3 weeks", to: "days", label: "calibration loop" },
     ],
-    framework: "SCQA",
+    framework: "custom",
     body: [
       {
         type: "stats",
@@ -51,250 +57,188 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        type: "tldr",
-        eyebrow: "TL;DR",
-        rows: [
-          {
-            label: "Problem",
-            value:
-              "Market-share numbers took days to calculate and weeks to agree on. Four teams edited them one after another, and because the numbers roll up, a late edit from one team could undo another team’s sign-off without anyone noticing.",
-          },
-          {
-            label: "My contribution",
-            value:
-              "I designed the calibration workflow end to end, along with the information architecture underneath it.",
-          },
-          { label: "Team", value: "One DS lead, product and client stakeholders, me on design." },
-          {
-            label: "Result",
-            value:
-              "About 210 hours a cycle went down to about 45. Calibration used to run in sequence over weeks, and now it runs in parallel over a few days.",
-          },
-        ],
-      },
-      {
         type: "prose",
-        eyebrow: "My role",
-        heading: "What I owned",
+        nav: "Problem",
+        heading: "Problem",
         body: [
-          "I led the UX end to end. That covered the guided entry, the summary, the calibration table, the review step, the empty states, and the object model underneath all of it.",
-          "Data Science built the calibration engine and the agentic pipeline, and I designed everything a person touches. Where the engine’s behaviour shaped a design decision, I say so below, so I’m not claiming the whole outcome as mine.",
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "The product",
-        heading: "What the platform does",
-        body: [
-          "Every month, the retailer has to report how much of each market it holds. That’s its share of the market, which is a different number from its sales. The platform takes the calculated estimates and lets a person calibrate them into numbers leadership can defend.",
-          "It runs the calibration pipeline automatically and hands the results to that person, with a note on what changed and why, and a list of what still needs them. They adjust the numbers, check the impact, and sign off one level at a time, in an order the tool enforces.",
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "The situation",
-        heading: "Market share has to be estimated",
-        body: [
-          "The company knows its own sales exactly, but it doesn’t know its competitors’. To size a market like Women’s Apparel, Electronics or Pet Care, it estimates the total from outside sources such as surveys, credit-card panels and external retail feeds. That data covers a small slice of real sales. The sources disagree with each other, and the figures move every month.",
-          "So before any of it reaches leadership, someone has to calibrate it. They look for jumps that aren’t realistic, keep the year-on-year movement believable, and check that each subcategory still adds up to its parent.",
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "The complication",
-        heading: "How a cycle used to run",
-        body: [
-          "The numbers took three or four days to calculate. Then they went out to four business-unit teams, and each team took another three or four days to send its adjustments back. The numbers were recalculated and published, and after that the next team’s edits would arrive.",
-          "Everything rolls up the hierarchy, so a late edit could move numbers well beyond the place it was made. A change to one department could shift a figure another team had already approved, and a signed-off number could change without anyone deciding it should. All of this ran through spreadsheets and email threads, and nothing in them tracked how the numbers depended on each other. Each cycle took two to three weeks, and the numbers never fully settled.",
-          "Everyone pictured the new tool as a better dashboard. When I looked at the process, though, the delays came from the dependencies between the teams’ numbers, and the software they were using had no idea those dependencies existed.",
-        ],
-      },
-      {
-        type: "image",
-        caption:
-          "A map of the old process, reverse-engineered from how a cycle ran. Most of the weeks went into the loop between “adjust” and “recalibrate”.",
-      },
-      {
-        type: "prose",
-        eyebrow: "The question",
-        heading: "Could the tool keep the order instead of the teams?",
-        body: [
-          "That changed the brief. The question became whether the software could take over the sequencing that the four teams had been managing by hand.",
+          "Market-share numbers took days to calculate and weeks to agree on. Four teams edited them one after another, and because the numbers roll up, a late edit from one team could undo another team’s sign-off without anyone noticing.",
         ],
       },
       {
         type: "list",
-        eyebrow: "Angles of inquiry",
-        heading: "Questions I took to the people doing the work",
+        nav: "What was wrong with Excel",
+        heading: "What was wrong with Excel",
+        intro:
+          "Excel had all the functions, right? The maths was never the problem. The problem was everything around it.",
         items: [
-          "Where does someone even start? What’s already been done this cycle?",
-          "When a number looks wrong, what do they change, and what are they allowed to change?",
-          "How does anyone know a level is finished and safe to build the next one on?",
-          "What has to stay true as numbers roll up, and what breaks if it doesn’t?",
+          "**Four teams, one file, one after the other.** Analysts, then category leads, then finance, then sign-off. And every team has multiple people working on it.",
+          "**You have to go through each number.** Hundreds of rows, each product. Under Clothing, under Women’s wear, there’s something you need to change, but you don’t know which one. So you deep dive into all of it.",
+          "**Nothing tells you what’s off.** No flags, no threshold. You find a problem only if you happen to look at that row.",
+          "**A late edit can undo someone’s sign-off.** The numbers roll up. So if someone changes something at the bottom, the total another team already agreed on changes too, and nobody notices.",
+          "**It takes weeks.** Days to calculate, weeks to agree on.",
         ],
       },
       {
-        type: "prose",
-        eyebrow: "What I found",
-        heading: "What the calibrators needed",
-        body: [
-          "The people doing the calibration didn’t want more data on screen. They wanted the tool to tell them where the problem was and what to do about it. The old process gave them a spreadsheet and left them to find the trouble on their own.",
-          "I also realised the hierarchy worked as a chain of dependencies, even though it looked like a navigation tree. A department is the sum of its category groups, so you can’t safely change it until the levels beneath it are locked. Nothing enforced that rule, and all of the weeks of back-and-forth traced back to it.",
-          "Those two findings shaped everything after. I designed the tool around the decisions people had to make, and I treated the hierarchy as a rule the tool enforces.",
+        type: "table",
+        nav: "What was delivered",
+        heading: "What was delivered",
+        intro:
+          "So this is a tool built for them, like a proper calibration tool. It keeps what Excel was good at and fixes how the four teams work with it.",
+        columns: ["In Excel", "In the tool"],
+        rows: [
+          ["Four teams passing one file around", "Stages. You finish yours, then the next team unlocks"],
+          ["Going through each number", "The AI agent goes through it first and gives you the numbers"],
+          ["Finding problems by luck", "Anything above or below the threshold gets flagged"],
+          [
+            "A late edit quietly breaking a sign-off",
+            "Before you complete a stage, you see what your changes affect, including numbers someone already signed off",
+          ],
+          [
+            "Weeks of back and forth",
+            "You only change the few numbers you feel like changing, based on your experience",
+          ],
         ],
+        outro:
+          "**Role:** Sole designer, end to end. Analyst interviews, OOUX, flows, testing and all the screens.",
       },
       {
-        type: "prose",
-        eyebrow: "Object model",
-        heading: "Modelling the domain before the screens",
-        body: [
-          "Before I drew any screens, I modelled the domain as objects and relationships using ORCA. I called the main unit the Calibration Slice, meaning one thing you calibrate, such as Department · Total Market. Everything else hangs off it: the metrics inside it, the rules run against it and the violations they raise, its status, its change log, and the review and approval steps that take it to a published number.",
-          "When I sorted every possible action against this model, I could see the interface needed separate modes for judging numbers, resolving rule conflicts and signing off, instead of one flat table holding everything at once. That gave me the list of screens to design.",
-        ],
-      },
-      {
-        type: "image",
-        src: "/work/calibration/00-orca-board.png",
-        ratio: 1.5814,
-        alt: "The ORCA board: four columns of sticky notes headed Objects, Relationships, Core CTAs and Attributes. Objects include User, Metric, Rule, Workflow, Approval and Published Result. The Relationships column spells out the hierarchy: SBU to Department to Category Group to Category, feeding into the Calibration Slice and its metrics, rules, rule violations, status, change logs, review task and approval task.",
-        caption:
-          "The ORCA board. Every later decision about navigation and states came from the Calibration Slice and its relationships.",
-      },
-      {
-        type: "beforeAfter",
-        eyebrow: "The decisions",
-        heading: "Five design decisions",
-        pairs: [
+        type: "numbered",
+        nav: "A day in the life",
+        heading: "A day in the life",
+        intro: "Let’s say you’re an analyst on this, and you’re in charge of Clothing.",
+        items: [
           {
-            aspect: "01 · You start in one place, and the rest stays locked",
-            before:
-              "Anyone could edit anything, which is how a late edit ended up breaking a finished number.",
-            after:
-              "The home screen opens on the only calibration you’re allowed to start and greys out the others. Once you finish Department, Category Group and Category unlock on their own. The navigation follows the dependencies in the data model, so a number can’t change behind you after you’ve finished it.",
-            note: "the tool enforces the order",
+            heading: "You open the file.",
+            body: "It’s your team’s turn now, but there are a bunch of you in it, all working on your own bits.",
           },
           {
-            aspect: "02 · The summary starts with what needs deciding",
-            before:
-              "A wall of departments and metrics, where the person had to find the problem before they could fix it.",
-            after:
-              "The summary describes the situation in one sentence, for example “07 departments remain blocked due to pricing issues in Apparel and Pet Care”, and offers two ways in: the blocked departments, or all of them. The AI diagnoses the problem and the person decides what to do about it.",
+            heading: "You need to go through each number.",
+            body: "Hundreds of rows, each product. Somewhere under Clothing, under Women’s wear, there’s something you need to change. But which one? So you deep dive into all of it.",
           },
           {
-            aspect: "03 · Every number shows its working",
-            before:
-              "People were asked to trust adjusted figures they had no way to question. “Why did this change?” was the question I heard most often in discovery.",
-            after:
-              "Each metric shows three columns side by side: last month’s reported value, the calibrated value and the uncalibrated value. People can see the before, the after and the raw source at once, and judge the change for themselves.",
+            heading: "Tops looks high. Or maybe it doesn’t?",
+            body: "You check it against another tab, and you’re still not sure. You leave a note: *“recheck??”*",
           },
           {
-            aspect: "04 · Designing the edge cases",
-            before:
-              "There was no way to mark a number as “not yet” or “careful”, so half-finished numbers leaked into published ones.",
-            after:
-              "When there’s nothing to compare against yet, the reference values say so. Edits are only saved or discarded on purpose, and an interrupt makes you choose. Rules chosen for a run apply to that run only, so a one-off choice doesn’t turn into policy without anyone noticing.",
+            heading: "You change a few numbers and tell everyone you’re done.",
+            body: "Then the file goes to the category leads. Then finance. Then sign-off.",
           },
           {
-            aspect: "05 · You see the impact before you commit",
-            before: "You published first and found out the consequences later.",
-            after:
-              "Before you finalise, the review step shows how each department’s calibration changes GMV and market share, so you can still change your mind.",
-            note: "impact-before-commit",
+            heading: "Then someone changes something at the bottom.",
+            body: "It rolls up, and the total you already agreed on is different now. Nobody notices.",
+          },
+        ],
+        outro: "And this goes on for weeks.",
+      },
+      {
+        type: "list",
+        nav: "The new tool: AI in the loop",
+        heading: "The new tool: AI in the loop",
+        intro: [
+          "So where does the AI come in? The analysts weren’t short on experience, right? They were short on time. Most of the day went into finding the numbers, not fixing them.",
+          "So that’s what the agentic AI does:",
+        ],
+        items: [
+          "**It goes through everything first.** Every row, before anyone even opens their stage.",
+          "**It flags the numbers that look off.** If something goes above or below the threshold, it gets flagged.",
+          "**It gives you the numbers.** For each flag, it suggests what the number should be.",
+        ],
+        outro:
+          "But the AI doesn’t decide anything on its own. The analyst still makes the call, and nothing moves to the next team until a person completes the stage.",
+      },
+      {
+        type: "numbered",
+        heading: "Same day, with the tool",
+        sub: true,
+        items: [
+          {
+            heading: "You open your stage.",
+            body: "It’s your team’s turn, and the tool knows that. Nobody from the next team can jump in early.",
+          },
+          {
+            heading: "You can see where the flags are.",
+            body: "The AI already went through everything. Women’s wear has 3 flags, so you go there first.",
+          },
+          {
+            heading: "Tops is flagged, way above the threshold.",
+            body: "The AI gives you a number. You change it a little based on your experience.",
+          },
+          {
+            heading: "The other two look fine,",
+            body: "so you just accept what the AI gave.",
+          },
+          {
+            heading: "Before you complete, you see what your changes affect.",
+            body: "If it touches something another team already signed off, you know right away.",
+          },
+          {
+            heading: "You complete your stage.",
+            body: "The category leads unlock and can start.",
+          },
+        ],
+        outro: "That’s it. You only touch the numbers that actually need you.",
+      },
+      {
+        type: "list",
+        nav: "The process",
+        heading: "The process",
+        items: [
+          "**Analyst interviews.** Talked to the analysts to see how they actually do this in Excel today, and where the time really goes.",
+          "**OOUX.** Mapped out the objects, like categories, products, numbers, stages and teams, and how they connect. This is where the roll-up problem became really clear.",
+          "**Flows.** For each of the four teams: who does what, and when the next team unlocks.",
+          "**Testing.** Ran the flows with the people who’d actually use the tool.",
+        ],
+        outro: [
+          "One thing that came up in both the interviews and the testing: a little rigidness about moving from Excel to a tool. People know Excel, right? They’ve used it for years.",
+          "So to understand that rigidness, we went through what their day actually looks like, step by step. Then we redesigned the workflow around it, to save them time and make the tool easy to use. If the new way isn’t clearly faster and easier, nobody’s leaving Excel.",
+        ],
+      },
+      {
+        type: "screens",
+        nav: "Final design",
+        heading: "Final design",
+        items: [
+          {
+            heading: "Stages that unlock",
+            caption: "Stepper showing Analysts → Category leads → Finance → Sign-off",
+            body: "This wasn’t there before in Excel. One team finishes their stage, then the next team unlocks. So people aren’t editing things out of turn.",
+          },
+          {
+            heading: "Where are the flags?",
+            caption: "Category list with flag counts",
+            body: "Before you open any data, you can already see where the flags are. Women’s wear has 3 flags, so you know where to go.",
+          },
+          {
+            heading: "The table",
+            caption: "Women’s wear table",
+            body: "Every row shows the number they bought, how far it is from their own data, and what the AI suggests. If it goes above or below the threshold, it’s flagged. Everything else just stays quiet.",
+          },
+          {
+            heading: "Change it or accept it",
+            caption: "Inline edit on Tops",
+            body: "You can change the number right there, or just accept what the AI gave. Once you’re done, the flag goes away.",
+          },
+          {
+            heading: "Check before you’re done",
+            caption: "Impact review screen",
+            body: "Before you complete your stage, you see what your changes affect. Because the numbers roll up, this is where you catch a change that would mess with another team’s sign-off.",
+          },
+          {
+            heading: "The next team unlocks",
+            caption: "Next stage unlocked",
+            body: "You complete your stage and the next team unlocks. Nobody has to message everyone saying “I’m done.”",
           },
         ],
       },
       {
-        type: "prose",
-        eyebrow: "The screens",
-        body: [
-          "I’ve removed the client’s branding from the screens below. Everything else is as it was built.",
-        ],
-      },
-      {
-        type: "image",
-        src: "/work/calibration/01-home.png",
-        alt: "Home screen. Six calibration cards: Department, Category Group and Category, each against Total Market and Competitor. Only Department · Total Market has an active Calibrate button; the other five are locked.",
-        caption:
-          "The home screen. Only one card is open, the one the data model says you can start with.",
-      },
-      {
-        type: "image",
-        src: "/work/calibration/02-home-progress.png",
-        alt: "The same home screen after the first calibration is finished. Department · Total Market now reads Completed with a View Details button, and the next two cards have unlocked.",
-        caption:
-          "When you come back, the same screen tracks your progress. Here one of six steps is done and the next level has opened.",
-      },
-      {
-        type: "image",
-        src: "/work/calibration/03-summary.png",
-        alt: "Department Calibration Summary. A headline stating that seven departments remain blocked due to pricing issues, with View Blocked and View All actions, a calibration health breakdown, and a list of the top department blockers.",
-        caption:
-          "The summary, with its one-sentence description of what’s blocked and the two ways in.",
-      },
-      {
-        type: "image",
-        src: "/work/calibration/04-department-list.png",
-        alt: "Department Calibration list filtered to the seven blocked departments, each row showing the fiscal months affected.",
-        caption:
-          "The blocked queue. Each filter shows its count, so you can see how big the job is before you open anything.",
-      },
-      {
-        type: "image",
-        src: "/work/calibration/05-calibration-table.png",
-        alt: "A department expanded in the calibration table, showing Market Share, Market Share YoY, GMV, GMV YoY and Digital Mix, each split into LM Reported, Calibrated and Uncalibrated columns across October, November and December, with a Rules column flagging blocking violations.",
-        caption:
-          "The Department Calibration table. Every metric shows LM Reported, Calibrated and Uncalibrated, so you can always see how far a number moved.",
-      },
-      {
-        type: "image",
-        src: "/work/calibration/06-review.png",
-        alt: "Calibration Review screen listing every department with its GMV and market-share impact before finalising, with Go back and edit and Finalize actions.",
-        caption:
-          "The review step, where you check each department’s impact before you finalise.",
-      },
-      {
-        type: "prose",
-        eyebrow: "The system",
-        heading: "End to end",
-        body: [
-          "The flow starts with guided entry. You set up the run by choosing competitors and rules, then land on the summary, which shows what’s blocked and what needs you. You calibrate with the full before and after in view, review the impact, and finalise, and the next level opens.",
-          "Each step fixes one problem from the old process. Guided entry stops edits from happening out of order, and the summary means nobody has to diagnose problems by hand. The table lets people check a number instead of trusting it blindly. With the review step, there are no surprises after publishing.",
-        ],
-      },
-      {
-        type: "image",
-        src: "/work/calibration/07-calibration-flow.png",
-        ratio: 1.5,
-        alt: "Calibration flow diagram, titled “Every screen answers a question the calibrator was already asking.” Three stages: Orient, where home doubles as a progress tracker; Calibrate the level, running Summary, Compare, Edit and Approve, with a Blocked branch that loops back to the summary when a rule conflict stops the level; and Unlock, where finalising a level locks it in and opens the one beneath. A return line reads “next level, same four steps”.",
-        caption:
-          "Each screen next to the question it answers. The loop back to the summary happens when a rule conflict blocks a level, and the line along the bottom is the next level running through the same four steps.",
-      },
-      {
-        type: "beforeAfter",
-        eyebrow: "Impact",
-        heading: "Measured month over month against the manual baseline",
-        pairs: [
-          { aspect: "Time per cycle (both business units)", before: "~210 hours", after: "~45 hours" },
-          { aspect: "Calibration runs", before: "Manual, iterative", after: "Automated, parallel" },
-          { aspect: "Team dependency", before: "Sequential", after: "Parallel" },
-          { aspect: "Leadership readiness", before: "Late-stage", after: "Early, iterative" },
-        ],
-      },
-      {
-        type: "prose",
-        heading: "What the saving is worth",
-        body: [
-          "The time saved and the untangled dependencies come straight from the design. A guided flow that enforces the order and leads with decisions is what let a three-week chain of hand-offs become a parallel run of a few days. That efficiency is now tracked as a saving of about $3.5K a month for the first business unit. The second is projected to match, which would make it roughly $7K a month once both are live.",
-          "The savings are logged against a baseline every month, so this is a measured number.",
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "Reflection",
-        heading: "Starting with the data model",
-        body: [
-          "The tool feels calm to use. That comes from taking one relationship in the data, the roll-up, seriously enough to build the whole interaction around it. Most of the hard work doesn’t show in the final screens, and I think that’s how it should be.",
-          "Next, I’d like to test the AI’s summary language with real users. “Would you like to take action?” works, but people will probably only trust an AI that tells them what’s wrong up to a point, and I’d rather find where that limit is than assume it.",
+        type: "stats",
+        nav: "Outcome",
+        heading: "Outcome",
+        items: [
+          { value: "~45 h", label: "Per cycle, down from ~210" },
+          { value: "Days", label: "Calibration loop, down from two to three weeks" },
+          { value: "$3.5K", label: "Monthly saving realised for the first business unit" },
+          { value: "4", label: "Teams moved from sequential to parallel" },
         ],
       },
     ],

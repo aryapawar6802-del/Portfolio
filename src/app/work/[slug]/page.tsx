@@ -41,18 +41,19 @@ export default async function CaseStudyPage({
   const index = caseStudies.findIndex((s) => s.slug === slug);
   const next = caseStudies[(index + 1) % caseStudies.length];
 
-  /* Any block with an eyebrow becomes both an anchor and a TOC stop. The
-     index suffix keeps ids unique when a framework repeats a beat name. */
-  const anchors = study.body.map((block, i) =>
-    "eyebrow" in block && block.eyebrow
-      ? { id: `${slugify(block.eyebrow)}-${i}`, label: block.eyebrow }
-      : null,
-  );
+  /* Any block with an eyebrow (or a `nav` label) becomes both an anchor and
+     a TOC stop. The index suffix keeps ids unique when a framework repeats a
+     beat name. */
+  const anchors = study.body.map((block, i) => {
+    const label =
+      ("eyebrow" in block && block.eyebrow) || ("nav" in block && block.nav);
+    return label ? { id: `${slugify(label)}-${i}`, label } : null;
+  });
   const sections: Section[] = anchors.filter((a): a is Section => a !== null);
 
   const tint = ACCENTS[study.accent].ink;
 
-  const meta = [
+  const meta = study.details ?? [
     { label: "Role", value: study.role },
     { label: "Timeline", value: study.timeline },
     { label: "Status", value: `${study.status} · ${study.years}` },
@@ -77,17 +78,23 @@ export default async function CaseStudyPage({
               {study.question}
             </h1>
 
-            <div className="mt-10">
-              <p className="label text-ink-3">Client</p>
-              <p className="label mt-1.5" style={{ color: tint }}>
-                {study.company}
-              </p>
-            </div>
+            {!study.details && (
+              <div className="mt-10">
+                <p className="label text-ink-3">Client</p>
+                <p className="label mt-1.5" style={{ color: tint }}>
+                  {study.company}
+                </p>
+              </div>
+            )}
           </div>
 
-          <div className="w-full max-w-sm shrink-0 self-center lg:w-[38%]">
-            <StudyJar accent={study.accent} />
-          </div>
+          {/* A study with its own hero animation shows that full width
+              below instead of the jar. */}
+          {!study.heroVideo && (
+            <div className="w-full max-w-sm shrink-0 self-center lg:w-[38%]">
+              <StudyJar accent={study.accent} />
+            </div>
+          )}
         </div>
 
         {study.standfirst && (
@@ -150,6 +157,30 @@ export default async function CaseStudyPage({
             </div>
           )}
         </dl>
+
+        {study.heroVideo && (
+          <figure className="mt-14 overflow-hidden bg-paper-deep">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-label={study.heroVideo.alt}
+              className="block h-auto w-full"
+              style={{ aspectRatio: String(study.heroVideo.ratio) }}
+            >
+              <source src={study.heroVideo.mp4} type="video/mp4" />
+              {/* Plain img: next/image would re-encode the GIF and drop the
+                  animation. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={study.heroVideo.gif}
+                alt={study.heroVideo.alt}
+                className="block h-auto w-full"
+              />
+            </video>
+          </figure>
+        )}
       </header>
 
       <div className="lg:flex lg:items-start lg:gap-16">

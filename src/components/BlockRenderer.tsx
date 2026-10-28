@@ -8,10 +8,13 @@ import type { Block, NumberedItem } from "@/content/types";
  * Draft markers. Content still carrying the author's own [FILL: …] or
  * [OPTIONAL: …] notes renders them as flagged TODOs rather than as prose,
  * so an unfinished study can go up without any risk of a placeholder
- * reading as a real claim.
+ * reading as a real claim. `**bold**` and `*italic*` pass through as
+ * emphasis, so copy written in Markdown can be pasted in as it is.
  */
 function Marked({ text }: { text: string }) {
-  const parts = text.split(/(\[(?:FILL|OPTIONAL):[^\]]*\])/g);
+  const parts = text.split(
+    /(\[(?:FILL|OPTIONAL):[^\]]*\]|\*\*[^*]+\*\*|\*[^*]+\*)/g,
+  );
   return (
     <>
       {parts.map((part, i) =>
@@ -22,11 +25,37 @@ function Marked({ text }: { text: string }) {
           >
             {part}
           </mark>
+        ) : /^\*\*.+\*\*$/.test(part) ? (
+          <strong key={i} className="font-medium text-ink">
+            {part.slice(2, -2)}
+          </strong>
+        ) : /^\*.+\*$/.test(part) ? (
+          <em key={i}>{part.slice(1, -1)}</em>
         ) : (
           part
         ),
       )}
     </>
+  );
+}
+
+/** Lead-in or closing lines around a list, table or numbered set. */
+function Paragraphs({
+  text,
+  className = "",
+}: {
+  text?: string | string[];
+  className?: string;
+}) {
+  if (!text) return null;
+  return (
+    <div className={`space-y-4 ${className}`}>
+      {[text].flat().map((paragraph, i) => (
+        <p key={i} className="max-w-prose leading-[1.75] text-ink-2">
+          <Marked text={paragraph} />
+        </p>
+      ))}
+    </div>
   );
 }
 
@@ -41,6 +70,68 @@ function Eyebrow({ children, tint }: { children: string; tint: string }) {
 
 function Heading({ children }: { children: React.ReactNode }) {
   return <h2 className="display text-[1.9rem] sm:text-[2.4rem]">{children}</h2>;
+}
+
+/** A heading inside a section, sized like a theme title. */
+function Subheading({ children }: { children: React.ReactNode }) {
+  return <h3 className="display text-[1.4rem] sm:text-[1.6rem]">{children}</h3>;
+}
+
+/**
+ * Image in a tinted frame sized to the artwork. Without `src` it renders a
+ * hatched slot labelled "Screen to add", so missing exports stay visible.
+ */
+function Figure({
+  src,
+  alt,
+  caption,
+  ratio,
+  ...rest
+}: {
+  src?: string;
+  alt?: string;
+  caption?: string;
+  ratio?: number;
+  id?: string;
+  className?: string;
+}) {
+  return (
+    <figure {...rest}>
+      <div className="overflow-hidden bg-paper-deep">
+        <div
+          className="relative"
+          style={{ aspectRatio: String(ratio ?? 16 / 9) }}
+        >
+          {src ? (
+            <Image
+              src={src}
+              alt={alt ?? ""}
+              fill
+              sizes="(min-width: 1024px) 55rem, 100vw"
+              className="object-cover"
+            />
+          ) : (
+            <div
+              className="absolute inset-0 grid place-items-center"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(-45deg, transparent 0 11px, var(--color-rule) 11px 12px)",
+              }}
+            >
+              <span className="label bg-paper-deep px-3 py-1.5 text-ink-3">
+                Screen to add
+              </span>
+            </div>
+          )}
+        </div>
+      </div>
+      {caption && (
+        <figcaption className="mt-3 text-[0.85rem] text-ink-3">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
 }
 
 /** Zero-padded counter used across numbered findings and themed groups. */
@@ -124,16 +215,20 @@ export function BlockRenderer({
         <section {...anchor}>
           {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
           {block.heading && <Heading>{block.heading}</Heading>}
+          <Paragraphs text={block.intro} className="mt-6" />
           <ul className="mt-6 max-w-prose space-y-3">
             {block.items.map((item, i) => (
               <li key={i} className="flex gap-3 leading-[1.75] text-ink-2">
                 <span aria-hidden="true" style={{ color: tint }}>
                   —
                 </span>
-                <Marked text={item} />
+                <span>
+                  <Marked text={item} />
+                </span>
               </li>
             ))}
           </ul>
+          <Paragraphs text={block.outro} className="mt-8" />
         </section>
       );
 
@@ -141,15 +236,80 @@ export function BlockRenderer({
       return (
         <section {...anchor}>
           {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
-          {block.heading && <Heading>{block.heading}</Heading>}
-          {block.intro && (
-            <p className="mt-6 max-w-prose leading-[1.75] text-ink-2">
-              <Marked text={block.intro} />
-            </p>
-          )}
+          {block.heading &&
+            (block.sub ? (
+              <Subheading>{block.heading}</Subheading>
+            ) : (
+              <Heading>{block.heading}</Heading>
+            ))}
+          <Paragraphs text={block.intro} className="mt-6" />
           <ol className="mt-9 grid gap-8 sm:grid-cols-2">
             {block.items.map((item, i) => (
               <NumberedRow key={item.heading} item={item} index={i} tint={tint} />
+            ))}
+          </ol>
+          <Paragraphs text={block.outro} className="mt-9" />
+        </section>
+      );
+
+    case "table":
+      return (
+        <section {...anchor}>
+          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+          {block.heading && <Heading>{block.heading}</Heading>}
+          <Paragraphs text={block.intro} className="mt-6" />
+          <table className="mt-9 w-full border-t border-rule text-left">
+            <thead>
+              <tr className="border-b border-rule">
+                <th scope="col" className="label w-1/2 py-4 pr-6 font-normal text-ink-3">
+                  {block.columns[0]}
+                </th>
+                <th scope="col" className="label w-1/2 py-4 font-normal" style={{ color: tint }}>
+                  {block.columns[1]}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map(([before, after]) => (
+                <tr key={before} className="border-b border-rule align-top">
+                  <td className="py-5 pr-6 leading-[1.7] text-ink-2">
+                    <Marked text={before} />
+                  </td>
+                  <td className="py-5 leading-[1.7] text-ink">
+                    <Marked text={after} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <Paragraphs text={block.outro} className="mt-8" />
+        </section>
+      );
+
+    case "screens":
+      return (
+        <section {...anchor}>
+          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+          {block.heading && <Heading>{block.heading}</Heading>}
+          <ol className="mt-9 space-y-14">
+            {block.items.map((item, i) => (
+              <li key={item.heading} className="border-t border-rule pt-5">
+                <span className="label text-ink-3">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-2 text-[1.05rem] font-medium text-ink">
+                  {item.heading}
+                </h3>
+                <Figure
+                  src={item.src}
+                  alt={item.alt}
+                  caption={item.caption}
+                  className="mt-5"
+                />
+                <p className="mt-5 max-w-prose leading-[1.7] text-ink-2">
+                  <Marked text={item.body} />
+                </p>
+              </li>
             ))}
           </ol>
         </section>
@@ -267,41 +427,13 @@ export function BlockRenderer({
 
     case "image":
       return (
-        <figure {...anchor}>
-          <div className="overflow-hidden bg-paper-deep">
-            <div
-              className="relative"
-              style={{ aspectRatio: String(block.ratio ?? 16 / 9) }}
-            >
-              {block.src ? (
-                <Image
-                  src={block.src}
-                  alt={block.alt ?? ""}
-                  fill
-                  sizes="(min-width: 1024px) 55rem, 100vw"
-                  className="object-cover"
-                />
-              ) : (
-                <div
-                  className="absolute inset-0 grid place-items-center"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(-45deg, transparent 0 11px, var(--color-rule) 11px 12px)",
-                  }}
-                >
-                  <span className="label bg-paper-deep px-3 py-1.5 text-ink-3">
-                    Screen to add
-                  </span>
-                </div>
-              )}
-            </div>
-          </div>
-          {block.caption && (
-            <figcaption className="mt-3 text-[0.85rem] text-ink-3">
-              {block.caption}
-            </figcaption>
-          )}
-        </figure>
+        <Figure
+          {...anchor}
+          src={block.src}
+          alt={block.alt}
+          caption={block.caption}
+          ratio={block.ratio}
+        />
       );
   }
 }

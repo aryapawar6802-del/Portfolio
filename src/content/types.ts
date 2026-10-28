@@ -11,6 +11,10 @@ import type { AccentName } from "./palette";
  *
  * Any block carrying an `eyebrow` becomes a stop in the sticky section
  * navigator, so eyebrows double as the table of contents. Keep them short.
+ * A block whose heading already names the section can set `nav` instead,
+ * which lists it in the navigator without printing a label above it.
+ *
+ * Text fields render `**bold**` and `*italic*`, plus the [FILL: …] markers.
  */
 
 export type Framework =
@@ -46,17 +50,26 @@ export type Block =
       rows: { label: string; value: string }[];
     }
   /** Labelled prose section. `eyebrow` is the small chip and TOC label. */
-  | { type: "prose"; eyebrow?: string; heading?: string; body: string[] }
+  | { type: "prose"; eyebrow?: string; nav?: string; heading?: string; body: string[] }
   /** Pull quote. `author`/`role` turn it into an attributed testimonial. */
   | { type: "quote"; eyebrow?: string; text: string; author?: string; role?: string }
   /** Bulleted list, optionally under its own heading. */
-  | { type: "list"; eyebrow?: string; heading?: string; items: string[] }
+  | {
+      type: "list";
+      eyebrow?: string;
+      nav?: string;
+      heading?: string;
+      intro?: string | string[];
+      items: string[];
+      outro?: string | string[];
+    }
   /** Metric row rendered with the delta-arrow signature. */
   | { type: "metrics"; eyebrow?: string; items: Delta[] }
   /** Big-number tile grid — the "outcome at a glance" pattern. */
   | {
       type: "stats";
       eyebrow?: string;
+      nav?: string;
       heading?: string;
       items: { value: string; label: string }[];
     }
@@ -64,9 +77,35 @@ export type Block =
   | {
       type: "numbered";
       eyebrow?: string;
+      nav?: string;
       heading?: string;
-      intro?: string;
+      /** Render the heading one step down, as a sub-section of the block above. */
+      sub?: boolean;
+      intro?: string | string[];
       items: NumberedItem[];
+      outro?: string | string[];
+    }
+  /** Two-column comparison table, e.g. old way against new way. */
+  | {
+      type: "table";
+      eyebrow?: string;
+      nav?: string;
+      heading?: string;
+      intro?: string | string[];
+      columns: [string, string];
+      rows: [string, string][];
+      outro?: string | string[];
+    }
+  /**
+   * Final screens, each with a heading, an image and a note. Omit `src` and
+   * the image renders as a labelled empty slot, as in the `image` block.
+   */
+  | {
+      type: "screens";
+      eyebrow?: string;
+      nav?: string;
+      heading?: string;
+      items: { heading: string; src?: string; alt?: string; caption?: string; body: string }[];
     }
   /** Numbered items bucketed into themes — the "screen diagnosis" pattern. */
   | {
@@ -124,6 +163,13 @@ export type CaseStudy = {
   platform: string;
   /** Years shown in the meta line, e.g. "2025–2026". */
   years: string;
+  /**
+   * Replaces the default Role / Timeline / Status / Platform grid in the
+   * page header. The client then shows here instead of under the title.
+   */
+  details?: { label: string; value: string }[];
+  /** Looping hero animation. The GIF plays where `<video>` can't. */
+  heroVideo?: { mp4: string; gif: string; alt: string; ratio: number };
   /** Who else was on it, and what they owned. */
   team?: { name: string; scope: string }[];
   tools?: string[];
