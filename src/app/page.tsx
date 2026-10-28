@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { SkillPot } from "@/components/SkillPot";
 import { WorkCard } from "@/components/WorkCard";
 import { caseStudies } from "@/content/case-studies";
 import { site } from "@/content/site";
@@ -26,33 +27,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Closing invitation */}
+      {/* Closing invitation — written for hiring teams. */}
       <section>
-        <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
-          <h2 className="display text-balance text-[2rem] sm:text-[2.6rem]">
-            What are you working on?
-          </h2>
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 sm:px-8 sm:py-24 lg:grid-cols-[1fr_22rem] lg:gap-16">
+          <div>
+            <h2 className="display text-balance text-[2rem] sm:text-[2.6rem]">
+              Hiring? This designer is open to work.
+            </h2>
+            <p className="mt-5 max-w-[46ch] text-[1.05rem] leading-[1.7] text-ink-2">
+              On the lookout for a full-time product design role, ideally
+              somewhere the data is messy and the users are busy. Send over a
+              job description and see what comes out of the pot.
+            </p>
 
-          <p className="label mt-12 text-ink-3">Reach out</p>
-          <p className="mt-2">
-            <a
-              href={`mailto:${site.email}`}
-              className="text-[1.05rem] text-accent underline underline-offset-4"
-            >
-              {site.email} ↗
-            </a>
-          </p>
-
-          <ul className="mt-14 flex flex-wrap gap-x-2 gap-y-2">
-            {site.domains.map((domain) => (
-              <li
-                key={domain}
-                className="rounded-chip bg-paper-deep px-3 py-1 text-[0.8rem] text-ink-2"
+            <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <a
+                href={`mailto:${site.email}`}
+                className="text-[1.05rem] font-medium text-ink underline underline-offset-4"
               >
-                {domain}
-              </li>
-            ))}
-          </ul>
+                {site.email} ↗
+              </a>
+              <a
+                href={site.resumeHref}
+                className="text-[1.05rem] text-ink-2 underline decoration-rule-strong underline-offset-4 hover:text-ink hover:decoration-ink"
+              >
+                Résumé
+              </a>
+            </div>
+
+            <ul className="mt-12 flex flex-wrap gap-x-2 gap-y-2">
+              {site.domains.map((domain) => (
+                <li
+                  key={domain}
+                  className="rounded-chip bg-paper-deep px-3 py-1 text-[0.8rem] text-ink-2"
+                >
+                  {domain}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <SkillPot className="mx-auto w-full max-w-[22rem]" />
         </div>
       </section>
     </>
