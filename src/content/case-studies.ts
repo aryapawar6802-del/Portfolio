@@ -15,7 +15,7 @@ export const caseStudies: CaseStudy[] = [
     company: "A global retailer",
     title: "Moving a four-team Excel process into one tool",
     summary:
-      "I designed a calibration tool for a global retailer. It keeps four teams’ edits in the right order, which they used to manage by hand over email.",
+      "A calibration tool for a global retailer. It keeps four teams’ edits in the right order, which they used to manage by hand over email.",
     tags: ["B2B web app", "Agentic AI", "Human-in-the-loop", "Enterprise"],
     question: "Moving a four-team Excel process into one tool",
     headline:
@@ -25,7 +25,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Sole designer, end to end",
     timeline: "3–4 months",
     status: "Shipped",
-    platform: "B2B web app · agentic AI, human-in-the-loop",
+    platform: "B2B web app · Agentic AI, human-in-the-loop",
     years: "[year]",
     details: [
       { label: "Client", value: "A global retailer (enterprise retail)" },
@@ -40,8 +40,8 @@ export const caseStudies: CaseStudy[] = [
       ratio: 1080 / 608,
     },
     deltas: [
-      { from: "~210 h", to: "~45 h", label: "per cycle" },
-      { from: "2–3 weeks", to: "days", label: "calibration loop" },
+      { from: "~210 h", to: "~45 h", label: "Per cycle" },
+      { from: "2–3 weeks", to: "Days", label: "Calibration loop" },
     ],
     framework: "custom",
     body: [
@@ -251,7 +251,7 @@ export const caseStudies: CaseStudy[] = [
     company: "Global CPG company",
     title: "Rapid ROI — media investment optimisation",
     summary:
-      "Planners kept going back to their spreadsheets even though the model was sound. I rebuilt the five-stage flow around what they needed to defend a plan to their leadership.",
+      "Planners kept going back to their spreadsheets even though the model was sound. The five-stage flow was rebuilt around what they needed to defend a plan to their leadership.",
     tags: ["B2B web app", "Marketing Mix Modeling", "Enterprise", "Data product"],
     question:
       "The client had the model, so why were planners still deciding in spreadsheets?",

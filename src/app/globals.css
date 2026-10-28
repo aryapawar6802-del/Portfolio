@@ -8,11 +8,10 @@
    revision removes. Restraint is the aesthetic.
    --------------------------------------------------------------- */
 @theme {
-  /* Cool greys, per sideways.co.in: a light ground for the body and a
-     deeper one for the close. Grey rather than cream is also what keeps
-     this clear of the cream-plus-serif default. */
-  --color-paper: #f2f2f0;
-  --color-paper-deep: #e7e7e4;
+  /* White ground throughout. The deeper grey is for chips, controls and
+     empty image slots only, never for a whole section. */
+  --color-paper: #ffffff;
+  --color-paper-deep: #efefed;
   --color-paper-dim: #d8d8d5;
 
   /* Text steps, all clearing WCAG AA (4.5:1) on white. */
@@ -103,13 +102,13 @@ html {
   letter-spacing: -0.02em;
 }
 
-/* Small letterspaced label — tabs, eyebrows, meta. */
+/* Small label — tabs, eyebrows, meta. Sentence case, as written in the
+   content: no uppercase transform anywhere on the site. */
 @utility label {
   font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   font-weight: 500;
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
 }
 
 @keyframes rise {

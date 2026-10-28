@@ -3,15 +3,19 @@ export const site = {
   role: "Product Designer",
   /** Hero statement, and the site's meta description. */
   headline: "I design products for people who spend their days knee-deep in data.",
-  currently: { label: "MathCo", href: "https://mathco.com" },
+  /** Hero facts. Companies are named but not linked. */
+  currently: "MathCo",
+  previously: "Monsoonfish",
+  experience: "2.5–3 years",
+  education: "B.Des in UX Design, MIT-WPU",
   email: "arya.pawar6802@gmail.com",
   resumeHref: "#",
-  /** Sectors, not client names — the work sits under NDA. */
-  sectors: ["Retail", "CPG", "Enterprise analytics", "Data products"],
+  /** Domains, not client names — the work sits under NDA. */
+  domains: ["CPG", "Retail", "Pharma"],
 };
 
 /** Top nav. The glyph is decorative — labels carry the meaning. */
 export const nav = [
-  { label: "work", href: "/", glyph: "◆" },
-  { label: "about", href: "/about", glyph: "☺" },
+  { label: "Work", href: "/", glyph: "◆" },
+  { label: "About", href: "/about", glyph: "☺" },
 ];

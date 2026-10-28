@@ -26,7 +26,7 @@ export function TopNav() {
           href="/"
           className="rounded-control bg-paper-deep px-4 py-2 text-[0.85rem] text-ink transition-colors hover:bg-clay-wash"
         >
-          {site.name.toLowerCase()}
+          {site.name}
         </Link>
 
         <nav aria-label="Main">
@@ -56,7 +56,7 @@ export function TopNav() {
                 <span aria-hidden="true" className="text-[0.7em] opacity-60">
                   ▤
                 </span>
-                résumé
+                Résumé
               </a>
             </li>
             <li>
@@ -64,7 +64,7 @@ export function TopNav() {
                 <span aria-hidden="true" className="text-[0.7em] opacity-60">
                   ✉
                 </span>
-                email
+                Email
               </a>
             </li>
           </ul>

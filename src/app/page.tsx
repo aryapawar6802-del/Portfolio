@@ -15,7 +15,7 @@ export default function Home() {
       >
         <header className="mb-10">
           <h2 className="display text-[2.6rem] sm:text-[3.6rem]">
-            Selected work
+            Work
           </h2>
         </header>
 
@@ -27,10 +27,10 @@ export default function Home() {
       </section>
 
       {/* Closing invitation */}
-      <section className="bg-paper-dim">
+      <section className="border-t border-rule">
         <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
           <h2 className="display max-w-[16ch] text-[2.6rem] sm:text-[4rem]">
-            I&rsquo;d like to hear what you&rsquo;re working on.
+            What are you working on?
           </h2>
 
           <p className="label mt-12 text-ink-3">Reach out</p>
@@ -44,12 +44,12 @@ export default function Home() {
           </p>
 
           <ul className="mt-14 flex flex-wrap gap-x-2 gap-y-2">
-            {site.sectors.map((sector) => (
+            {site.domains.map((domain) => (
               <li
-                key={sector}
+                key={domain}
                 className="rounded-chip bg-paper-deep px-3 py-1 text-[0.8rem] text-ink-2"
               >
-                {sector}
+                {domain}
               </li>
             ))}
           </ul>

@@ -159,7 +159,7 @@ export default async function CaseStudyPage({
         </dl>
 
         {study.heroVideo && (
-          <figure className="mt-14 overflow-hidden bg-paper-deep">
+          <figure className="mt-14 overflow-hidden border border-rule bg-paper-deep">
             <video
               autoPlay
               muted

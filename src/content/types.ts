@@ -30,7 +30,7 @@ export type Delta = {
   from?: string;
   /** Ending value. */
   to: string;
-  /** What the number measures, lowercase — e.g. "activation". */
+  /** What the number measures, sentence case — e.g. "Activation". */
   label: string;
 };
 

@@ -68,7 +68,7 @@ export function IntroCurtain() {
 
       <div className="curtain-mark">
         <span className="display text-[2rem] text-white sm:text-[3rem]">
-          {site.name.toLowerCase()}
+          {site.name}
         </span>
       </div>
     </div>
