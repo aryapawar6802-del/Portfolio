@@ -66,8 +66,8 @@ export function WorkCard({
         </div>
 
         <div className="min-w-0 flex-1">
+          {/* Just marks it as client work; the company stays unnamed. */}
           <p className="label text-ink-3">Client</p>
-          <p className="label mt-1 text-ink">{study.company}</p>
 
           <ul className="mt-6 flex flex-wrap gap-x-2 gap-y-2">
             {study.tags.map((tag) => (
