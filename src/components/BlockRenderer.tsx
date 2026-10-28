@@ -304,6 +304,7 @@ export function BlockRenderer({
                   src={item.src}
                   alt={item.alt}
                   caption={item.caption}
+                  ratio={item.ratio}
                   className="mt-5"
                 />
                 <p className="mt-5 max-w-prose leading-[1.7] text-ink-2">

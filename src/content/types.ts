@@ -105,7 +105,15 @@ export type Block =
       eyebrow?: string;
       nav?: string;
       heading?: string;
-      items: { heading: string; src?: string; alt?: string; caption?: string; body: string }[];
+      items: {
+        heading: string;
+        src?: string;
+        alt?: string;
+        caption?: string;
+        /** Native width ÷ height, as on the `image` block. Defaults to 16:9. */
+        ratio?: number;
+        body: string;
+      }[];
     }
   /** Numbered items bucketed into themes — the "screen diagnosis" pattern. */
   | {

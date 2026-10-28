@@ -200,32 +200,51 @@ export const caseStudies: CaseStudy[] = [
         items: [
           {
             heading: "Stages that unlock",
-            caption: "Stepper showing Analysts → Category leads → Finance → Sign-off",
+            src: "/work/calibration/01-home.png",
+            alt: "Home screen. Six calibration cards: Department, Category Group and Category, each against Total Market and Competitor. Only Department · Total Market has an active Calibrate button; the other five are locked.",
+            caption:
+              "The home screen. Only one card is open, the one the data model says you can start with.",
             body: "This wasn’t there before in Excel. One team finishes their stage, then the next team unlocks. So people aren’t editing things out of turn.",
           },
           {
             heading: "Where are the flags?",
-            caption: "Category list with flag counts",
+            src: "/work/calibration/04-department-list.png",
+            alt: "Department Calibration list filtered to the seven blocked departments, each row showing the fiscal months affected.",
+            caption:
+              "The blocked queue. Each filter shows its count, so you can see how big the job is before you open anything.",
             body: "Before you open any data, you can already see where the flags are. Women’s wear has 3 flags, so you know where to go.",
           },
           {
             heading: "The table",
-            caption: "Women’s wear table",
+            src: "/work/calibration/05-calibration-table.png",
+            alt: "A department expanded in the calibration table, showing Market Share, Market Share YoY, GMV, GMV YoY and Digital Mix, each split into LM Reported, Calibrated and Uncalibrated columns across October, November and December, with a Rules column flagging blocking violations.",
+            caption:
+              "The Department Calibration table. Every metric shows LM Reported, Calibrated and Uncalibrated, so you can always see how far a number moved.",
             body: "Every row shows the number they bought, how far it is from their own data, and what the AI suggests. If it goes above or below the threshold, it’s flagged. Everything else just stays quiet.",
           },
           {
             heading: "Change it or accept it",
-            caption: "Inline edit on Tops",
+            src: "/work/calibration/05b-inline-edit.png",
+            ratio: 830 / 400,
+            alt: "Close-up of the calibration table. Calibrated GMV YoY values sit in editable fields, the Rules column shows 2 Blocking on each month, and the row header has info, reject and accept buttons.",
+            caption:
+              "Calibrated values are edited in place. The tick and cross accept or reject the row.",
             body: "You can change the number right there, or just accept what the AI gave. Once you’re done, the flag goes away.",
           },
           {
             heading: "Check before you’re done",
-            caption: "Impact review screen",
+            src: "/work/calibration/06-review.png",
+            alt: "Calibration Review screen listing every department with its GMV and market-share impact before finalising, with Go back and edit and Finalize actions.",
+            caption:
+              "The review step, where you check each department’s impact before you finalise.",
             body: "Before you complete your stage, you see what your changes affect. Because the numbers roll up, this is where you catch a change that would mess with another team’s sign-off.",
           },
           {
             heading: "The next team unlocks",
-            caption: "Next stage unlocked",
+            src: "/work/calibration/02-home-progress.png",
+            alt: "The same home screen after the first calibration is finished. Department · Total Market now reads Completed with a View Details button, and the next two cards have unlocked.",
+            caption:
+              "When you come back, the same screen tracks your progress. Here one of six steps is done and the next level has opened.",
             body: "You complete your stage and the next team unlocks. Nobody has to message everyone saying “I’m done.”",
           },
         ],
