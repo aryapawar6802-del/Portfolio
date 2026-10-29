@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ACCENTS } from "@/content/palette";
+import { CpgStillLife } from "./CpgStillLife";
+import { RetailStillLife } from "./RetailStillLife";
 import type { CaseStudy, Delta as DeltaType } from "@/content/types";
 
 /**
@@ -38,7 +40,16 @@ export function WorkCard({
               className="relative aspect-4/3 transition-transform duration-500 ease-out group-hover:scale-[1.015]"
               style={{ backgroundColor: accent.wash }}
             >
-              {study.cover ? (
+              {study.illustration ? (
+                /* The same still life that sits beside the study's title. */
+                <div className="absolute inset-0 grid place-items-center p-8 sm:p-12">
+                  {study.illustration === "cpg" ? (
+                    <CpgStillLife className="h-full w-full" />
+                  ) : (
+                    <RetailStillLife className="h-full w-full" />
+                  )}
+                </div>
+              ) : study.cover ? (
                 <Image
                   src={study.cover}
                   alt=""

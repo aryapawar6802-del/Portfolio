@@ -23,6 +23,11 @@ export function CpgStillLife({ className = "" }: { className?: string }) {
     >
       <defs>
         <RisoFilter id="cpg-print" />
+        {/* The bite is a real cut-out, so it works on any background. */}
+        <mask id="cpg-bite" maskUnits="userSpaceOnUse" x="0" y="0" width="560" height="380">
+          <rect width="560" height="380" fill="#ffffff" />
+          <circle cx={340} cy={104} r={17} fill="#000000" transform="rotate(-14 304 196)" />
+        </mask>
       </defs>
 
       <g filter="url(#cpg-print)">
@@ -62,13 +67,13 @@ export function CpgStillLife({ className = "" }: { className?: string }) {
         <rect x={120} y={258} width={44} height={6} rx={3} fill={PINK_LIGHT} />
 
         {/* ---------- ice lolly, tilted ---------- */}
+        <g mask="url(#cpg-bite)">
         <g transform="rotate(-14 304 196)">
           <rect x={297} y={214} width={16} height={74} rx={7} fill="#E9B872" />
           <rect x={270} y={96} width={70} height={130} rx={34} fill={ORANGE} />
           <path d="M270 140 v-10 a34 34 0 0 1 70 0 v18 q-10 10 -18 0 q-8 -10 -16 2 q-8 12 -18 -2 q-8 -10 -18 -8 z" fill={RED} />
-          {/* the bite */}
-          <circle cx={340} cy={104} r={17} fill="#ffffff" />
           <rect x={282} y={150} width={10} height={60} rx={5} fill="#F7AE5E" />
+        </g>
         </g>
 
         {/* ---------- soap bar and bubbles ---------- */}
