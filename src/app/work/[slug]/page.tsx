@@ -7,6 +7,7 @@ import { SectionNav, type Section } from "@/components/SectionNav";
 import { caseStudies, getCaseStudy } from "@/content/case-studies";
 import { ACCENTS } from "@/content/palette";
 import { StudyJar } from "@/components/StudyJar";
+import { SimulatorHero } from "@/components/SimulatorHero";
 
 export function generateStaticParams() {
   return caseStudies.map((study) => ({ slug: study.slug }));
@@ -90,7 +91,7 @@ export default async function CaseStudyPage({
 
           {/* A study with its own hero animation shows that full width
               below instead of the jar. */}
-          {!study.heroVideo && (
+          {!study.heroVideo && !study.heroArt && (
             <div className="w-full max-w-sm shrink-0 self-center lg:w-[38%]">
               <StudyJar accent={study.accent} />
             </div>
@@ -179,6 +180,12 @@ export default async function CaseStudyPage({
                 className="block h-auto w-full"
               />
             </video>
+          </figure>
+        )}
+
+        {study.heroArt === "simulator" && (
+          <figure className="mt-14 overflow-hidden border border-rule">
+            <SimulatorHero label="Animation: the old simulator was one crowded page, run four times for four brands and stitched together in a spreadsheet. The new one starts with three intent cards and runs one five-stage journey, so four runs become one." />
           </figure>
         )}
       </header>

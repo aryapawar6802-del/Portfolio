@@ -178,6 +178,8 @@ export type CaseStudy = {
   details?: { label: string; value: string }[];
   /** Looping hero animation. The GIF plays where `<video>` can't. */
   heroVideo?: { mp4: string; gif: string; alt: string; ratio: number };
+  /** Hero animation drawn in code, by name, instead of a video file. */
+  heroArt?: "simulator";
   /** Who else was on it, and what they owned. */
   team?: { name: string; scope: string }[];
   tools?: string[];

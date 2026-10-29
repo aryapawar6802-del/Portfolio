@@ -263,303 +263,283 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    /* Still carries Arya's own [FILL] notes; those render as flagged TODOs
-       rather than as prose. */
     slug: "media-investment-optimisation",
     accent: "blue",
-    company: "Global CPG company",
-    title: "Rapid ROI — media investment optimisation",
+    company: "A global CPG company",
+    title: "Rebuilding a media simulator that planners kept leaving for spreadsheets",
     summary:
-      "Planners kept going back to their spreadsheets even though the model was sound. The five-stage flow was rebuilt around what they needed to defend a plan to their leadership.",
+      "A media simulator that planned one cell at a time, only from a budget, all on one page. Rebuilt around intent, so planners plan a whole portfolio in one run.",
     tags: ["B2B web app", "Marketing Mix Modeling", "Enterprise", "Data product"],
-    question:
-      "The client had the model, so why were planners still deciding in spreadsheets?",
+    question: "Rebuilding a media simulator that planners kept leaving for spreadsheets",
     headline:
-      "Rebuilt a five-stage optimisation flow so planners could explain its results",
+      "Rebuilt a single-cell media simulator into one intent-first journey for portfolio planning",
     standfirst:
-      "Marketing Mix Modeling could tell the client’s planners what worked. Rapid ROI let them run it themselves, without waiting on the data science team. The math was sound, but planners still went back to their spreadsheets.",
-    role: "[FILL: e.g. Design lead on the optimization flow — owned it end to end across Phases 1–2]",
+      "A global CPG company had a media simulator that told planners where to put their money. But it planned one brand-market combination at a time, only from a budget, and everything sat on one page. So planners ran the same thing again and again, stitched it together in Excel, and dropped off. The new simulator asks what you’re trying to do first, and the rest of the flow follows.",
+    role: "[FILL: e.g. Product designer, simulator flow]",
     timeline: "[FILL]",
-    status: "[FILL]",
+    status: "Handed off to engineering",
     platform: "B2B web app · Marketing Mix Modeling",
     years: "",
-    team: [
-      { name: "DS lead", scope: "Data science" },
-      { name: "PM [FILL]", scope: "Product" },
-      { name: "Engineering [FILL]", scope: "Build" },
-      { name: "Client stakeholders", scope: "Requirements and sign-off" },
+    details: [
+      { label: "Client", value: "A global CPG company" },
+      { label: "Role", value: "[FILL: e.g. Product designer, simulator flow]" },
+      {
+        label: "Process",
+        value: "User interviews, three design directions, OOUX, flows, edge states",
+      },
+      { label: "Timeline", value: "[FILL]" },
     ],
-    deltas: [],
-    framework: "SCQA",
+    heroArt: "simulator",
+    deltas: [
+      { from: "4 scenarios", to: "1 run", label: "Per portfolio plan" },
+      { from: "1", to: "2", label: "Ways to plan" },
+    ],
+    framework: "custom",
     body: [
       {
-        type: "tldr",
-        eyebrow: "TL;DR",
-        rows: [
-          {
-            label: "Product",
-            value:
-              "Rapid ROI, a media investment optimisation tool powered by Marketing Mix Modeling.",
-          },
-          {
-            label: "Challenge",
-            value:
-              "Turn a rigid five-stage configuration wizard into a flow planners would trust with spend decisions worth many crores.",
-          },
-          {
-            label: "My role",
-            value:
-              "[FILL: e.g. Design lead on the optimization flow — owned it end to end across Phases 1–2]",
-          },
-          {
-            label: "Team",
-            value:
-              "Data science, PM [FILL], engineering [FILL], and client stakeholders.",
-          },
-          { label: "Timeline", value: "[FILL]" },
-          {
-            label: "Impact",
-            value:
-              "[FILL: the one line that matters most — adoption, sign-off, task completion]",
-          },
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "The situation",
-        heading: "Planners had a working model and still used spreadsheets",
-        body: [
-          "The client’s media planners decide where hundreds of crores go across brands, markets and channels. Marketing Mix Modeling can tell them what worked. It accounts for adstock, and for saturation: the tenth crore spent in a channel never returns what the first one did.",
-          "Rapid ROI was built to put that model in planners’ hands, so they could ask a question and get an allocation without going through the data science queue.",
-          "Even so, planners kept going back to their spreadsheets.",
-        ],
-      },
-      {
-        type: "numbered",
-        eyebrow: "The complication",
-        heading: "Four problems with the flow",
-        intro:
-          "The flow had five stages, in this order: state your intent, set your scope, configure the run, apply your constraints, and read your results. Each screen was reasonable on its own. The trouble was the order. Planners had to make structural decisions before the flow knew what they were solving for, and at the end it gave them a number with no argument behind it.",
+        type: "stats",
+        eyebrow: "At a glance",
+        heading: "What moved",
         items: [
-          {
-            heading: "It asked for structure before intent",
-            body: "Planners chose scope, granularity and constraints before the system knew which way they were solving. Some were solving forward (“I have this budget, allocate it”) and others backward (“I need to hit this target, tell me what it takes”). Those are mathematically inverse problems. Putting both down one shared path meant the flow asked too much and guided too little at the same time.",
-          },
-          {
-            heading: "Scope was mathematically ambiguous",
-            body: "Say you picked three regions and four sub-brands. Had you selected twelve combinations, only the valid ones, or only the ones the model had coverage for? The screen never said, and different planners read the same selection differently. Nobody filed a ticket about it. They just stopped believing the output.",
-          },
-          {
-            heading: "Constraints broke down at portfolio scale",
-            body: "Constraints are where planners write down the realities they work within, like contracted minimums, channel caps and market rules. For a single brand, a flat list was fine. A portfolio has dozens of brand × market × channel rows, and planners ended up scrolling through lines that all looked the same, with no way to find anything or apply a rule to many rows at once. The feature worked, but nobody could use it at that size. [FILL: how many rows did a real portfolio run actually produce?]",
-          },
-          {
-            heading: "The results didn’t explain themselves",
-            body: "MROI, the marginal return that tells you why a channel can or can’t take another rupee, was scattered around and shown more than once. When a goal-based target turned out to be impossible, the planner landed on a separate screen called Target Not Achievable. It named the failure and offered nothing else. The only way out was to go back and guess.",
-          },
+          { value: "1 run", label: "Per portfolio plan, down from four scenarios and an Excel file" },
+          { value: "2", label: "Ways to plan: from a budget or from a target" },
+          { value: "5", label: "Stages, the same for every approach" },
+          { value: "3", label: "New objects: combination, portfolio, constraint" },
         ],
       },
       {
         type: "prose",
-        heading: "Why the dead end mattered most",
+        nav: "Problem",
+        heading: "Problem",
         body: [
-          "A planner has to walk into a room and defend this plan to their leadership. When a tool says no without saying why, the planner goes back to the spreadsheet, where at least they know how the number was made.",
+          "The simulator worked for one cell. A cell is one planning unit: market × brand × region × sub-brand. But planners don’t plan one cell. They plan a whole portfolio. So a planner covering four brands ran four scenarios, then put them together by hand before anything could go to their leadership.",
         ],
       },
       {
         type: "list",
-        eyebrow: "Angles of inquiry",
-        heading: "Questions I set out to answer",
+        nav: "What was wrong with the old simulator",
+        heading: "What was wrong with the old simulator",
+        intro:
+          "The model was fine, right? It did single-cell planning well. It just didn’t scale to how planners actually work.",
         items: [
-          "What does a planner need to see before they’ll defend a number they didn’t calculate?",
-          "Where does trust break: at the input, or at the output?",
-          "What does “set your constraints” mean when there are two hundred of them?",
-          "And when the honest answer is that the target isn’t reachable, what’s the useful thing to say next?",
-          "[FILL: this section should reflect how you really approached it. Was this framed through usability sessions, stakeholder interviews, watching a planner work? Name your method concretely and honestly, whatever it was.]",
+          "**One combination per run.** Each run covered one cell. A portfolio plan meant several runs, and the planner had to reconcile the outputs by hand.",
+          "**Only one way to plan.** You could only go forwards from a budget. You couldn’t start from a business target and let the tool work back to the spend. And that’s the most common question planners get asked.",
+          "**Everything on one page.** Scope, constraints and setup, all together on one screen. Fine for one cell. Really heavy once a plan covered many.",
+          "**Nothing got saved.** Market, brand, region, sub-brand were just filters. The screen read them, and then they were gone. So you set up the same thing every single time.",
+          "**Problems showed up after the run.** You’d only find out something was off once the run had already gone out and come back.",
         ],
-      },
-      {
-        type: "prose",
-        eyebrow: "What I found",
-        heading: "Planners needed an answer they could defend",
-        body: [
-          "Planners had no problem with MMM itself. What they pushed back on was a black box that produced allocations without an argument they could defend. Every planner I [FILL: spoke to / observed] had the same job underneath: they needed an answer they could defend upstairs, and that mattered more to them than the best answer on paper.",
-          "That changed how I thought about the interface. It had to lay out an argument the planner could reconstruct, instead of collecting inputs and returning an output.",
-          "I learned the second thing from studying the model, not from users. Spend Based and Goal Based are inverse operations. Building them as one flow with conditional fields had caused most of the ambiguity further down.",
-          "[FILL: I went deep on MMM fundamentals here — adstock, saturation curves, Bayesian vs frequentist approaches, open-source implementations like Robyn and Meridian — working closely with the DS lead on the data science side. Write this up properly. Most designers can’t discuss saturation curves. It’s the reason you could design the explanation layer at all, and it’s the most differentiating thing in this case study.]",
-        ],
+        outro:
+          "The bigger the plan, the more the work multiplied. The tool didn’t take on any of that scale. The planner did.",
       },
       {
         type: "numbered",
-        eyebrow: "The jobs",
-        heading: "What planners were hiring it to do",
+        nav: "The jobs",
+        heading: "The jobs",
         intro:
-          "Planners open Rapid ROI to prepare for a conversation they’ll have later, with someone more senior, about money. Five jobs came out of that. [FILL: name where these came from — sessions, stakeholder interviews, watching planners work. The jobs are only as credible as their source.]",
+          "These came out of the user interviews and all the feedback on the old flow. They’re what planners were actually hiring the simulator to do.",
         items: [
           {
-            heading: "“Ask me what I’m solving for before you ask me anything else.”",
-            body: "When I start a planning cycle, I want to state my business question first, so the tool only asks me what’s relevant to it. [FILL: validated or assumed?]",
+            heading: "“Let me plan my whole portfolio in one go.”",
+            body: "When I plan across several brands and markets, I want to plan them together, so I don’t run four scenarios and stitch them in Excel.",
           },
           {
-            heading: "“Show me what I actually selected.”",
-            body: "When I define scope, I want to see exactly which brand-market combinations I’ve picked, so I can trust the model ran on what I meant. [FILL: validated or assumed?]",
+            heading: "“Let me start from my target.”",
+            body: "When I’ve got a business target, I want the tool to work back to the spend that gets me there, so I can answer the question I actually get asked.",
           },
           {
-            heading: "“Let me set a rule once.”",
-            body: "When I apply constraints across a portfolio, I want to work at the level I think at, brand first and then combination, so I’m not editing forty rows by hand. [FILL: validated or assumed?]",
+            heading: "“Ask me what I’m trying to do first.”",
+            body: "When I start a plan, I want to pick my approach first, so I only see what matters for it.",
           },
           {
-            heading: "“Tell me why this channel got what it got.”",
-            body: "When I read a recommendation, I want to understand the reasoning behind the split, so I can defend the plan to my leadership. [FILL: validated or assumed?]",
+            heading: "“Let me reuse my setup.”",
+            body: "When I’ve built my scope once, I want to save it and plan with it again, so I’m not re-entering the same thing every cycle.",
           },
           {
-            heading: "“When it’s not possible, tell me which lever to pull.”",
-            body: "When my target can’t be reached, I want to know what’s blocking it and what moving it would cost, so I can make an informed trade instead of guessing. [FILL: validated or assumed?]",
+            heading: "“Tell me what won’t work before I run it.”",
+            body: "When a combination isn’t available or data is missing, I want to know at setup, so I’m not waiting on a run that fails.",
+          },
+          {
+            heading: "“Let me compare my options.”",
+            body: "When I’ve got two plans, I want to see them side by side against last year’s numbers, so I can pick the one I’ll present.",
           },
         ],
       },
       {
-        type: "prose",
-        body: [
-          "Four of the five jobs are about being able to defend the plan. Planners wanted to be able to explain the number they’d been given more than they wanted a better one.",
-          "[FILL: be honest about which of these you actually validated and which stayed assumptions. “Three validated, two inferred from stakeholder input” is a stronger sentence than five unqualified claims — reviewers trust stated limits more than uniform confidence.]",
+        type: "table",
+        nav: "What was delivered",
+        heading: "What was delivered",
+        intro:
+          "So the simulator got rebuilt around intent. You say what kind of planning you’re doing, and everything after that adapts to it.",
+        columns: ["In the old simulator", "In the new simulator"],
+        rows: [
+          ["One cell per run", "A portfolio: many brand-market combinations, planned together in one run"],
+          ["Only forwards from a budget", "Pick your approach: Spend based, Goal based, or In flight"],
+          ["Everything on one page", "One journey in five stages: Approach → Scope → Plan → Run → Compare"],
+          ["Scope was a filter that disappeared", "Scope is something you build, name, save and reuse"],
+          ["Errors after the run", "Problems caught at setup, before anything runs"],
+          ["Comparing only the same type", "Compare across approaches, against the MAT baseline"],
         ],
+        outro:
+          "**Role:** [FILL: e.g. Product designer on the simulator flow. Discovery, user interviews, the three directions, OOUX, flows and all the screens.]",
       },
       {
-        type: "beforeAfter",
-        eyebrow: "The solutions",
-        heading: "Five changes, one for each job",
-        pairs: [
+        type: "numbered",
+        nav: "A day in the life",
+        heading: "A day in the life",
+        intro:
+          "Let’s say you’re a planner, and you’ve got four brands across a couple of markets this quarter.",
+        items: [
           {
-            aspect: "01 · Ask what they’re solving for, first",
-            before:
-              "A single flow that asked everyone the same questions and hoped they’d ignore the ones that didn’t apply.",
-            after:
-              "Planners now state their intent at the start. Goal Based and Spend Based branch straight away, and every later stage adapts its fields, defaults and results to match. I moved flighting into Configure, because it describes how spend is spread over time and belongs with the setup of the run. Granularity moved into Constraints, because it only means something once you know what you’re constraining. Modelling the two modes as siblings from the start is also the only reason the pivot in 05 was possible.",
-            note: "answers job 01",
+            heading: "You open the simulator.",
+            body: "One page. Filters at the top: market, brand, region, sub-brand. You set them for brand one.",
           },
           {
-            aspect: "02 · Stop asking planners to multiply in their heads",
-            before: "Two selectors, with an unstated relationship between them.",
-            after:
-              "A flat combination table. The system generates every combination your selection produces and lists them, so what you see selected is exactly what the model runs on. [FILL: what else was on the table — nested tree, dependent dropdowns, a matrix grid? Say what you rejected and why. Showing the discarded options is the clearest proof that you decided rather than defaulted.]",
-            note: "answers job 02",
+            heading: "You fill in everything.",
+            body: "Scope, constraints, budget, all on the same screen. You run it.",
           },
           {
-            aspect: "03 · Setting rules across a whole portfolio",
-            before: "One flat list, however long the portfolio was.",
-            after:
-              "Two-level searchable navigation, brand first and then combination, so planners find things the way they already think about them. Smart filters on the constraints table [FILL: which ones, and what job each does]. And a portfolio cascade, where you set a rule once at portfolio level, let it flow down, and override it wherever reality differs. All three let a planner state an intention once instead of making the same edit forty times.",
-            note: "answers job 03",
+            heading: "Then you do it again.",
+            body: "Brand two. Same setup, typed in again. Then brand three. Then brand four.",
           },
           {
-            aspect: "04 · Results that explain the recommendation",
-            before:
-              "Charts that only displayed numbers, and the one metric that explained them buried where nobody used it.",
-            after:
-              "A waterfall shows how you get from current spend to recommended spend. Grouped bars put current and recommended side by side for each channel. The heatmap now uses Pareto ordering, so the few channels that matter most come first and nobody has to hunt for them. [FILL: describe what each of these replaced] MROI now lives on Results and nowhere else, so there’s one place to answer why a channel got what it got. I took it out of the earlier steps, where it added weight without helping anyone decide. Each channel has a saturation tag, so planners can see which channels still have room before they hit a wall. The MAT bar became a full peer on the Results Breakdown at the client’s request, and it was a good request: a new recommendation is easier to believe when it sits next to a number you already trust.",
-            note: "answers job 04",
+            heading: "Your boss asks for a target, not a budget.",
+            body: "“What do we need to spend to hit this?” The tool can’t start from a target. So you guess a budget, run it, check, guess again.",
           },
           {
-            aspect: "05 · When the answer is no, hand back a decision",
-            before:
-              "A screen called Target Not Achievable. It was correct, and it didn’t help anyone.",
-            after:
-              "Every outcome, reachable or not, now lands on the same Results screen. When a target can’t be met, the planner has two ways forward. They can edit the constraints, with MROI-ranked guidance inline so the lever with the most effect is already at the top. Or they can switch to Spend Based, pre-filled with the numbers already on screen, so nothing is lost and they don’t have to start over. Editing the target happens in a modal instead of on a separate screen, so the planner never leaves the flow to change their mind. I also removed the Maximum Budget field. In a goal-based flow the system works out the budget ceiling itself, and asking the user to cap it by hand broke their picture of how the flow worked.",
-            note: "answers job 05, and it’s the change I’d defend hardest",
-          },
-        ],
-      },
-      {
-        type: "quote",
-        text: "When a target can’t be reached, the system’s job is to hand the planner their next decision.",
-      },
-      {
-        type: "prose",
-        heading: "Getting a deletion agreed",
-        body: [
-          "[FILL: how did you get alignment on deleting a field? Removing things is harder than adding them, and getting both a data science lead and a client to agree to a deletion is a real influence story. Tell it.]",
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "Prioritisation",
-        heading: "How I decided what to fix first",
-        body: [
-          "There were over a hundred open decisions across the five stages, and the client had to sign off. So I looked for the decisions that had to be right before anything downstream could be built, and sorted everything by impact and by how expensive it would be to undo.",
-        ],
-      },
-      {
-        type: "themes",
-        groups: [
-          {
-            theme: "Expensive to reverse: resolve first",
-            items: [
-              {
-                heading: "High impact",
-                body: "Intent-first architecture, the scope model, and removing Maximum Budget. I settled these first, with data science and the client in the room. Reversing the scope model after engineering had built against it would have meant reopening it with data science and re-briefing the client, which takes weeks.",
-              },
-              {
-                heading: "Low impact",
-                body: "Market Share as a KPI, and budget ceiling logic. These were deferred on purpose and documented as open gaps at [FILL: milestone], so they weren’t forced into a flow that wasn’t ready for them.",
-              },
-            ],
+            heading: "One run comes back failed.",
+            body: "Something wasn’t available in that market. You only find out now.",
           },
           {
-            theme: "Cheap to reverse: ship and learn",
-            items: [
-              {
-                heading: "High impact",
-                body: "Banner copy, chart sorting and saturation tag styling. These could ship early and change later, since reversing a banner headline takes an afternoon.",
-              },
-              { heading: "Low impact", body: "Visual polish and micro-copy." },
-            ],
+            heading: "You open Excel.",
+            body: "Four outputs, stitched together by hand, before you can show anyone anything.",
+          },
+        ],
+        outro: "And next cycle, you start from scratch.",
+      },
+      {
+        type: "list",
+        nav: "The new simulator: intent first",
+        heading: "The new simulator: intent first",
+        intro:
+          "So we went back to the users. After discovery and the interviews, we put three directions in front of them:",
+        items: [
+          "**Portfolio first.** Start by building the portfolio, then decide how to plan it.",
+          "[FILL: the second direction]",
+          "**Intent first.** Start with what you’re trying to achieve, and let everything else follow.",
+        ],
+      },
+      {
+        type: "list",
+        intro: "We went with intent first. You pick your approach before anything else:",
+        items: [
+          "**Spend based.** I have a budget. Find the best mix for it.",
+          "**Goal based.** I have a target. Find the spend and mix that reach it.",
+          "**In flight.** Adjust a plan that’s already running. (Coming next, so it shows as inactive for now.)",
+        ],
+        outro:
+          "But it’s not a different flow for each one. That was the big call. The same five stages carry every approach: Approach → Scope → Plan → Run → Compare. Only the Plan stage changes. Spend based sets a budget and rules. Goal based sets a target and rules. In flight will adapt that same stage. Scope, Run and Compare stay exactly where they were, so a planner learns one journey, and a new approach doesn’t reset that.",
+      },
+      {
+        type: "numbered",
+        heading: "Same day, with the new simulator",
+        sub: true,
+        items: [
+          {
+            heading: "You open the simulator.",
+            body: "Three cards. Your boss wants a target hit, so you pick Goal based.",
+          },
+          {
+            heading: "You build your scope.",
+            body: "Brands on the left, combinations on the right. All four brands, in one place.",
+          },
+          {
+            heading: "You save it as a portfolio.",
+            body: "Next cycle, it’s already there.",
+          },
+          {
+            heading: "You set your target and rules.",
+            body: "Pick the rows you want, apply a rule to all of them at once.",
+          },
+          {
+            heading: "The tool flags one combination.",
+            body: "It isn’t available in that market, and you know before you run anything.",
+          },
+          {
+            heading: "You run it once.",
+            body: "One portfolio, one run, one result, against last year’s numbers.",
+          },
+          {
+            heading: "You compare.",
+            body: "Put it side by side with a Spend based version and pick the one you’ll present.",
+          },
+        ],
+        outro: "That’s it. Four scenarios and an Excel file became one run.",
+      },
+      {
+        type: "list",
+        nav: "The process",
+        heading: "The process",
+        items: [
+          "**Discovery and user feedback.** Went through everything users had said about the old flow, and where it was breaking.",
+          "**User interviews.** Talked to planners about how they actually plan across a portfolio, and where the time really goes.",
+          "**Three directions.** Portfolio first, [FILL: the second direction], and intent first. Put all three in front of users, and intent first won.",
+          "**OOUX.** Mapped the old tool as objects. That’s where the real problem showed up: scope was never an object. It was just a filter the screen read and then threw away. So any request to work across more than one cell had nothing to attach to.",
+          "**Three new objects.** So three objects had to exist before any of this could work. **Combination:** one declared cell of scope. **Portfolio:** a named set of combinations you can save and reuse. **Constraint:** a spend rule for a scope × channel. A target only shows up for goal-based plans.",
+          "**One journey.** Five stages for every approach, with only the Plan stage changing.",
+          "**The states nobody sees.** Five screens, and a lot of their states are about failures, limits and missing data. The old tool showed problems after a run had already gone out. These get caught at setup.",
+        ],
+      },
+      {
+        type: "screens",
+        nav: "Final design",
+        heading: "Final design",
+        items: [
+          {
+            heading: "Pick your approach",
+            caption: "Start a new optimisation, with Spend based, Goal based and In flight (inactive)",
+            body: "This wasn’t there before. You say what kind of planning you’re doing first, and the rest of the flow follows from that.",
+          },
+          {
+            heading: "Pick up where you left off",
+            caption: "Recent optimisations list with filters",
+            body: "Every run is listed with its scope, quarter, ROI and spend. Filter by type or status, and open the results straight from here.",
+          },
+          {
+            heading: "Build your scope",
+            caption: "Scope setup, brands on the left, combinations on the right, MAT reference alongside",
+            body: "Add brands, build the combinations you want to plan together, and save them as a portfolio. Last year’s numbers sit right next to it, so you always know your starting point.",
+          },
+          {
+            heading: "Set your rules once",
+            caption: "Set constraints with bulk apply and locked rows",
+            body: "Check the rows, apply a rule to all of them at once, or start from a past scenario. Even at 37 rows, it stays manageable.",
+          },
+          {
+            heading: "Read the result",
+            caption: "Results, optimised vs MAT, with target achieved or the shortfall",
+            body: "The result sits against last year’s numbers. If the target isn’t met, you see the shortfall, not just a “no”.",
+          },
+          {
+            heading: "Compare and decide",
+            caption: "Comparison, two scenarios side by side",
+            body: "Put two plans side by side, even across approaches, and decide which one you’re taking into the room.",
           },
         ],
       },
       {
-        type: "prose",
-        body: [
-          "Sorting the decisions this way also gave me a clear reason not to solve everything at once.",
-          "[OPTIONAL: if your real-time prioritization was looser than this, say so. “This is the logic I was applying, which I’ve since formalized” reads as self-aware. A framework retrofitted for effect gets probed hard in interviews.]",
+        type: "list",
+        nav: "Outcome",
+        heading: "Outcome",
+        intro:
+          "**4 → 1.** What took four scenarios and manual consolidation is now one portfolio, one run, one result.",
+        items: [
+          "**Two ways to plan.** Planners can now start from a budget or from a target, in the same journey.",
+          "**Built to extend.** In flight, and any new kind of rule, slots into the same flow. Goal based was already added this way. So the next piece of work goes into the new feature itself, not into rebuilding what’s underneath.",
         ],
-      },
-      {
-        type: "prose",
-        eyebrow: "What it took",
-        heading: "I logged every decision, from D1 to D103",
-        body: [
-          "Each entry recorded what was considered and what was rejected, along with what was chosen.",
-          "[FILL: pull two or three entries. Reasoning frozen at a point in time is unusually strong evidence. Most portfolios claim process. Very few can show it.]",
-          "[FILL: milestone versions here. V1 → what broke → V2 → shipped. Even rough frames. The three comparisons that earn their space: Scope Setup, Constraints at portfolio scale, and the dead-end screen against the unified Results screen.]",
-        ],
-      },
-      { type: "image", caption: "Scope Setup: V1 next to the shipped combination table." },
-      { type: "image", caption: "Constraints at portfolio scale: the flat list next to the cascade." },
-      { type: "image", caption: "Target Not Achievable next to the unified Results screen." },
-      {
-        type: "prose",
-        eyebrow: "What changed",
-        heading: "Outcomes",
-        body: [
-          "[FILL: be honest here — inflated numbers are the fastest way to lose a senior reviewer, and they get probed. Quantitative: adoption, task completion, abandonment on infeasible targets, portfolio combinations manageable in a single session. Qualitative: a line from the client stakeholder, the DS lead, or your PM. Client sign-off is itself a legitimate result.]",
-          "[FILL: still open — name what didn’t ship. It reads as maturity.]",
-        ],
-      },
-      {
-        type: "prose",
-        eyebrow: "Reflection",
-        heading: "What I’d do differently",
-        body: [
-          "[FILL: two or three sentences. Strong angles available: what designing on top of a statistical model taught you about explanation as a design material; how portfolio scale moved your unit of design from the screen to the rule; what you couldn’t validate, given the constraints of client-facing enterprise work, and how you’d fight for it next time.]",
-        ],
+        outro: "The designs are handed off to engineering and not in production yet.",
       },
     ],
   },
-
-
-
-
 ];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
