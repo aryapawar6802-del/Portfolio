@@ -9,6 +9,7 @@ import { ACCENTS } from "@/content/palette";
 import { StudyJar } from "@/components/StudyJar";
 import { SimulatorHero } from "@/components/SimulatorHero";
 import { CpgStillLife } from "@/components/CpgStillLife";
+import { RetailStillLife } from "@/components/RetailStillLife";
 
 export function generateStaticParams() {
   return caseStudies.map((study) => ({ slug: study.slug }));
@@ -83,6 +84,9 @@ export default async function CaseStudyPage({
           </h1>
           {study.illustration === "cpg" && (
             <CpgStillLife className="w-full max-w-md shrink-0 lg:w-[40%]" />
+          )}
+          {study.illustration === "retail" && (
+            <RetailStillLife className="w-full max-w-md shrink-0 lg:w-[40%]" />
           )}
         </div>
 

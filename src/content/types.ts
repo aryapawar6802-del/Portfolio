@@ -181,7 +181,7 @@ export type CaseStudy = {
   /** Hero animation drawn in code, by name, instead of a video file. */
   heroArt?: "simulator";
   /** Illustration beside the title, by name. */
-  illustration?: "cpg";
+  illustration?: "cpg" | "retail";
   /** Who else was on it, and what they owned. */
   team?: { name: string; scope: string }[];
   tools?: string[];

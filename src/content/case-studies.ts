@@ -39,6 +39,7 @@ export const caseStudies: CaseStudy[] = [
       alt: "Animation: four teams passing one Excel file around, replaced by one tool.",
       ratio: 1080 / 608,
     },
+    illustration: "retail",
     deltas: [
       { from: "~210 h", to: "~45 h", label: "Per cycle" },
       { from: "2–3 weeks", to: "Days", label: "Calibration loop" },

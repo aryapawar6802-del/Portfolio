@@ -4,19 +4,13 @@
  * of tea). It nods at the kind of company the work was for without any
  * brand, logo or pack design.
  *
- * Drawn in a risograph register: flat inks, offset cobalt shadows, slightly
- * wobbly edges and a printed grain, all made with SVG filters so it stays
- * one small inline file.
+ * Drawn in the shared risograph register (see Riso.tsx): flat inks,
+ * offset cobalt shadows, slightly wobbly edges and a printed grain.
  */
 
-const ORANGE = "#F28C28";
-const RED = "#E8452C";
-const PINK = "#E04A8B";
-const PINK_LIGHT = "#F27BAE";
-const TEAL = "#2AA7B8";
-const YELLOW = "#F6C343";
-const COBALT = "#2E4FC7";
-const CREAM = "#FFF4DE";
+import { RISO, RisoFilter } from "./Riso";
+
+const { orange: ORANGE, red: RED, pink: PINK, pinkLight: PINK_LIGHT, teal: TEAL, yellow: YELLOW, cobalt: COBALT, cream: CREAM } = RISO;
 const TEA = "#C0612B";
 
 export function CpgStillLife({ className = "" }: { className?: string }) {
@@ -28,24 +22,7 @@ export function CpgStillLife({ className = "" }: { className?: string }) {
       aria-label="Illustration: a still life of household goods, a pump bottle, a bar of soap with bubbles, an ice lolly and a cup of tea, in flat print colours with blue shadows."
     >
       <defs>
-        {/* Hand-printed edges: a low-frequency wobble on every shape. */}
-        <filter id="cpg-print" x="-5%" y="-5%" width="110%" height="110%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="wobble" />
-          <feDisplacementMap in="SourceGraphic" in2="wobble" scale="3.5" xChannelSelector="R" yChannelSelector="G" result="inked" />
-          {/* Grain: sparse pale specks, kept to the inked shapes only. */}
-          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="noise" />
-          <feColorMatrix
-            in="noise"
-            type="matrix"
-            values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 3.2 -1.75"
-            result="specks"
-          />
-          <feComposite in="specks" in2="inked" operator="in" result="grain" />
-          <feMerge>
-            <feMergeNode in="inked" />
-            <feMergeNode in="grain" />
-          </feMerge>
-        </filter>
+        <RisoFilter id="cpg-print" />
       </defs>
 
       <g filter="url(#cpg-print)">
@@ -75,7 +52,7 @@ export function CpgStillLife({ className = "" }: { className?: string }) {
 
         {/* ---------- pump bottle ---------- */}
         <rect x={96} y={124} width={92} height={206} rx={24} fill={TEAL} />
-        <rect x={104} y={132} width={14} height={180} rx={7} fill="#5CC4D1" />
+        <rect x={104} y={132} width={14} height={180} rx={7} fill={RISO.tealLight} />
         <rect x={128} y={98} width={28} height={30} rx={4} fill={CREAM} />
         <rect x={112} y={80} width={60} height={20} rx={6} fill={ORANGE} />
         <path d="M112 86 h-30 a6 6 0 0 0 0 12 h30 z" fill={ORANGE} />
