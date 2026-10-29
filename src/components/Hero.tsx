@@ -1,7 +1,9 @@
 import { site } from "@/content/site";
 
 /**
- * Compact, centred hero, so the first case study still shows above the fold.
+ * Centred hero, sitting in the middle of the gap between the nav and the
+ * Work heading: the top padding equals this section's bottom padding plus
+ * the Work section's own top padding (pt-14), at both breakpoints.
  *
  * Three tiers, each a clear step down: the statement, one line on
  * experience and domains, then three facts side by side (currently,
@@ -24,7 +26,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="mx-auto max-w-6xl px-6 pt-12 pb-16 text-center sm:px-8 sm:pt-16 sm:pb-24">
+    <section className="mx-auto max-w-6xl px-6 pt-20 pb-6 text-center sm:px-8 sm:pt-[8.5rem] sm:pb-20">
       <h1
         className="display rise-in mx-auto text-[2.1rem] sm:text-[3rem] lg:text-[3.6rem]"
         style={{ animationDelay: "1480ms" }}
