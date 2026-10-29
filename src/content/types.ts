@@ -96,6 +96,16 @@ export type Block =
       rows: [string, string][];
       outro?: string | string[];
     }
+  /** Labelled groups of short chips, e.g. actions sorted into modes. */
+  | {
+      type: "groups";
+      eyebrow?: string;
+      nav?: string;
+      heading?: string;
+      intro?: string | string[];
+      items: { title: string; sub?: string; chips: string[] }[];
+      outro?: string | string[];
+    }
   /** Short statements as quote cards, side by side. */
   | {
       type: "quotes";
@@ -148,7 +158,7 @@ export type Block =
       nav?: string;
       heading?: string;
       intro?: string | string[];
-      name: "junctions";
+      name: "junctions" | "calibration";
       plugs?: { request: string; object: string; note: string }[];
       outro?: string | string[];
     }

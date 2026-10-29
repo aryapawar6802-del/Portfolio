@@ -103,35 +103,6 @@ export const caseStudies: CaseStudy[] = [
           "**Role:** Sole designer. Analyst interviews, OOUX, flows, testing and all the screens.",
       },
       {
-        type: "numbered",
-        nav: "A day in the life",
-        heading: "A day in the life",
-        intro: "Let’s say you’re an analyst on this, and you’re in charge of Clothing.",
-        items: [
-          {
-            heading: "You open the file.",
-            body: "It’s your team’s turn now, but there are a bunch of you in it, all working on your own bits.",
-          },
-          {
-            heading: "You need to go through each number.",
-            body: "Hundreds of rows, each product. Somewhere under Clothing, under Women’s wear, there’s something you need to change. But which one? So you deep dive into all of it.",
-          },
-          {
-            heading: "Tops looks high. Or maybe it doesn’t?",
-            body: "You check it against another tab, and you’re still not sure. You leave a note: *“recheck??”*",
-          },
-          {
-            heading: "You change a few numbers and tell everyone you’re done.",
-            body: "Then the file goes to the category leads. Then finance. Then sign-off.",
-          },
-          {
-            heading: "Then someone changes something at the bottom.",
-            body: "It rolls up, and the total you already agreed on is different now. Nobody notices.",
-          },
-        ],
-        outro: "And this goes on for weeks.",
-      },
-      {
         type: "list",
         nav: "The new tool: AI in the loop",
         heading: "The new tool: AI in the loop",
@@ -148,36 +119,36 @@ export const caseStudies: CaseStudy[] = [
           "But the AI doesn’t decide anything on its own. The analyst still makes the call, and nothing moves to the next team until a person completes the stage.",
       },
       {
-        type: "numbered",
-        heading: "Same day, with the tool",
-        sub: true,
-        items: [
+        type: "timeline",
+        nav: "A day in the life",
+        heading: "A day in the life",
+        intro: "Let’s say you’re an analyst on this, and you’re in charge of Clothing.",
+        columns: [
           {
-            heading: "You open your stage.",
-            body: "It’s your team’s turn, and the tool knows that. Nobody from the next team can jump in early.",
+            label: "In Excel",
+            steps: [
+              { title: "You open the file.", body: "It’s your team’s turn now, but there are a bunch of you in it, all working on your own bits." },
+              { title: "You need to go through each number.", body: "Hundreds of rows, each product. Somewhere under Clothing, under Women’s wear, there’s something you need to change. But which one? So you deep dive into all of it." },
+              { title: "Tops looks high. Or maybe it doesn’t?", body: "You check it against another tab, and you’re still not sure. You leave a note: *“recheck??”*" },
+              { title: "You change a few numbers and tell everyone you’re done.", body: "Then the file goes to the category leads. Then finance. Then sign-off." },
+              { title: "Then someone changes something at the bottom.", body: "It rolls up, and the total you already agreed on is different now. Nobody notices." },
+            ],
+            end: "And this goes on for weeks.",
           },
           {
-            heading: "You can see where the flags are.",
-            body: "The AI already went through everything. Women’s wear has 3 flags, so you go there first.",
-          },
-          {
-            heading: "Tops is flagged, way above the threshold.",
-            body: "The AI gives you a number. You change it a little based on your experience.",
-          },
-          {
-            heading: "The other two look fine,",
-            body: "so you just accept what the AI gave.",
-          },
-          {
-            heading: "Before you complete, you see what your changes affect.",
-            body: "If it touches something another team already signed off, you know right away.",
-          },
-          {
-            heading: "You complete your stage.",
-            body: "The category leads unlock and can start.",
+            label: "Same day, with the tool",
+            highlight: true,
+            steps: [
+              { title: "You open your stage.", body: "It’s your team’s turn, and the tool knows that. Nobody from the next team can jump in early." },
+              { title: "You can see where the flags are.", body: "The AI already went through everything. Women’s wear has 3 flags, so you go there first." },
+              { title: "Tops is flagged, way above the threshold.", body: "The AI gives you a number. You change it a little based on your experience." },
+              { title: "The other two look fine,", body: "so you just accept what the AI gave." },
+              { title: "Before you complete, you see what your changes affect.", body: "If it touches something another team already signed off, you know right away." },
+              { title: "You complete your stage.", body: "The category leads unlock and can start." },
+            ],
+            end: "That’s it. You only touch the numbers that actually need you.",
           },
         ],
-        outro: "That’s it. You only touch the numbers that actually need you.",
       },
       {
         type: "list",
@@ -193,6 +164,91 @@ export const caseStudies: CaseStudy[] = [
           "One thing that came up in both the interviews and the testing: a little rigidness about moving from Excel to a tool. People know Excel, right? They’ve used it for years.",
           "So to understand that rigidness, we went through what their day actually looks like, step by step. Then we redesigned the workflow around it, to save them time and make the tool easy to use. If the new way isn’t clearly faster and easier, nobody’s leaving Excel.",
         ],
+      },
+      {
+        type: "image",
+        src: "/work/calibration/00-orca-board.png",
+        ratio: 1.5814,
+        alt: "The ORCA board: four columns of sticky notes headed Objects, Relationships, Core CTAs and Attributes. The relationships column spells out the hierarchy, SBU to Department to Category Group to Category, feeding the Calibration Slice and its metrics, rules, rule violations, status, change logs, review task and approval task.",
+        caption: "The ORCA board. Every later call about navigation and states came out of this.",
+      },
+      {
+        type: "diagram",
+        nav: "The object model",
+        heading: "One object at the centre",
+        intro: "The OOUX map is where the roll-up problem became really clear. Everything a team touches is one thing: a calibration slice, like Department · Total market. Metrics, rules, status and the change log all hang off it, and every sign-off runs out of it.",
+        name: "calibration",
+        plugs: [
+          {
+            request: "A number goes past the threshold",
+            object: "Rule violation",
+            note: "Rules run against the slice and raise a violation. That’s the flag the AI shows you.",
+          },
+          {
+            request: "A late edit lower down",
+            object: "Change log",
+            note: "Every edit is logged against its slice, so the impact review can show what it touches, including numbers someone already signed off.",
+          },
+          {
+            request: "The next team’s turn",
+            object: "Status",
+            note: "A slice only opens when its stage does. Completing one stage unlocks the next.",
+          },
+        ],
+        outro: "So the screens didn’t start from a table. They started from this.",
+      },
+      {
+        type: "groups",
+        nav: "Modes",
+        heading: "Every action, sorted into modes",
+        intro: "Every action on the ORCA board got sorted by what it’s for. That’s where the screens came from: separate modes, instead of one huge table doing everything.",
+        items: [
+          { title: "Calibrate", sub: "Judging the numbers", chips: ["Select slice", "Edit metric", "Save changes", "Recalculate", "Reset changes", "Mark as final", "Unlock"] },
+          { title: "Resolve rules", sub: "When something’s flagged", chips: ["View rule details", "Fix violation", "Override rule"] },
+          { title: "Decide", sub: "Finishing your stage", chips: ["Finalize", "Submit for review"] },
+          { title: "Review", sub: "The next team checks it", chips: ["View submitted", "Approve", "Request changes", "Add review comments"] },
+          { title: "Approve and publish", sub: "Sign-off", chips: ["View approved submission", "Approve for publish", "Reject and send back", "Publish numbers"] },
+          { title: "History", sub: "Who changed what", chips: ["View change history", "Compare versions", "Export audit log"] },
+        ],
+      },
+      {
+        type: "numbered",
+        nav: "Design decisions",
+        heading: "The decisions that shaped it",
+        intro: "These are the calls that turned the object map into the tool.",
+        items: [
+          {
+            heading: "The order is enforced, not remembered.",
+            body: "Stages unlock one after another, so nobody edits out of turn. In Excel, the order lived in people’s heads and email threads.",
+          },
+          {
+            heading: "The AI flags, the person decides.",
+            body: "The agent goes through every row and suggests a number. But nothing moves to the next team until a person completes the stage.",
+          },
+          {
+            heading: "The summary leads with the problem.",
+            body: "The first screen says what’s blocked in one sentence, like “07 departments remain blocked due to pricing issues”, with two ways in: the blocked ones, or all of them.",
+          },
+          {
+            heading: "Every number shows its working.",
+            body: "Last month’s reported value, the calibrated value and the raw value sit side by side, so you can judge a change instead of just trusting it.",
+          },
+          {
+            heading: "You see the impact before you commit.",
+            body: "Because the numbers roll up, the review shows what your changes touch, including numbers someone already signed off.",
+          },
+          {
+            heading: "Edge cases get designed, not left.",
+            body: "When there’s nothing to compare against yet, the screen says so. Edits are saved or discarded on purpose. And a rule picked for one run doesn’t quietly become policy.",
+          },
+        ],
+      },
+      {
+        type: "image",
+        src: "/work/calibration/07-calibration-flow.png",
+        ratio: 1.5,
+        alt: "Calibration flow diagram, titled Every screen answers a question the calibrator was already asking. Three stages: Orient, where home doubles as a progress tracker; Calibrate the level, running Summary, Compare, Edit and Approve, with a Blocked branch that loops back to the summary when a rule conflict stops the level; and Unlock, where finalising a level locks it in and opens the one beneath.",
+        caption: "Each screen next to the question it answers. When a rule conflict blocks a level, it loops back to the summary.",
       },
       {
         type: "screens",

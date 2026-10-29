@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Delta } from "./Delta";
 import { JunctionMap } from "./JunctionMap";
+import { CalibrationMap } from "./CalibrationMap";
 import { ACCENTS } from "@/content/palette";
 import type { AccentName } from "@/content/palette";
 import type { Block, NumberedItem } from "@/content/types";
@@ -288,6 +289,31 @@ export function BlockRenderer({
         </section>
       );
 
+    case "groups":
+      return (
+        <section {...anchor}>
+          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+          {block.heading && <Heading>{block.heading}</Heading>}
+          <Paragraphs text={block.intro} className="mt-6" />
+          <ul className="mt-9 grid gap-4 sm:grid-cols-2">
+            {block.items.map((group) => (
+              <li key={group.title} className="rounded-panel border border-rule p-5">
+                <p className="text-[1rem] font-medium text-ink">{group.title}</p>
+                {group.sub && <p className="mt-1 text-[0.88rem] leading-[1.5] text-ink-3">{group.sub}</p>}
+                <ul className="mt-4 flex flex-wrap gap-1.5">
+                  {group.chips.map((chip) => (
+                    <li key={chip} className="rounded-chip bg-paper-deep px-2.5 py-1 text-[0.8rem] text-ink">
+                      {chip}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+          <Paragraphs text={block.outro} className="mt-8" />
+        </section>
+      );
+
     case "quotes":
       return (
         <section {...anchor}>
@@ -428,7 +454,11 @@ export function BlockRenderer({
           <Paragraphs text={block.intro} className="mt-6" />
           <figure className="-mx-6 mt-9 overflow-x-auto px-6 sm:mx-0 sm:px-0">
             <div className="min-w-[640px] rounded-panel border border-rule p-4 sm:p-6">
-              <JunctionMap tint={tint} wash={wash} />
+              {block.name === "calibration" ? (
+                <CalibrationMap tint={tint} wash={wash} />
+              ) : (
+                <JunctionMap tint={tint} wash={wash} />
+              )}
             </div>
           </figure>
           {block.plugs && block.plugs.length > 0 && (
