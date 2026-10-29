@@ -290,6 +290,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Timeline", value: "[FILL]" },
     ],
     heroArt: "simulator",
+    illustration: "cpg",
     deltas: [
       { from: "4 scenarios", to: "1 run", label: "Per portfolio plan" },
       { from: "1", to: "2", label: "Ways to plan" },

@@ -8,6 +8,7 @@ import { caseStudies, getCaseStudy } from "@/content/case-studies";
 import { ACCENTS } from "@/content/palette";
 import { StudyJar } from "@/components/StudyJar";
 import { SimulatorHero } from "@/components/SimulatorHero";
+import { CpgStillLife } from "@/components/CpgStillLife";
 
 export function generateStaticParams() {
   return caseStudies.map((study) => ({ slug: study.slug }));
@@ -76,11 +77,16 @@ export default async function CaseStudyPage({
           then the hero animation. Everything a reader needs before the
           long read starts. */}
       <header className="pt-6 pb-16">
-        <h1 className="display max-w-[26ch] text-balance text-[2.3rem] sm:text-[3.2rem]">
-          {study.question}
-        </h1>
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+          <h1 className="display max-w-[26ch] text-balance text-[2.3rem] sm:text-[3.2rem]">
+            {study.question}
+          </h1>
+          {study.illustration === "cpg" && (
+            <CpgStillLife className="w-full max-w-md shrink-0 lg:w-[40%]" />
+          )}
+        </div>
 
-        <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16">
+        <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16">
           {study.standfirst && (
             <p className="max-w-2xl text-[1.05rem] leading-[1.75] text-ink-2">
               {study.standfirst}
