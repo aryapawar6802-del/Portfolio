@@ -97,6 +97,28 @@ export type Block =
       outro?: string | string[];
     }
   /**
+   * Design directions weighed against each other: each one's framing, its
+   * happy-path flow and four trade-offs. `picked` marks the recommendation.
+   */
+  | {
+      type: "options";
+      eyebrow?: string;
+      nav?: string;
+      heading?: string;
+      intro?: string | string[];
+      items: {
+        name: string;
+        framing: string;
+        flow: string[];
+        optimisesFor: string;
+        tradesAway: string;
+        winsWhen: string;
+        risks: string;
+        picked?: boolean;
+      }[];
+      outro?: string | string[];
+    }
+  /**
    * Final screens, each with a heading, an image and a note. Omit `src` and
    * the image renders as a labelled empty slot, as in the `image` block.
    */

@@ -286,7 +286,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Role", value: "[FILL: e.g. Product designer, simulator flow]" },
       {
         label: "Process",
-        value: "User interviews, three design directions, OOUX, flows, edge states",
+        value: "User interviews, three approaches, OOUX, flows, edge states",
       },
       { label: "Timeline", value: "[FILL]" },
     ],
@@ -374,7 +374,7 @@ export const caseStudies: CaseStudy[] = [
           ["Comparing only the same type", "Compare across approaches, against the MAT baseline"],
         ],
         outro:
-          "**Role:** [FILL: e.g. Product designer on the simulator flow. Discovery, user interviews, the three directions, OOUX, flows and all the screens.]",
+          "**Role:** [FILL: e.g. Product designer on the simulator flow. Discovery, user interviews, the three approaches, OOUX, flows and all the screens.]",
       },
       {
         type: "numbered",
@@ -411,20 +411,59 @@ export const caseStudies: CaseStudy[] = [
         outro: "And next cycle, you start from scratch.",
       },
       {
-        type: "list",
-        nav: "The new simulator: intent first",
-        heading: "The new simulator: intent first",
-        intro:
-          "So we went back to the users. After discovery and the interviews, we put three directions in front of them:",
+        type: "options",
+        nav: "Three approaches",
+        heading: "Three approaches",
+        intro: [
+          "So after discovery and the interviews, it came down to one question: what does a planner want to know when they open this tool?",
+          "There were three good answers to that. Each one got mapped as a full journey, from landing to results, with what it’s good at and what it costs. Then all three went to the client, with the pros and cons laid out side by side.",
+        ],
         items: [
-          "**Portfolio first.** Start by building the portfolio, then decide how to plan it.",
-          "[FILL: the second direction]",
-          "**Intent first.** Start with what you’re trying to achieve, and let everything else follow.",
+          {
+            name: "Inline",
+            framing: "They know nothing new. Same entry, same screens as today.",
+            flow: ["Existing scenarios", "New scenario", "Inline filters", "Save as portfolio?", "Set constraints", "Run", "Results + compare"],
+            optimisesFor: "Adoption. It mirrors the current flow exactly, so nobody has to relearn anything.",
+            tradesAway: "Portfolio clarity. Planners don’t see a portfolio until they’ve already done the work, so multi-brand planning stays hidden.",
+            winsWhen: "The portfolio only shows up when it actually adds value, not as a forced step.",
+            risks: "The “Save as portfolio?” prompt becomes one more dialog people close without reading.",
+          },
+          {
+            name: "Portfolio first",
+            framing: "They know their portfolio. The portfolio is the first thing they see.",
+            flow: ["Portfolio shelf", "Pick or create a portfolio", "New scenario (scoped)", "Set constraints", "Run", "Results + compare"],
+            optimisesFor: "Clarity. The portfolio is the first thing on screen, so the idea sinks in before anything else.",
+            tradesAway: "Ease for people coming from the old tool. They have to make or pick a portfolio before they can do anything, and that’s a new step.",
+            winsWhen: "Multi-brand category leads, and second-time users who’ve already built up a few portfolios.",
+            risks: "An empty screen on day one, and “why do I have to make a portfolio first?” in every demo. Single-scenario users get an extra click.",
+          },
+          {
+            name: "Intent first",
+            framing: "They know their goal. What they’re trying to do is the first thing they pick.",
+            flow: ["Pick your intent", "Scope (portfolio or filters)", "Set up for that intent", "Constraints (or skip)", "Run", "Results for that question"],
+            optimisesFor: "Decision speed, for planners who already know what they want.",
+            tradesAway: "Exploring. Once you pick an intent, the screens commit to it, so someone who doesn’t know yet gets stopped at the door.",
+            winsWhen: "Repeat work, like running the same kind of plan every week. And In flight becomes a real choice, not something buried in a dropdown.",
+            risks: "It’s a new pattern, so it needs some learning. And someone asking “what can I do here?” has no neutral way in.",
+            picked: true,
+          },
+        ],
+      },
+      {
+        type: "prose",
+        nav: "Why intent first",
+        heading: "Why intent first",
+        body: [
+          "We recommended intent first, and the client went with it. Planners never open the tool just to look around, right? They come in with a question: I have this budget, or I have to hit this number. So the first screen asks that question back.",
+          "It also kept the best part of the other two. The portfolio doesn’t disappear, it just happens while you scope, so multi-brand planning is still one run. And each screen only shows the inputs that intent needs, so there’s a lot less on every page than the old one-page simulator.",
+          "The risks were real, so the design took them on. The landing also lists your recent optimisations, so there’s always a way back in without picking anything. And every intent runs through the same five stages, so the new pattern only has to be learned once.",
         ],
       },
       {
         type: "list",
-        intro: "We went with intent first. You pick your approach before anything else:",
+        nav: "The new simulator",
+        heading: "The new simulator: intent first",
+        intro: "So now, you pick your approach before anything else:",
         items: [
           "**Spend based.** I have a budget. Find the best mix for it.",
           "**Goal based.** I have a target. Find the spend and mix that reach it.",
@@ -470,13 +509,45 @@ export const caseStudies: CaseStudy[] = [
         outro: "That’s it. Four scenarios and an Excel file became one run.",
       },
       {
+        type: "numbered",
+        nav: "Design decisions",
+        heading: "The decisions that shaped it",
+        intro: "Picking intent first was the big one. These are the calls that came after it.",
+        items: [
+          {
+            heading: "One journey, not one flow per approach.",
+            body: "Every approach runs Approach → Scope → Plan → Run → Compare. Only the Plan stage changes. So planners learn it once, and goal based went in without a new flow.",
+          },
+          {
+            heading: "Scope became something you can save.",
+            body: "It used to be a filter the screen read and threw away. Now it’s combinations you build, name as a portfolio, and plan with again next cycle.",
+          },
+          {
+            heading: "Rules live on their own.",
+            body: "A constraint is a spend rule for a scope × channel, kept separate from the screens. So new kinds of rules extend it, instead of changing how planning works.",
+          },
+          {
+            heading: "Catch problems at setup, not after the run.",
+            body: "Combinations that aren’t available in a market, missing data and locked rows show up while you’re setting up. Nobody waits on a run that comes back failed.",
+          },
+          {
+            heading: "Compare across approaches.",
+            body: "A spend based plan and a goal based plan sit side by side, against the MAT baseline, so the planner picks the one they’ll present.",
+          },
+          {
+            heading: "Show In flight before it’s live.",
+            body: "It sits on the landing as inactive, so planners know it’s coming, and the structure it needs is already there.",
+          },
+        ],
+      },
+      {
         type: "list",
         nav: "The process",
         heading: "The process",
         items: [
           "**Discovery and user feedback.** Went through everything users had said about the old flow, and where it was breaking.",
           "**User interviews.** Talked to planners about how they actually plan across a portfolio, and where the time really goes.",
-          "**Three directions.** Portfolio first, [FILL: the second direction], and intent first. Put all three in front of users, and intent first won.",
+          "**Three approaches.** Inline, portfolio first and intent first, each mapped as a full journey with its trade-offs. All three went to the client, and we recommended intent first.",
           "**OOUX.** Mapped the old tool as objects. That’s where the real problem showed up: scope was never an object. It was just a filter the screen read and then threw away. So any request to work across more than one cell had nothing to attach to.",
           "**Three new objects.** So three objects had to exist before any of this could work. **Combination:** one declared cell of scope. **Portfolio:** a named set of combinations you can save and reuse. **Constraint:** a spend rule for a scope × channel. A target only shows up for goal-based plans.",
           "**One journey.** Five stages for every approach, with only the Plan stage changing.",

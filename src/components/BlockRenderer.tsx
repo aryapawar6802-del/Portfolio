@@ -286,6 +286,70 @@ export function BlockRenderer({
         </section>
       );
 
+    case "options":
+      return (
+        <section {...anchor}>
+          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+          {block.heading && <Heading>{block.heading}</Heading>}
+          <Paragraphs text={block.intro} className="mt-6" />
+          <ol className="mt-9 space-y-6">
+            {block.items.map((option, i) => (
+              <li
+                key={option.name}
+                className={`rounded-panel border p-6 sm:p-7 ${
+                  option.picked ? "border-ink" : "border-rule"
+                }`}
+              >
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                  <span className="label text-ink-3">Option {i + 1}</span>
+                  {option.picked && (
+                    <span className="label rounded-chip bg-ink px-2 py-0.5 text-white">
+                      Recommended
+                    </span>
+                  )}
+                </div>
+                <h3 className="display mt-2 text-[1.5rem]">{option.name}</h3>
+                <p className="mt-1.5 max-w-prose leading-[1.6] text-ink-2">
+                  <Marked text={option.framing} />
+                </p>
+
+                <ol className="mt-5 flex flex-wrap items-center gap-x-1.5 gap-y-2">
+                  {option.flow.map((step, s) => (
+                    <li key={step} className="flex items-center gap-1.5">
+                      <span className="rounded-chip bg-paper-deep px-2.5 py-1 text-[0.8rem] text-ink">
+                        {step}
+                      </span>
+                      {s < option.flow.length - 1 && (
+                        <span aria-hidden="true" className="text-ink-3">
+                          →
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+
+                <dl className="mt-6 grid gap-x-8 gap-y-5 border-t border-rule pt-5 sm:grid-cols-2">
+                  {[
+                    ["Optimises for", option.optimisesFor],
+                    ["Trades away", option.tradesAway],
+                    ["When it wins", option.winsWhen],
+                    ["Risks", option.risks],
+                  ].map(([label, text]) => (
+                    <div key={label}>
+                      <dt className="label text-ink-3">{label}</dt>
+                      <dd className="mt-1.5 text-[0.95rem] leading-[1.6] text-ink-2">
+                        <Marked text={text} />
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </li>
+            ))}
+          </ol>
+          <Paragraphs text={block.outro} className="mt-8" />
+        </section>
+      );
+
     case "screens":
       return (
         <section {...anchor}>
