@@ -22,11 +22,12 @@ export function TopNav() {
   return (
     <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-2.5 px-6 py-4 sm:flex-row sm:justify-between sm:gap-3 sm:px-8">
-        <Link
-          href="/"
-          className="rounded-control bg-paper-deep px-4 py-2 text-[0.85rem] text-ink transition-colors hover:bg-clay-wash"
-        >
-          {site.name}
+        {/* Plain wordmark, not a pill: name in full ink, role a step quieter. */}
+        <Link href="/" className="group flex items-baseline gap-3">
+          <span className="display text-[1.35rem] text-ink">{site.name}</span>
+          <span className="text-[0.85rem] text-ink-3 transition-colors group-hover:text-ink-2">
+            {site.role}
+          </span>
         </Link>
 
         <nav aria-label="Main">
@@ -57,14 +58,6 @@ export function TopNav() {
                   ▤
                 </span>
                 Résumé
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${site.email}`} className={`${base} ${quiet}`}>
-                <span aria-hidden="true" className="text-[0.7em] opacity-60">
-                  ✉
-                </span>
-                Email
               </a>
             </li>
           </ul>

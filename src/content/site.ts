@@ -6,7 +6,7 @@ export const site = {
   /** Hero facts. Companies are named but not linked. */
   currently: "MathCo",
   previously: "Monsoonfish",
-  experience: "2.5–3 years",
+  experience: "2.5+ years",
   /** Non-breaking hyphen, so MIT‑WPU never splits across lines. */
   education: { degree: "B.Des in UX Design", school: "MIT‑WPU" },
   email: "arya.pawar6802@gmail.com",
