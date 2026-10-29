@@ -56,16 +56,6 @@ export default function Home() {
               </a>
             </div>
 
-            <ul className="mt-12 flex flex-wrap gap-x-2 gap-y-2">
-              {site.domains.map((domain) => (
-                <li
-                  key={domain}
-                  className="rounded-chip bg-paper px-3 py-1 text-[0.8rem] text-ink-2"
-                >
-                  {domain}
-                </li>
-              ))}
-            </ul>
           </div>
 
           <SkillPot className="mx-auto w-full max-w-[22rem]" />

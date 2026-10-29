@@ -3,6 +3,8 @@ export const site = {
   role: "Product Designer",
   /** Hero statement, and the site's meta description. */
   headline: "Designing B2B tools for teams that work in data.",
+  /** The hero sets the headline on these two lines. */
+  headlineLines: ["Designing B2B tools for teams", "that work in data."],
   /** Hero facts. Companies are named but not linked. */
   currently: "MathCo",
   previously: "Monsoonfish",
