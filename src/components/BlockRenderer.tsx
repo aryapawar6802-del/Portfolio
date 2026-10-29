@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Delta } from "./Delta";
+import { JunctionMap } from "./JunctionMap";
 import { ACCENTS } from "@/content/palette";
 import type { AccentName } from "@/content/palette";
 import type { Block, NumberedItem } from "@/content/types";
@@ -170,6 +171,7 @@ export function BlockRenderer({
   accent?: AccentName;
 }) {
   const tint = ACCENTS[accent].ink;
+  const wash = ACCENTS[accent].wash;
   /* Every branch spreads this so anchors resolve for the section navigator
      and `scroll-mt` keeps headings clear of the sticky bars above them. */
   const anchor = { id, className: "scroll-mt-32 xl:scroll-mt-24" };
@@ -282,6 +284,177 @@ export function BlockRenderer({
               ))}
             </tbody>
           </table>
+          <Paragraphs text={block.outro} className="mt-8" />
+        </section>
+      );
+
+    case "quotes":
+      return (
+        <section {...anchor}>
+          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+          {block.heading && <Heading>{block.heading}</Heading>}
+          <Paragraphs text={block.intro} className="mt-6" />
+          <ul className="mt-9 grid gap-4 sm:grid-cols-3">
+            {block.items.map((quote) => (
+              <li
+                key={quote.text}
+                className="flex flex-col rounded-panel border border-rule p-6"
+              >
+                <span aria-hidden="true" className="display text-[2.6rem] leading-[0.6]" style={{ color: tint }}>
+                  “
+                </span>
+                <blockquote className="display mt-3 text-[1.2rem] leading-[1.3] text-ink">
+                  <Marked text={quote.text} />
+                </blockquote>
+                {quote.label && (
+                  <p className="label mt-auto pt-6 text-ink-3">{quote.label}</p>
+                )}
+              </li>
+            ))}
+          </ul>
+          <Paragraphs text={block.outro} className="mt-8" />
+        </section>
+      );
+
+    case "timeline":
+      return (
+        <section {...anchor}>
+          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+          {block.heading && <Heading>{block.heading}</Heading>}
+          <Paragraphs text={block.intro} className="mt-6" />
+          <div className="mt-9 grid gap-10 sm:grid-cols-2 sm:gap-8">
+            {block.columns.map((col) => (
+              <div key={col.label}>
+                <p className="label" style={{ color: col.highlight ? tint : undefined }}>
+                  {col.label}
+                </p>
+                <ol className="mt-4">
+                  {col.steps.map((step, i) => (
+                    <li key={step.title} className="flex gap-4">
+                      <div className="flex flex-col items-center">
+                        <span
+                          className="grid size-7 shrink-0 place-items-center rounded-full text-[0.75rem] font-medium"
+                          style={
+                            col.highlight
+                              ? { backgroundColor: tint, color: "#ffffff" }
+                              : { border: "1.5px solid var(--color-rule-strong)", color: "var(--color-ink-3)" }
+                          }
+                        >
+                          {i + 1}
+                        </span>
+                        {i < col.steps.length - 1 && <span className="my-1 w-px flex-1 bg-rule" />}
+                      </div>
+                      <div className="pb-6">
+                        <p className="text-[0.98rem] font-medium leading-snug text-ink">{step.title}</p>
+                        {step.body && (
+                          <p className="mt-1 text-[0.9rem] leading-[1.55] text-ink-2">
+                            <Marked text={step.body} />
+                          </p>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                {col.end && (
+                  <p
+                    className="ml-11 inline-block rounded-chip px-3 py-1.5 text-[0.9rem] font-medium"
+                    style={
+                      col.highlight
+                        ? { backgroundColor: tint, color: "#ffffff" }
+                        : { backgroundColor: "var(--color-paper-deep)", color: "var(--color-ink)" }
+                    }
+                  >
+                    {col.end}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+          <Paragraphs text={block.outro} className="mt-9" />
+        </section>
+      );
+
+    case "journey":
+      return (
+        <section {...anchor}>
+          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+          {block.heading && <Heading>{block.heading}</Heading>}
+          <Paragraphs text={block.intro} className="mt-6" />
+          {/* Five stages don't fit a phone at a legible size, so the rows
+              scroll sideways in their own box there. */}
+          <div className="-mx-6 mt-9 overflow-x-auto px-6 sm:mx-0 sm:px-0">
+            <div className="min-w-[640px] space-y-3">
+              {block.rows.map((row) => (
+                <div key={row.label} className="flex items-center gap-3">
+                  <div className="w-28 shrink-0">
+                    <p className={`text-[0.95rem] font-medium ${row.future ? "text-ink-3" : "text-ink"}`}>
+                      {row.label}
+                    </p>
+                    {row.sub && <p className="text-[0.78rem] text-ink-3">{row.sub}</p>}
+                  </div>
+                  <ol className="flex min-w-0 flex-1 items-center gap-1.5">
+                    {row.stages.map((stage, i) => {
+                      const changes = i === block.highlight;
+                      return (
+                        <li key={i} className="flex min-w-0 flex-1 items-center gap-1.5">
+                          <span
+                            className={`block w-full rounded-control border px-2 py-2.5 text-center text-[0.82rem] leading-tight ${
+                              row.future ? "border-dashed border-rule-strong text-ink-3" : changes ? "font-medium" : "border-rule text-ink"
+                            }`}
+                            style={!row.future && changes ? { borderColor: tint, backgroundColor: wash, color: tint } : undefined}
+                          >
+                            {stage}
+                          </span>
+                          {i < row.stages.length - 1 && (
+                            <span aria-hidden="true" className="text-ink-3">→</span>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>
+              ))}
+            </div>
+          </div>
+          <Paragraphs text={block.outro} className="mt-8" />
+        </section>
+      );
+
+    case "diagram":
+      return (
+        <section {...anchor}>
+          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+          {block.heading && <Heading>{block.heading}</Heading>}
+          <Paragraphs text={block.intro} className="mt-6" />
+          <figure className="-mx-6 mt-9 overflow-x-auto px-6 sm:mx-0 sm:px-0">
+            <div className="min-w-[640px] rounded-panel border border-rule p-4 sm:p-6">
+              <JunctionMap tint={tint} wash={wash} />
+            </div>
+          </figure>
+          {block.plugs && block.plugs.length > 0 && (
+            <ul className="mt-8 space-y-3">
+              {block.plugs.map((plug) => (
+                <li
+                  key={plug.request}
+                  className="grid gap-2 rounded-panel bg-paper-deep p-4 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-center sm:gap-4"
+                >
+                  <p className="text-[0.95rem] font-medium text-ink">{plug.request}</p>
+                  <p className="flex items-center gap-2 text-[0.85rem] text-ink-3">
+                    <span aria-hidden="true">plugs into →</span>
+                    <span
+                      className="rounded-chip border px-2.5 py-1 font-medium"
+                      style={{ borderColor: tint, backgroundColor: wash, color: tint }}
+                    >
+                      {plug.object}
+                    </span>
+                  </p>
+                  <p className="text-[0.88rem] leading-[1.5] text-ink-2">
+                    <Marked text={plug.note} />
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
           <Paragraphs text={block.outro} className="mt-8" />
         </section>
       );

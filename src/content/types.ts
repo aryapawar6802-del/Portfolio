@@ -96,6 +96,62 @@ export type Block =
       rows: [string, string][];
       outro?: string | string[];
     }
+  /** Short statements as quote cards, side by side. */
+  | {
+      type: "quotes";
+      eyebrow?: string;
+      nav?: string;
+      heading?: string;
+      intro?: string | string[];
+      items: { text: string; label?: string }[];
+      outro?: string | string[];
+    }
+  /**
+   * Step-by-step flows set next to each other, e.g. the same task before
+   * and after. `highlight` puts a column in the study's colour.
+   */
+  | {
+      type: "timeline";
+      eyebrow?: string;
+      nav?: string;
+      heading?: string;
+      intro?: string | string[];
+      columns: {
+        label: string;
+        highlight?: boolean;
+        steps: { title: string; body?: string }[];
+        end?: string;
+      }[];
+      outro?: string | string[];
+    }
+  /**
+   * Rows that run through the same stages, with one stage that differs per
+   * row. `highlight` is that stage's index; `future` greys a row out.
+   */
+  | {
+      type: "journey";
+      eyebrow?: string;
+      nav?: string;
+      heading?: string;
+      intro?: string | string[];
+      highlight?: number;
+      rows: { label: string; sub?: string; stages: string[]; future?: boolean }[];
+      outro?: string | string[];
+    }
+  /**
+   * A named diagram drawn in code, plus the requests it absorbs: each one
+   * says which object it plugs into.
+   */
+  | {
+      type: "diagram";
+      eyebrow?: string;
+      nav?: string;
+      heading?: string;
+      intro?: string | string[];
+      name: "junctions";
+      plugs?: { request: string; object: string; note: string }[];
+      outro?: string | string[];
+    }
   /**
    * Design directions weighed against each other: each one's framing, its
    * happy-path flow and four trade-offs. `picked` marks the recommendation.

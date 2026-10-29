@@ -377,40 +377,6 @@ export const caseStudies: CaseStudy[] = [
           "**Role:** [FILL: e.g. Product designer on the simulator flow. Discovery, user interviews, the three approaches, OOUX, flows and all the screens.]",
       },
       {
-        type: "numbered",
-        nav: "A day in the life",
-        heading: "A day in the life",
-        intro:
-          "Let’s say you’re a planner, and you’ve got four brands across a couple of markets this quarter.",
-        items: [
-          {
-            heading: "You open the simulator.",
-            body: "One page. Filters at the top: market, brand, region, sub-brand. You set them for brand one.",
-          },
-          {
-            heading: "You fill in everything.",
-            body: "Scope, constraints, budget, all on the same screen. You run it.",
-          },
-          {
-            heading: "Then you do it again.",
-            body: "Brand two. Same setup, typed in again. Then brand three. Then brand four.",
-          },
-          {
-            heading: "Your boss asks for a target, not a budget.",
-            body: "“What do we need to spend to hit this?” The tool can’t start from a target. So you guess a budget, run it, check, guess again.",
-          },
-          {
-            heading: "One run comes back failed.",
-            body: "Something wasn’t available in that market. You only find out now.",
-          },
-          {
-            heading: "You open Excel.",
-            body: "Four outputs, stitched together by hand, before you can show anyone anything.",
-          },
-        ],
-        outro: "And next cycle, you start from scratch.",
-      },
-      {
         type: "options",
         nav: "Three approaches",
         heading: "Three approaches",
@@ -450,63 +416,62 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        type: "prose",
+        type: "quotes",
         nav: "Why intent first",
         heading: "Why intent first",
-        body: [
-          "We recommended intent first, and the client went with it. Planners never open the tool just to look around, right? They come in with a question: I have this budget, or I have to hit this number. So the first screen asks that question back.",
-          "It also kept the best part of the other two. The portfolio doesn’t disappear, it just happens while you scope, so multi-brand planning is still one run. And each screen only shows the inputs that intent needs, so there’s a lot less on every page than the old one-page simulator.",
-          "The risks were real, so the design took them on. The landing also lists your recent optimisations, so there’s always a way back in without picking anything. And every intent runs through the same five stages, so the new pattern only has to be learned once.",
+        intro: "We recommended intent first, and the client went with it. Three reasons:",
+        items: [
+          { text: "Planners come in with a question. So the first screen asks it back.", label: "It starts with their question" },
+          { text: "The portfolio doesn’t go away. It just happens while you scope.", label: "The portfolio stays" },
+          { text: "Each screen only shows what that intent needs.", label: "Less on every screen" },
         ],
+        outro: "And the risks are covered: recent optimisations give a way in without picking anything, and one journey means the new pattern is learned once.",
       },
       {
-        type: "list",
+        type: "journey",
         nav: "The new simulator",
-        heading: "The new simulator: intent first",
-        intro: "So now, you pick your approach before anything else:",
-        items: [
-          "**Spend based.** I have a budget. Find the best mix for it.",
-          "**Goal based.** I have a target. Find the spend and mix that reach it.",
-          "**In flight.** Adjust a plan that’s already running. (Coming next, so it shows as inactive for now.)",
+        heading: "One journey for every approach",
+        intro: "So now, you pick your approach first. But it’s not a different flow for each one. The same five stages carry every approach, and only the Plan stage changes.",
+        highlight: 2,
+        rows: [
+          { label: "Spend based", sub: "I have a budget", stages: ["Approach", "Scope", "Set budget & rules", "Run", "Compare"] },
+          { label: "Goal based", sub: "I have a target", stages: ["Approach", "Scope", "Set target & rules", "Run", "Compare"] },
+          { label: "In flight", sub: "Coming next", stages: ["Approach", "Scope", "Plan adapts", "Run", "Compare"], future: true },
         ],
-        outro:
-          "But it’s not a different flow for each one. That was the big call. The same five stages carry every approach: Approach → Scope → Plan → Run → Compare. Only the Plan stage changes. Spend based sets a budget and rules. Goal based sets a target and rules. In flight will adapt that same stage. Scope, Run and Compare stay exactly where they were, so a planner learns one journey, and a new approach doesn’t reset that.",
+        outro: "Scope, Run and Compare stay exactly where they were. So a planner learns one journey, and a new approach doesn’t reset that.",
       },
       {
-        type: "numbered",
-        heading: "Same day, with the new simulator",
-        sub: true,
-        items: [
+        type: "timeline",
+        nav: "A day in the life",
+        heading: "A day in the life, before and after",
+        intro: "Let’s say you’re a planner, and you’ve got four brands across a couple of markets this quarter.",
+        columns: [
           {
-            heading: "You open the simulator.",
-            body: "Three cards. Your boss wants a target hit, so you pick Goal based.",
+            label: "Before",
+            steps: [
+              { title: "Open the simulator", body: "One page. Set the filters for brand one." },
+              { title: "Fill in everything", body: "Scope, constraints, budget, all on one screen." },
+              { title: "Do it again", body: "Same setup for brands two, three and four." },
+              { title: "Guess a budget", body: "Your boss wants a target hit. The tool can’t start from one." },
+              { title: "A run fails", body: "Something wasn’t available. You find out now." },
+              { title: "Stitch it in Excel", body: "Four outputs, by hand." },
+            ],
+            end: "4 runs + an Excel file",
           },
           {
-            heading: "You build your scope.",
-            body: "Brands on the left, combinations on the right. All four brands, in one place.",
-          },
-          {
-            heading: "You save it as a portfolio.",
-            body: "Next cycle, it’s already there.",
-          },
-          {
-            heading: "You set your target and rules.",
-            body: "Pick the rows you want, apply a rule to all of them at once.",
-          },
-          {
-            heading: "The tool flags one combination.",
-            body: "It isn’t available in that market, and you know before you run anything.",
-          },
-          {
-            heading: "You run it once.",
-            body: "One portfolio, one run, one result, against last year’s numbers.",
-          },
-          {
-            heading: "You compare.",
-            body: "Put it side by side with a Spend based version and pick the one you’ll present.",
+            label: "After",
+            highlight: true,
+            steps: [
+              { title: "Pick Goal based", body: "You’ve got a target, so you start there." },
+              { title: "Build your scope", body: "All four brands, in one place." },
+              { title: "Save it as a portfolio", body: "Next cycle, it’s already there." },
+              { title: "Set target and rules", body: "Apply a rule to many rows at once." },
+              { title: "See the flag at setup", body: "One combination isn’t available. Fixed before you run." },
+              { title: "Run once, then compare", body: "Side by side with a Spend based version." },
+            ],
+            end: "1 run",
           },
         ],
-        outro: "That’s it. Four scenarios and an Excel file became one run.",
       },
       {
         type: "numbered",
@@ -549,10 +514,34 @@ export const caseStudies: CaseStudy[] = [
           "**User interviews.** Talked to planners about how they actually plan across a portfolio, and where the time really goes.",
           "**Three approaches.** Inline, portfolio first and intent first, each mapped as a full journey with its trade-offs. All three went to the client, and we recommended intent first.",
           "**OOUX.** Mapped the old tool as objects. That’s where the real problem showed up: scope was never an object. It was just a filter the screen read and then threw away. So any request to work across more than one cell had nothing to attach to.",
-          "**Three new objects.** So three objects had to exist before any of this could work. **Combination:** one declared cell of scope. **Portfolio:** a named set of combinations you can save and reuse. **Constraint:** a spend rule for a scope × channel. A target only shows up for goal-based plans.",
           "**One journey.** Five stages for every approach, with only the Plan stage changing.",
           "**The states nobody sees.** Five screens, and a lot of their states are about failures, limits and missing data. The old tool showed problems after a run had already gone out. These get caught at setup.",
         ],
+      },
+      {
+        type: "diagram",
+        nav: "The objects",
+        heading: "Three objects hold it together",
+        intro: "The OOUX map of the old tool showed the real problem: scope was never an object. So three had to exist before any of this could work. The planning hierarchy and the media hierarchy never touch directly. They only meet through a junction object, and that object holds the relationship.",
+        name: "junctions",
+        plugs: [
+          {
+            request: "A new kind of rule",
+            object: "Constraint",
+            note: "Rules are their own object, so a new one extends it. **Already proven:** today’s channel spend rules run on it.",
+          },
+          {
+            request: "A new approach, like In flight",
+            object: "Scenario · Plan stage",
+            note: "Approach, Scope, Run and Compare don’t care which type made them. **Already proven:** goal based went in this way.",
+          },
+          {
+            request: "One cell or a whole portfolio",
+            object: "Combination",
+            note: "A portfolio is just a set of combinations, so there are no special cases. **Already proven:** portfolio planning runs on it today.",
+          },
+        ],
+        outro: "So every time a new request comes in, it plugs into one of these objects. The work goes into the new feature, not into rebuilding what’s underneath.",
       },
       {
         type: "screens",
