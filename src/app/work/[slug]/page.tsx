@@ -72,95 +72,75 @@ export default async function CaseStudyPage({
         </Link>
       </nav>
 
-      <header className="pt-8 pb-14">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
-          <div className="min-w-0 flex-1">
-            <h1 className="display max-w-[19ch] text-[2.3rem] sm:text-[3.2rem]">
-              {study.question}
-            </h1>
+      {/* One glance: the title, the story so far and the facts side by side,
+          then the hero animation. Everything a reader needs before the
+          long read starts. */}
+      <header className="pt-6 pb-16">
+        <h1 className="display max-w-[26ch] text-balance text-[2.3rem] sm:text-[3.2rem]">
+          {study.question}
+        </h1>
 
-            {!study.details && (
-              <div className="mt-10">
-                <p className="label text-ink-3">Client</p>
-                <p className="label mt-1.5" style={{ color: tint }}>
-                  {study.company}
-                </p>
+        <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16">
+          {study.standfirst && (
+            <p className="max-w-2xl text-[1.05rem] leading-[1.75] text-ink-2">
+              {study.standfirst}
+            </p>
+          )}
+
+          <div>
+            {study.deltas.length > 0 && (
+              <div className="flex flex-wrap gap-x-10 gap-y-5">
+                {study.deltas.map((delta) => (
+                  <Delta key={delta.label} delta={delta} size="md" tint={tint} />
+                ))}
               </div>
             )}
+
+            <dl className="mt-7 grid grid-cols-2 gap-x-8 gap-y-5">
+              {meta.map((item) => (
+                <div key={item.label}>
+                  <dt className="label text-ink-3">{item.label}</dt>
+                  <dd className="mt-1.5 text-[0.9rem] leading-snug text-ink">
+                    {item.value}
+                  </dd>
+                </div>
+              ))}
+
+              {study.team && study.team.length > 0 && (
+                <div className="col-span-2">
+                  <dt className="label text-ink-3">Team</dt>
+                  <dd className="mt-1.5 space-y-1.5">
+                    {study.team.map((member) => (
+                      <p key={member.name} className="text-[0.9rem] leading-snug">
+                        <span className="text-ink">{member.name}</span>
+                        <span className="text-ink-3"> · {member.scope}</span>
+                      </p>
+                    ))}
+                  </dd>
+                </div>
+              )}
+
+              {study.tools && study.tools.length > 0 && (
+                <div className="col-span-2">
+                  <dt className="label text-ink-3">Tools</dt>
+                  <dd className="mt-1.5 flex flex-wrap gap-1.5">
+                    {study.tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="rounded-chip bg-paper-deep px-2.5 py-1 text-[0.78rem] text-ink-2"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </dd>
+                </div>
+              )}
+            </dl>
           </div>
-
-          {/* A study with its own hero animation shows that full width
-              below instead of the jar. */}
-          {!study.heroVideo && !study.heroArt && (
-            <div className="w-full max-w-sm shrink-0 self-center lg:w-[38%]">
-              <StudyJar accent={study.accent} />
-            </div>
-          )}
         </div>
 
-        {study.standfirst && (
-          <p className="mt-12 max-w-2xl text-[1.02rem] leading-[1.75] text-ink-2">
-            {study.standfirst}
-          </p>
-        )}
-
-        <div className="mt-9 flex flex-wrap gap-x-12 gap-y-6">
-          {study.deltas.map((delta) => (
-            <Delta key={delta.label} delta={delta} size="lg" tint={tint} />
-          ))}
-        </div>
-
-        <dl className="mt-14 grid gap-x-10 gap-y-7 border-t border-rule pt-8 sm:grid-cols-2 lg:max-w-4xl">
-          {meta.map((item) => (
-            <div key={item.label}>
-              <dt className="label text-ink-3">
-                {item.label}
-              </dt>
-              <dd className="mt-2 text-[0.95rem] leading-relaxed text-ink">
-                {item.value}
-              </dd>
-            </div>
-          ))}
-
-          {study.team && study.team.length > 0 && (
-            <div>
-              <dt className="label text-ink-3">
-                Team
-              </dt>
-              <dd className="mt-2 space-y-2">
-                {study.team.map((member) => (
-                  <p key={member.name} className="text-[0.95rem] leading-snug">
-                    <span className="text-ink">{member.name}</span>
-                    <span className="block text-[0.85rem] text-ink-3">
-                      {member.scope}
-                    </span>
-                  </p>
-                ))}
-              </dd>
-            </div>
-          )}
-
-          {study.tools && study.tools.length > 0 && (
-            <div>
-              <dt className="label text-ink-3">
-                Tools
-              </dt>
-              <dd className="mt-2 flex flex-wrap gap-1.5">
-                {study.tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="rounded-chip bg-paper-deep px-2.5 py-1 text-[0.78rem] text-ink-2"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </dd>
-            </div>
-          )}
-        </dl>
-
-        {study.heroVideo && (
-          <figure className="mt-14 overflow-hidden border border-rule bg-paper-deep">
+        {study.heroVideo ? (
+          <figure className="mt-12 overflow-hidden border border-rule bg-paper-deep">
             <video
               autoPlay
               muted
@@ -181,12 +161,14 @@ export default async function CaseStudyPage({
               />
             </video>
           </figure>
-        )}
-
-        {study.heroArt === "simulator" && (
-          <figure className="mt-14 overflow-hidden border border-rule">
+        ) : study.heroArt === "simulator" ? (
+          <figure className="mt-12 overflow-hidden border border-rule">
             <SimulatorHero label="Animation: the old simulator was one crowded page, run four times for four brands and stitched together in a spreadsheet. The new one starts with three intent cards and runs one five-stage journey, so four runs become one." />
           </figure>
+        ) : (
+          <div className="mx-auto mt-12 w-full max-w-sm">
+            <StudyJar accent={study.accent} />
+          </div>
         )}
       </header>
 

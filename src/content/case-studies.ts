@@ -274,7 +274,7 @@ export const caseStudies: CaseStudy[] = [
     headline:
       "Rebuilt a single-cell media simulator into one intent-first journey for portfolio planning",
     standfirst:
-      "A global CPG company had a media simulator that told planners where to put their money. But it planned one brand-market combination at a time, only from a budget, and everything sat on one page. So planners ran the same thing again and again, stitched it together in Excel, and dropped off. The new simulator asks what you’re trying to do first, and the rest of the flow follows.",
+      "A global CPG company had a media simulator that told planners where to put their money. But it planned one cell at a time (market × brand × region × sub-brand), only from a budget, and everything sat on one page. Planners don’t plan one cell, though. They plan a whole portfolio. So a planner covering four brands ran four scenarios, stitched them together in Excel before anything could go to their leadership, and dropped off. The new simulator asks what you’re trying to do first, and plans the whole portfolio in one run.",
     role: "[FILL: e.g. Product designer, simulator flow]",
     timeline: "[FILL]",
     status: "Handed off to engineering",
@@ -305,14 +305,6 @@ export const caseStudies: CaseStudy[] = [
           { value: "2", label: "Ways to plan: from a budget or from a target" },
           { value: "5", label: "Stages, the same for every approach" },
           { value: "3", label: "New objects: combination, portfolio, constraint" },
-        ],
-      },
-      {
-        type: "prose",
-        nav: "Problem",
-        heading: "Problem",
-        body: [
-          "The simulator worked for one cell. A cell is one planning unit: market × brand × region × sub-brand. But planners don’t plan one cell. They plan a whole portfolio. So a planner covering four brands ran four scenarios, then put them together by hand before anything could go to their leadership.",
         ],
       },
       {
