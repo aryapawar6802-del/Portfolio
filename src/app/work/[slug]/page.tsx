@@ -2,10 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { BlockRenderer } from "@/components/BlockRenderer";
-import { Delta } from "@/components/Delta";
 import { SectionNav, type Section } from "@/components/SectionNav";
 import { caseStudies, getCaseStudy } from "@/content/case-studies";
-import { ACCENTS } from "@/content/palette";
 import { StudyJar } from "@/components/StudyJar";
 import { SimulatorHero } from "@/components/SimulatorHero";
 import { CpgStillLife } from "@/components/CpgStillLife";
@@ -54,8 +52,6 @@ export default async function CaseStudyPage({
   });
   const sections: Section[] = anchors.filter((a): a is Section => a !== null);
 
-  const tint = ACCENTS[study.accent].ink;
-
   const meta = study.details ?? [
     { label: "Role", value: study.role },
     { label: "Timeline", value: study.timeline },
@@ -98,16 +94,6 @@ export default async function CaseStudyPage({
           )}
 
           <div>
-            {/* The simulator animation already ends on its 4 → 1 result, so
-                its study skips the numbers here (they still show on the
-                home page card). */}
-            {study.deltas.length > 0 && !study.heroArt && (
-              <div className="mb-7 flex flex-wrap gap-x-10 gap-y-5">
-                {study.deltas.map((delta) => (
-                  <Delta key={delta.label} delta={delta} size="md" tint={tint} />
-                ))}
-              </div>
-            )}
 
             <dl className="grid grid-cols-2 gap-x-8 gap-y-5">
               {meta.map((item) => (

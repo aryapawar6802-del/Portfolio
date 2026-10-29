@@ -22,14 +22,14 @@ export const caseStudies: CaseStudy[] = [
       "Cut a three-week calibration cycle to a few days by letting four teams work in parallel",
     standfirst:
       "A global retailer had four teams running one huge process on Excel. This tool replaced it, with an AI agent that flags what’s off, so nobody has to go through every single number.",
-    role: "Sole designer, end to end",
+    role: "Sole designer",
     timeline: "3–4 months",
     status: "Shipped",
     platform: "B2B web app · Agentic AI, human-in-the-loop",
     years: "[year]",
     details: [
       { label: "Client", value: "A global retailer (enterprise retail)" },
-      { label: "Role", value: "Sole designer, end to end" },
+      { label: "Role", value: "Sole designer" },
       { label: "Process", value: "Analyst interviews, OOUX, flows, testing" },
       { label: "Timeline", value: "3–4 months" },
     ],
@@ -100,7 +100,7 @@ export const caseStudies: CaseStudy[] = [
           ],
         ],
         outro:
-          "**Role:** Sole designer, end to end. Analyst interviews, OOUX, flows, testing and all the screens.",
+          "**Role:** Sole designer. Analyst interviews, OOUX, flows, testing and all the screens.",
       },
       {
         type: "numbered",
