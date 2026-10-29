@@ -88,15 +88,18 @@ export default async function CaseStudyPage({
           )}
 
           <div>
-            {study.deltas.length > 0 && (
-              <div className="flex flex-wrap gap-x-10 gap-y-5">
+            {/* The simulator animation already ends on its 4 → 1 result, so
+                its study skips the numbers here (they still show on the
+                home page card). */}
+            {study.deltas.length > 0 && !study.heroArt && (
+              <div className="mb-7 flex flex-wrap gap-x-10 gap-y-5">
                 {study.deltas.map((delta) => (
                   <Delta key={delta.label} delta={delta} size="md" tint={tint} />
                 ))}
               </div>
             )}
 
-            <dl className="mt-7 grid grid-cols-2 gap-x-8 gap-y-5">
+            <dl className="grid grid-cols-2 gap-x-8 gap-y-5">
               {meta.map((item) => (
                 <div key={item.label}>
                   <dt className="label text-ink-3">{item.label}</dt>
