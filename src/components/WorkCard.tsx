@@ -80,7 +80,7 @@ export function WorkCard({
           {/* Just marks it as client work; the company stays unnamed. */}
           <p className="label text-ink-3">Client</p>
 
-          <ul className="mt-6 flex flex-wrap gap-x-2 gap-y-2">
+          <ul className="mt-3 flex flex-wrap gap-x-2 gap-y-2">
             {study.tags.map((tag) => (
               <li
                 key={tag}
@@ -92,23 +92,23 @@ export function WorkCard({
             ))}
           </ul>
 
-          <h3 className="display mt-4 max-w-[22ch] text-[1.6rem] decoration-1 underline-offset-[0.18em] group-hover:underline sm:text-[1.9rem]">
+          <h3 className="display mt-9 max-w-[22ch] text-[1.6rem] decoration-1 underline-offset-[0.18em] group-hover:underline sm:text-[1.9rem]">
             {study.question}
           </h3>
 
-          <p className="mt-6 max-w-prose leading-[1.75] text-ink-2">
+          <p className="mt-3 max-w-prose leading-[1.75] text-ink-2">
             {study.summary}
           </p>
 
           {study.deltas.length > 0 && (
-            <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-5">
+            <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
               {study.deltas.slice(0, 2).map((delta) => (
                 <Impact key={delta.label} delta={delta} tint={accent.ink} rule={accent.solid} />
               ))}
             </dl>
           )}
 
-          <p className="mt-9 inline-flex items-center gap-2 text-[0.95rem] font-medium text-clay">
+          <p className="mt-10 inline-flex items-center gap-2 text-[0.95rem] font-medium text-clay">
             <span className="underline decoration-clay/40 underline-offset-4 group-hover:decoration-clay">
               Read case study
             </span>
