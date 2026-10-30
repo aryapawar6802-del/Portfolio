@@ -30,14 +30,16 @@ export function WorkCard({
     <article>
       <Link
         href={`/work/${study.slug}`}
-        className={`group flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-16 ${
+        className={`group flex flex-col gap-8 lg:flex-row lg:items-stretch lg:gap-16 ${
           flip ? "lg:flex-row-reverse" : ""
         }`}
       >
         <div className="w-full shrink-0 lg:w-[48%]">
-          <div className="overflow-hidden rounded-panel">
+          {/* The panel is 4:3 at least, and grows with the text beside it so
+              the copy never runs past the top or bottom of the card. */}
+          <div className="h-full overflow-hidden rounded-panel">
             <div
-              className="relative aspect-4/3 transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+              className="relative aspect-4/3 h-full w-full transition-transform duration-500 ease-out group-hover:scale-[1.015]"
               style={{ backgroundColor: accent.wash }}
             >
               {study.illustration ? (
@@ -76,7 +78,7 @@ export function WorkCard({
           </div>
         </div>
 
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 flex-1 lg:flex lg:flex-col lg:justify-center lg:py-8">
           {/* Just marks it as client work; the company stays unnamed. */}
           <p className="label text-ink-3">Client</p>
 
