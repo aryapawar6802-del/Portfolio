@@ -10,8 +10,8 @@ import { site } from "@/content/site";
  * previously, education), each a small label over its value. The work sits
  * right below, so the hero carries no buttons.
  *
- * Entrance is delayed past the intro curtain's dissolve so the text arrives
- * on a cleared screen rather than animating behind falling pixels.
+ * Entrance is delayed until the intro curtain is fading out, so the text
+ * rises as the black screen clears rather than animating behind it.
  */
 /** A fact inside the experience line, lifted to full ink. */
 function Fact({ children }: { children: React.ReactNode }) {

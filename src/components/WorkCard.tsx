@@ -12,8 +12,8 @@ import type { CaseStudy, Delta as DeltaType } from "@/content/types";
  * page reading as unrelated decoration.
  *
  * The whole entry is one link, so there's a single place to click. Hover
- * lifts the image, underlines the title and pushes the "Read case study"
- * cue, so it's clear the entry as a whole is what opens.
+ * lifts the image and pushes the "Read case study" cue, so it's clear the
+ * entry as a whole is what opens.
  */
 export function WorkCard({
   study,
@@ -94,7 +94,7 @@ export function WorkCard({
             ))}
           </ul>
 
-          <h3 className="display mt-9 max-w-[22ch] text-[1.6rem] decoration-1 underline-offset-[0.18em] group-hover:underline sm:text-[1.9rem]">
+          <h3 className="display mt-9 max-w-[22ch] text-[1.6rem] sm:text-[1.9rem]">
             {study.question}
           </h3>
 

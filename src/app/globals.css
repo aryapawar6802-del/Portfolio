@@ -127,40 +127,30 @@ html {
 }
 
 /* ---------------------------------------------------------------
-   Intro curtain — pixel dissolve.
-   A solid black field covers the viewport, holds, then breaks into a
-   grid of squares that snap out in a scattered order. Each cell uses
-   `steps(1, end)` so it vanishes instantly rather than fading: a fade
-   reads as a dissolve of the whole sheet, a snap reads as pixels.
-   CSS-only and server-rendered, so it runs before hydration and mounts
-   once — client-side navigation never replays it.
+   Intro curtain — black screen, name, dissolve.
+   The name fades in on black and holds, then the whole sheet fades out
+   to reveal the page. CSS-only and server-rendered, so it runs before
+   hydration and mounts once — client-side navigation never replays it.
    --------------------------------------------------------------- */
-/* An explicit hold-then-snap. A `steps(1, end)` animation on a ~1ms
-   duration sits below the browser's frame granularity and silently never
-   commits, leaving most cells stuck visible — so the snap is spelled out
-   over a real duration instead. */
-@keyframes pixel-out {
+@keyframes curtain-out {
   0%,
-  92% {
+  62% {
     opacity: 1;
+    visibility: visible;
   }
-  93%,
   100% {
     opacity: 0;
+    visibility: hidden;
   }
 }
 
 @keyframes curtain-mark {
-  0%,
-  10% {
+  0% {
     opacity: 0;
   }
-  28% {
-    opacity: 1;
-  }
-  55%,
+  30%,
   100% {
-    opacity: 0;
+    opacity: 1;
   }
 }
 
@@ -168,26 +158,15 @@ html {
   position: fixed;
   inset: 0;
   z-index: 100;
-  pointer-events: none;
-}
-
-@utility curtain-grid {
-  position: absolute;
-  inset: 0;
   display: grid;
-}
-
-@utility curtain-cell {
-  background: var(--color-accent);
-  animation: pixel-out 140ms linear forwards;
+  place-items: center;
+  background: #000000;
+  pointer-events: none;
+  animation: curtain-out 1.8s ease forwards;
 }
 
 @utility curtain-mark {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  animation: curtain-mark 1.5s ease forwards;
+  animation: curtain-mark 1.8s ease forwards;
 }
 
 /* Nothing to reveal if the viewer has asked for less motion — drop the
