@@ -33,12 +33,11 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 sm:px-8 sm:py-24 lg:grid-cols-[1fr_22rem] lg:gap-16">
           <div>
             <h2 className="display text-balance text-[2rem] sm:text-[2.6rem]">
-              Hiring? This designer is open to work.
+              What’s cooking?
             </h2>
             <p className="mt-5 max-w-[46ch] text-[1.05rem] leading-[1.7] text-ink-2">
-              On the lookout for a full-time product design role, ideally
-              somewhere the data is messy and the users are busy. Send over a
-              job description and see what comes out of the pot.
+              Open to full-time product design roles on B2B and data-heavy
+              tools. Send over a brief and see what comes out of the pot.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -47,6 +46,12 @@ export default function Home() {
                 className="text-[1.05rem] font-medium text-ink underline underline-offset-4"
               >
                 {site.email} ↗
+              </a>
+              <a
+                href={site.phone.href}
+                className="text-[1.05rem] font-medium text-ink underline underline-offset-4 tabular-nums"
+              >
+                {site.phone.display}
               </a>
               <a
                 href={site.resumeHref}

@@ -12,6 +12,8 @@ export const site = {
   /** Non-breaking hyphen, so MIT‑WPU never splits across lines. */
   education: { degree: "B.Des in UX Design", school: "MIT‑WPU" },
   email: "arya.pawar6802@gmail.com",
+  /** Shown spaced for reading; the tel: link uses the bare digits. */
+  phone: { display: "+91 93256 87824", href: "tel:+919325687824" },
   resumeHref: "#",
   /** Domains, not client names — the work sits under NDA. */
   domains: ["CPG", "Retail", "Pharma"],
