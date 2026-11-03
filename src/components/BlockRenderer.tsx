@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Delta } from "./Delta";
 import { JunctionMap } from "./JunctionMap";
 import { CalibrationMap } from "./CalibrationMap";
+import { UserModelGrid } from "./UserModelGrid";
 import { ACCENTS } from "@/content/palette";
 import type { AccentName } from "@/content/palette";
 import type { Block, NumberedItem } from "@/content/types";
@@ -498,6 +499,8 @@ export function BlockRenderer({
             <div className="min-w-[640px] rounded-panel border border-rule p-4 sm:p-6">
               {block.name === "calibration" ? (
                 <CalibrationMap tint={tint} wash={wash} />
+              ) : block.name === "usermodel" ? (
+                <UserModelGrid tint={tint} wash={wash} />
               ) : (
                 <JunctionMap tint={tint} wash={wash} />
               )}

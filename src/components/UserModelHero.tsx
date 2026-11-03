@@ -1,10 +1,10 @@
 /**
  * Hero animation for the discovery study, drawn in code like SimulatorHero.
  *
- * Builds left to right in three steps: the 3 user types in the pitch, the
+ * Builds left to right in three steps: the 3 user types in the brief, the
  * 17 who actually touch the product, then the 6 × 5 grid they all fit on.
- * Only the two grid rows the study spells out are filled in; the rest stay
- * as empty outlines. Every element holds at 100%, which is also what the
+ * The grid's filled cells match the full user model in UserModelGrid. Every
+ * element holds at 100%, which is also what the
  * global reduced-motion rule jumps to, so the last frame is the whole story.
  */
 
@@ -59,9 +59,16 @@ const BOTTOM = 490;
 const BODY = 222;
 
 const LEVELS = 5;
-const CAPABILITIES = 6;
-const CELL = { w: 40, h: 34, gap: 6, x: PANEL_C.x + 132 };
-const ROWS = { rules: 0, data: CAPABILITIES - 1 };
+const CELL = { w: 34, h: 34, gap: 6, x: PANEL_C.x + 158 };
+/* The first level each capability reaches; it then runs up to Global. */
+const ROWS = [
+  { label: "Data operator", from: 0 },
+  { label: "Access manager", from: 2 },
+  { label: "Content manager", from: 4 },
+  { label: "Deployment manager", from: 2 },
+  { label: "Programme monitor", from: 4 },
+  { label: "System maintainer", from: 4 },
+];
 
 const STYLES = [
   appear("um-a", 3),
@@ -72,8 +79,7 @@ const STYLES = [
   appear("um-ar2", 50),
   appear("um-c", 53),
   appear("um-grid", 57),
-  appear("um-data", 64),
-  appear("um-rules", 72),
+  ...ROWS.map((_, i) => appear(`um-row${i}`, 62 + i * 5)),
   caption("um-c1", 3, 18),
   caption("um-c2", 18, 53),
   caption("um-c3", 53, 100),
@@ -149,8 +155,8 @@ export function UserModelHero({ label }: { label: string }) {
         Discovery
       </text>
 
-      {/* ---------- the pitch ---------- */}
-      <Panel {...PANEL_A} label="The pitch" value="3" unit="user types" name="um-a" />
+      {/* ---------- the brief ---------- */}
+      <Panel {...PANEL_A} label="The brief" value="3" unit="user types" name="um-a" />
       {PITCH.map((type, i) => (
         <g key={type} className="um-anim" style={play(`um-a${i}`)}>
           <rect x={PANEL_A.x + 18} y={BODY + i * 48} width={PANEL_A.w - 36} height={38} rx={19} fill={FILL} />
@@ -188,13 +194,16 @@ export function UserModelHero({ label }: { label: string }) {
       {/* ---------- the model ---------- */}
       <Panel {...PANEL_C} label="The model" value="6 × 5" unit="capabilities × levels" name="um-c" strong />
       <g className="um-anim" style={play("um-grid")}>
-        <text x={CELL.x + (LEVELS * CELL.w + (LEVELS - 1) * CELL.gap)} y={BODY - 8} textAnchor="end" fontSize={12.5} fill={MUTED} fontFamily={FONT}>
-          Top level
+        <text x={CELL.x} y={BODY - 8} fontSize={12.5} fill={MUTED} fontFamily={FONT}>
+          Plant
         </text>
-        {Array.from({ length: CAPABILITIES }, (_, r) =>
+        <text x={CELL.x + LEVELS * CELL.w + (LEVELS - 1) * CELL.gap} y={BODY - 8} textAnchor="end" fontSize={12.5} fill={MUTED} fontFamily={FONT}>
+          Global
+        </text>
+        {ROWS.map((row, r) =>
           Array.from({ length: LEVELS }, (_, c) => (
             <rect
-              key={`${r}-${c}`}
+              key={`${row.label}-${c}`}
               x={CELL.x + c * (CELL.w + CELL.gap)}
               y={BODY + r * (CELL.h + 8)}
               width={CELL.w}
@@ -207,26 +216,22 @@ export function UserModelHero({ label }: { label: string }) {
           )),
         )}
       </g>
-      <g className="um-anim" style={play("um-data")}>
-        <text x={PANEL_C.x + 18} y={BODY + ROWS.data * (CELL.h + 8) + 22} fontSize={13.5} fontWeight={600} fill={INK} fontFamily={FONT}>
-          Enter data
-        </text>
-        {Array.from({ length: LEVELS }, (_, c) => (
-          <rect key={c} x={CELL.x + c * (CELL.w + CELL.gap)} y={BODY + ROWS.data * (CELL.h + 8)} width={CELL.w} height={CELL.h} rx={6} fill={GREEN} />
-        ))}
-      </g>
-      <g className="um-anim" style={play("um-rules")}>
-        <text x={PANEL_C.x + 18} y={BODY + ROWS.rules * (CELL.h + 8) + 22} fontSize={13.5} fontWeight={600} fill={INK} fontFamily={FONT}>
-          Change the rules
-        </text>
-        <rect x={CELL.x + (LEVELS - 1) * (CELL.w + CELL.gap)} y={BODY + ROWS.rules * (CELL.h + 8)} width={CELL.w} height={CELL.h} rx={6} fill={GREEN} />
-      </g>
+      {ROWS.map((row, r) => (
+        <g key={row.label} className="um-anim" style={play(`um-row${r}`)}>
+          <text x={PANEL_C.x + 18} y={BODY + r * (CELL.h + 8) + 22} fontSize={12.5} fontWeight={600} fill={INK} fontFamily={FONT}>
+            {row.label}
+          </text>
+          {Array.from({ length: LEVELS - row.from }, (_, c) => (
+            <rect key={c} x={CELL.x + (row.from + c) * (CELL.w + CELL.gap)} y={BODY + r * (CELL.h + 8)} width={CELL.w} height={CELL.h} rx={6} fill={GREEN} />
+          ))}
+        </g>
+      ))}
 
       {/* captions */}
-      <Caption name="um-c1">The pitch: three user types.</Caption>
-      <Caption name="um-c2">Who actually touches it: seventeen.</Caption>
+      <Caption name="um-c1">The brief said 3 types of users.</Caption>
+      <Caption name="um-c2">When we mapped who actually touches it, we got 17.</Caption>
       <Caption name="um-c3">
-        Not who you are. <tspan fill={GREEN}>What you can do, and how far you can see.</tspan>
+        So we asked <tspan fill={GREEN}>what you can do and how far you can see.</tspan>
       </Caption>
     </svg>
   );

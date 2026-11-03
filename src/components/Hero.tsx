@@ -43,7 +43,7 @@ export function Hero() {
         style={{ animationDelay: "1660ms" }}
       >
         <Fact>{site.experience}</Fact> working across{" "}
-        <Fact>{site.domains.join(", ")}</Fact>.
+        <Fact>{site.domains.join(" and ")}</Fact>.
       </p>
 
       <ul

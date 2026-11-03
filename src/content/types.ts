@@ -1,6 +1,6 @@
 import type { AccentName } from "./palette";
 
-export type StudyIllustrationName = "cpg" | "retail" | "beverage";
+export type StudyIllustrationName = "cpg" | "retail" | "tangle";
 
 /**
  * Case study content model.
@@ -174,7 +174,7 @@ export type Block =
       nav?: string;
       heading?: string;
       intro?: string | string[];
-      name: "junctions" | "calibration";
+      name: "junctions" | "calibration" | "usermodel";
       plugs?: { request: string; object: string; note: string }[];
       outro?: string | string[];
     }

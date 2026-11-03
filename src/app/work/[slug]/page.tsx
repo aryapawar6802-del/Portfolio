@@ -166,7 +166,7 @@ export default async function CaseStudyPage({
           </figure>
         ) : study.heroArt === "usermodel" ? (
           <figure className="mt-12 overflow-hidden border border-rule">
-            <UserModelHero label="Animation: the pitch had 3 user types. Mapping who actually touches the product gave 17. They were then pulled into one grid of 6 capabilities across 5 levels, where entering data happens at every level and changing the rules happens only at the top." />
+            <UserModelHero label="Animation: the brief had 3 types of users. When we mapped who actually touches the product, we got 17. We then pulled them into one grid of 6 capabilities across 5 levels, where entering data happens at every level and changing the rules happens only at the top." />
           </figure>
         ) : (
           <div className="mx-auto mt-12 w-full max-w-sm">

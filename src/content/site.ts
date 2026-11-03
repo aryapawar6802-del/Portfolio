@@ -16,7 +16,7 @@ export const site = {
   phone: { display: "+91 93256 87824", href: "tel:+919325687824" },
   resumeHref: "#",
   /** Domains, not client names — the work sits under NDA. */
-  domains: ["CPG", "Retail", "Pharma"],
+  domains: ["CPG", "Retail"],
 };
 
 /** Top nav. The glyph is decorative — labels carry the meaning. */

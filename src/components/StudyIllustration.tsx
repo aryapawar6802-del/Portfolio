@@ -1,15 +1,15 @@
-import { BeverageStillLife } from "./BeverageStillLife";
 import { CpgStillLife } from "./CpgStillLife";
 import { RetailStillLife } from "./RetailStillLife";
+import { TangleToGrid } from "./TangleToGrid";
 import type { StudyIllustrationName } from "@/content/types";
 
 const ILLUSTRATIONS = {
   cpg: CpgStillLife,
   retail: RetailStillLife,
-  beverage: BeverageStillLife,
+  tangle: TangleToGrid,
 };
 
-/** A study's still life by name, used on its card and beside its title. */
+/** A study's illustration by name, used on its card and beside its title. */
 export function StudyIllustration({
   name,
   className,
