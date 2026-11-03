@@ -6,8 +6,8 @@ import { SectionNav, type Section } from "@/components/SectionNav";
 import { caseStudies, getCaseStudy } from "@/content/case-studies";
 import { StudyJar } from "@/components/StudyJar";
 import { SimulatorHero } from "@/components/SimulatorHero";
-import { CpgStillLife } from "@/components/CpgStillLife";
-import { RetailStillLife } from "@/components/RetailStillLife";
+import { UserModelHero } from "@/components/UserModelHero";
+import { StudyIllustration } from "@/components/StudyIllustration";
 
 export function generateStaticParams() {
   return caseStudies.map((study) => ({ slug: study.slug }));
@@ -78,11 +78,11 @@ export default async function CaseStudyPage({
           <h1 className="display max-w-[26ch] text-balance text-[2.3rem] sm:text-[3.2rem]">
             {study.question}
           </h1>
-          {study.illustration === "cpg" && (
-            <CpgStillLife className="w-full max-w-md shrink-0 lg:w-[40%]" />
-          )}
-          {study.illustration === "retail" && (
-            <RetailStillLife className="w-full max-w-md shrink-0 lg:w-[40%]" />
+          {study.illustration && (
+            <StudyIllustration
+              name={study.illustration}
+              className="w-full max-w-md shrink-0 lg:w-[40%]"
+            />
           )}
         </div>
 
@@ -163,6 +163,10 @@ export default async function CaseStudyPage({
         ) : study.heroArt === "simulator" ? (
           <figure className="mt-12 overflow-hidden border border-rule">
             <SimulatorHero label="Animation: the old simulator was one crowded page, run four times for four brands and stitched together in a spreadsheet. The new one starts with three intent cards and runs one five-stage journey, so four runs become one." />
+          </figure>
+        ) : study.heroArt === "usermodel" ? (
+          <figure className="mt-12 overflow-hidden border border-rule">
+            <UserModelHero label="Animation: the pitch had 3 user types. Mapping who actually touches the product gave 17. They were then pulled into one grid of 6 capabilities across 5 levels, where entering data happens at every level and changing the rules happens only at the top." />
           </figure>
         ) : (
           <div className="mx-auto mt-12 w-full max-w-sm">

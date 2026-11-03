@@ -1,5 +1,7 @@
 import type { AccentName } from "./palette";
 
+export type StudyIllustrationName = "cpg" | "retail" | "beverage";
+
 /**
  * Case study content model.
  *
@@ -50,7 +52,7 @@ export type Block =
       rows: { label: string; value: string }[];
     }
   /** Labelled prose section. `eyebrow` is the small chip and TOC label. */
-  | { type: "prose"; eyebrow?: string; nav?: string; heading?: string; body: string[] }
+  | { type: "prose"; eyebrow?: string; nav?: string; heading?: string; sub?: boolean; body: string[] }
   /** Pull quote. `author`/`role` turn it into an attributed testimonial. */
   | { type: "quote"; eyebrow?: string; text: string; author?: string; role?: string }
   /** Bulleted list, optionally under its own heading. */
@@ -59,6 +61,8 @@ export type Block =
       eyebrow?: string;
       nav?: string;
       heading?: string;
+      /** Render the heading one step down, as a sub-section of the block above. */
+      sub?: boolean;
       intro?: string | string[];
       items: string[];
       outro?: string | string[];
@@ -85,12 +89,24 @@ export type Block =
       items: NumberedItem[];
       outro?: string | string[];
     }
+  /** Research findings told in full, each ending on what it changed. */
+  | {
+      type: "findings";
+      eyebrow?: string;
+      nav?: string;
+      heading?: string;
+      intro?: string | string[];
+      items: { heading: string; body: string | string[]; change: string }[];
+      outro?: string | string[];
+    }
   /** Two-column comparison table, e.g. old way against new way. */
   | {
       type: "table";
       eyebrow?: string;
       nav?: string;
       heading?: string;
+      /** Render the heading one step down, as a sub-section of the block above. */
+      sub?: boolean;
       intro?: string | string[];
       columns: [string, string];
       rows: [string, string][];
@@ -267,9 +283,9 @@ export type CaseStudy = {
   /** Looping hero animation. The GIF plays where `<video>` can't. */
   heroVideo?: { mp4: string; gif: string; alt: string; ratio: number };
   /** Hero animation drawn in code, by name, instead of a video file. */
-  heroArt?: "simulator";
+  heroArt?: "simulator" | "usermodel";
   /** Illustration beside the title, by name. */
-  illustration?: "cpg" | "retail";
+  illustration?: StudyIllustrationName;
   /** Who else was on it, and what they owned. */
   team?: { name: string; scope: string }[];
   tools?: string[];

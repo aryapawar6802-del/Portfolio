@@ -675,6 +675,288 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
+  {
+    slug: "benchmarking-discovery",
+    accent: "green",
+    company: "A global beverage company",
+    title: "Simplifying a messy problem into a clear model",
+    summary:
+      "Discovery for a 7-year-old supply chain programme at a global beverage company. The pitch already had an answer, and ten of its assumptions got challenged before a screen was designed.",
+    tags: ["Discovery", "User research", "Requirements", "Enterprise"],
+    question: "Simplifying a messy problem into a clear model",
+    headline:
+      "Challenged ten assumptions in the pitch before a single screen got designed",
+    standfirst:
+      "What do you build when the client has already told you what to build? The pitch said: move 15 dashboards onto a new platform, for 3 types of users, in 4 months. Clean. Simple. Already decided. Then we actually talked to the people who’d use it. And honestly? Almost none of that was the real problem. This is the story of the weeks before a single screen got designed, and how they changed what we built.",
+    role: "Design Analyst, discovery and requirements [FILL: confirm what you owned]",
+    timeline: "Sept to Nov 2025",
+    status: "[FILL: what happened next: designs validated / build / delivery]",
+    platform: "Research, requirement gathering, discovery",
+    years: "2025",
+    details: [
+      { label: "Client", value: "A global beverage company, supply chain team" },
+      { label: "Product", value: "A benchmarking-to-value platform used by bottlers across ~2,000 plants" },
+      { label: "Role", value: "Design Analyst, discovery and requirements [FILL: confirm what you owned]" },
+      { label: "Timeline", value: "Sept to Nov 2025" },
+      { label: "Phase", value: "Research, requirement gathering, discovery" },
+      { label: "Status", value: "[FILL: what happened next: designs validated / build / delivery]" },
+    ],
+    heroArt: "usermodel",
+    illustration: "beverage",
+    deltas: [
+      { from: "17 user types", to: "5 flows", label: "To design" },
+      { to: "10", label: "Pitch assumptions challenged" },
+    ],
+    framework: "custom",
+    body: [
+      {
+        type: "tldr",
+        eyebrow: "TL;DR",
+        rows: [
+          {
+            label: "Problem",
+            value:
+              "A 7-year-old programme was held together by 5 apps, password-locked Excel files, SharePoint folders and a lot of emails. The fix had been pitched before anyone asked the users what hurt.",
+          },
+          {
+            label: "What was done",
+            value:
+              "Planned and ran discovery with the client’s tech lead and programme lead, tracked what we did and didn’t learn, turned gaps into the next call’s agenda, and pulled 17 user types into one access model. [FILL: confirm]",
+          },
+          { label: "Team", value: "[FILL: design manager, PM, tech lead, data team]" },
+          {
+            label: "Result",
+            value:
+              "Ten things the pitch assumed got challenged before design started. The scope changed, the user model changed, and we got a clear test for success from the client himself.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        nav: "The brief",
+        heading: "The brief",
+        intro: [
+          "Okay, quick context first.",
+          "Every year, bottlers (the companies that actually make and ship the drinks) share their supply chain numbers with the global team. Things like costs, volumes, efficiency. They get benchmarked against each other, anonymously. The ones who want to go deeper fill in a cost breakdown, then a 400+ question best-practice survey, and walk away with an action plan.",
+          "The interesting bit? **Nobody has to do any of this.** It’s voluntary. It’s been running for 7 years, purely because bottlers find it useful.",
+          "And here’s what it was running on:",
+        ],
+        items: [
+          "An Excel template, shared over SharePoint",
+          "A cost template, locked with a password only a couple of people had",
+          "5 separate Power BI apps, about 15 report screens",
+          "A survey app in 6 languages",
+          "And at the end of all that? Someone screenshotting reports into PowerPoint by hand.",
+        ],
+        outro: [
+          "Even getting someone access meant two separate IDs and a ticket to IT.",
+          "So the pitch made total sense on paper. Put it all on one platform. Convert the 15 screens. Three user types: bottler, regional team, super user. Ship by January.",
+          "The job here was to run discovery and lock the requirements. Which basically meant checking if that answer was actually right.",
+        ],
+      },
+      {
+        type: "prose",
+        nav: "How discovery ran",
+        heading: "How discovery ran",
+        body: [
+          "There were two people to learn from. The tech lead, who knew how everything was wired. And the programme lead, who’d built the templates and knew why every number existed.",
+          "Both were busy. So there was no room for vague calls.",
+        ],
+      },
+      {
+        type: "table",
+        sub: true,
+        heading: "Every question had a plan B",
+        intro: [
+          "The question bank had a follow-up written next to each question, for when the first answer came back too neat.",
+          "Because people answer the question you ask, not the one you meant. A few examples:",
+        ],
+        columns: ["Asked first", "Asked if the answer was too clean"],
+        rows: [
+          ["What would you automate?", "What did you spend 2 hours on last week that should’ve taken 20 minutes?"],
+          ["How do you segment bottlers?", "Give me an example of a high-priority bottler vs a low-priority one. What’s different about how you treat them?"],
+          ["How are action plans approved?", "Has a bottler ever said no to a plan? What happened?"],
+          ["What can regional teams customise?", "Tell me about a time you and a regional team disagreed. Who had the final say?"],
+        ],
+        outro:
+          "Some questions were marked to skip too. AI and predictions? Too early. Language? Only if they pushed, because it wasn’t clear it was a top-3 pain. (Spoiler: it was. More on that later.)",
+      },
+      {
+        type: "numbered",
+        items: [
+          {
+            heading: "Tracking what wasn’t known",
+            body: "After every call, each question got a mark: fully covered, partly covered, or not covered. The partly-covered ones were the interesting ones. Like, we knew how many bottlers submit data, but nobody could tell us the completion rate.",
+          },
+          {
+            heading: "Gaps became the next agenda",
+            body: "The first call left 11 gaps. Those 11 gaps *were* the agenda for the programme lead. Whatever he couldn’t answer went to the next session, with a name next to it. So nothing just quietly disappeared. Every open question either got answered or got an owner.",
+          },
+        ],
+      },
+      {
+        type: "findings",
+        nav: "What we heard",
+        heading: "What we heard",
+        intro: "There were a lot of findings. These are the four that actually changed things.",
+        items: [
+          {
+            heading: "The plan doesn’t belong to the regional team. It belongs to the bottler.",
+            body: [
+              "The pitch said regional teams create action plans and bottlers view them. Sounds reasonable, right?",
+              "Except that’s not how it works at all. Remember, the whole thing is voluntary. Bottlers decide what they want to fix. They build the plan, with help. Nobody hands them a to-do list.",
+            ],
+            change:
+              "The action planning space became the bottler’s workspace, not a report they receive. That one flip changed who the main user of half the product was.",
+          },
+          {
+            heading: "“As easy as Excel, or they’ll go back to 100 systems.”",
+            body: [
+              "You’d half expect to hear “we want to get rid of Excel.” Nope.",
+              "A single bottler can have 15 to 20 people filling in data. They split the Excel file, work offline, stitch it back together, upload. And it works. The programme lead said getting bottlers to fill data was “zero problem.”",
+              "Then he said the line that stuck for the whole project: if it’s not easy, bottlers will go back to their own systems, which means 100 systems at the end of the day.",
+              "So the web form wasn’t competing with nothing. It was competing with Excel. And he was very specific about what that meant: copy and paste. Seeing lots of fields at once. If you can only see 5 values on screen, people will just fill Excel and type it all over again.",
+            ],
+            change:
+              "Excel stayed. The web form became an option, not a replacement. And when two people edit the same form, their answers merge instead of one wiping out the other.",
+          },
+          {
+            heading: "Success = fewer “how do I use this” questions",
+            body: [
+              "The question was what success looks like six months after launch. The expected answer was revenue numbers or adoption rates.",
+              "He said: fewer complaints, faster responses, less support. Questions should be about the content, not about how to use the tool.",
+              "That’s such a clear test. Every design decision after this had to pass it. Also, a separate company was building training material in parallel, and they needed our screens while we were still designing.",
+            ],
+            change:
+              "Help built into every step, not a training session at the start. And screenshots shared with the training team during design, not after launch.",
+          },
+          {
+            heading: "“Analytics” was actually two products",
+            body: [
+              "Everyone kept saying “analytics” like it was one thing. It wasn’t.",
+              "A bottler wants to see *their* results from *their* workshop. The global team wants to see the whole programme across ~2,000 plants. Like, are bottlers actually saving money? Which survey questions does everyone answer “yes” to? (If 50 questions are always yes, remove them. If 90 are always no, that’s a global problem, not a bottler problem.)",
+              "Same data. Completely different jobs.",
+            ],
+            change:
+              "Split into process analytics for bottlers, and a programme view (we called it Mission Control) for the global team. Mission Control went from a nice-to-have to the top priority.",
+          },
+        ],
+      },
+      {
+        type: "prose",
+        nav: "From 17 user types to one grid",
+        heading: "From 17 user types to one grid",
+        body: [
+          "The pitch had 3 user types. Mapping who actually touches this thing gave 17. Plant managers, regional heads, admins on both sides, content approvers, translators, the tech team...",
+          "Seventeen personas isn’t a design input. It’s a spreadsheet nobody reads.",
+          "So the question flipped. Instead of asking *who are you*, ask two questions: *what can you do*, and *how far can you see*? Six capabilities, five levels. Every one of the 17 fits somewhere on this grid.",
+        ],
+      },
+      {
+        type: "image",
+        ratio: 16 / 9,
+        caption: "The user model: 6 capabilities × 5 levels.",
+      },
+      {
+        type: "prose",
+        body: [
+          "The pattern jumps out straight away. Entering data happens at every level, but changing the rules only happens at the top. That’s exactly the control the programme lead wanted. And it meant designing 5 flows (the 6th is backend only), not 17 versions of the same screen.",
+        ],
+      },
+      {
+        type: "table",
+        nav: "What the pitch assumed",
+        heading: "What the pitch assumed vs what we found",
+        intro:
+          "If you only read one part of this, read this. Ten assumptions, checked against what people actually told us.",
+        columns: ["The pitch said", "What we found"],
+        rows: [
+          ["Regional teams create action plans", "Bottlers own their plans. It’s voluntary, remember?"],
+          ["3 types of users", "17 types, which we pulled into 6 capabilities across 5 levels (see above)"],
+          ["Super users will need Python to configure things", "The programme lead wanted to change things through the interface. Code stays with the tech team."],
+          ["Convert all 15 dashboards", "Some reports nobody opens. Rebuild based on what’s actually used, don’t copy-paste the old ones."],
+          ["Languages are an add-on", "Languages were core. The real pain was waiting 2 to 4 weeks for every translation before publishing anything."],
+          ["Regional teams send reminders", "Reminders were manual, run on relationships by the global team. Regional teams don’t even have admin access."],
+          ["“Monitor usage”", "Mission Control became the top priority"],
+          ["There’s no system for cost mapping", "There was one. Excel on SharePoint, just not connected to anything."],
+          ["(Excel wasn’t mentioned)", "Excel stays. Non-negotiable."],
+          ["A chatbot as an add-on", "Pushed out of the first version. And when it comes, it has to say “I don’t know, ask X” instead of guessing."],
+        ],
+        outro:
+          "None of this means the pitch was bad. It was written before anyone had spoken to users. That’s literally what discovery is for.",
+      },
+      {
+        type: "list",
+        nav: "Then reality checked us back",
+        heading: "Then reality checked us back",
+        intro: [
+          "Okay so now we knew what users needed. Next question: can the platform actually do it?",
+          "We went through every single requirement with the platform team and colour-coded it. Already available. Not available. Needs more clarity. Needs the platform team to confirm.",
+          "Some of it stung a bit:",
+        ],
+        items: [
+          "**No auto-translation on the platform.** And we’d just learnt languages were core.",
+          "**Region-based data access wasn’t built in.** Which is a big deal when bottlers must *never* see each other’s data.",
+          "**The platform ships as a locked image.** So “admins with coding skills can extend it” wasn’t really true.",
+        ],
+        outro: [
+          "So we got honest about what goes in the first version. A deployment-tracking tool, a community forum and the chatbot all moved out. Exporting to PowerPoint moved out too, which hurt, because remember the person screenshotting reports into slides? Action plans export to Excel, PDF and image instead.",
+          "And some things we protected no matter what. Bottlers only ever see their own data. Question IDs stay the same when only the wording changes, so you can still ask “has this plant improved over 3 years?” And data is kept forever, because, quote, “data is not a cost factor.”",
+          "That’s the part of requirements nobody posts about. Saying no to stuff, and being able to explain why.",
+        ],
+      },
+      {
+        type: "prose",
+        nav: "Being honest about it",
+        heading: "Being honest about it",
+        body: [],
+      },
+      {
+        type: "list",
+        sub: true,
+        heading: "What this role owned",
+        intro: "[FILL: confirm each one, delete what isn’t yours]",
+        items: [
+          "The question bank and the follow-ups",
+          "Running the discovery calls",
+          "The coverage tracker and the gap analysis",
+          "Turning findings into features, design decisions and success criteria",
+          "The 6 x 5 access model",
+        ],
+      },
+      {
+        type: "list",
+        sub: true,
+        heading: "What this role didn’t own",
+        items: [
+          "The pitch, the scope and the commercials",
+          "The platform feasibility calls. That was the platform and tech team.",
+          "The templates and the maths behind the benchmarks. That’s all the programme lead’s work, and it’s genuinely impressive.",
+        ],
+      },
+      {
+        type: "list",
+        sub: true,
+        heading: "What was still open when discovery ended",
+        intro: "Better to show this than pretend we had it all figured out.",
+        items: [
+          "Mission Control needed its own session. We knew what it was for, not exactly what went in it.",
+          "The plan-on-a-page had no designs yet. The programme lead said, fairly, “I have not seen anything so I can’t comment.”",
+          "How much regional teams can see in the cost and survey modules was still unconfirmed.",
+          "What happens when a bottler says no to a plan? We never got a real answer.",
+        ],
+      },
+      {
+        type: "prose",
+        sub: true,
+        heading: "What would change next time",
+        body: [
+          "Push to talk to a bottler directly, not just the global team. Every insight about bottlers here came secondhand [FILL: confirm]. The “as easy as Excel” line was right, but it would’ve been great to watch 15 people actually stitch that Excel file together.",
+          "And count things earlier. The tracker covered what we’d learned, but not how many requirements actually changed because of it. That number would’ve made this whole story easier to tell.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {

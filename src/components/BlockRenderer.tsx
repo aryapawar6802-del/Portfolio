@@ -202,7 +202,12 @@ export function BlockRenderer({
       return (
         <section {...anchor}>
           {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
-          {block.heading && <Heading>{block.heading}</Heading>}
+          {block.heading &&
+            (block.sub ? (
+              <Subheading>{block.heading}</Subheading>
+            ) : (
+              <Heading>{block.heading}</Heading>
+            ))}
           <div className="mt-6 space-y-4">
             {block.body.map((paragraph, i) => (
               <p key={i} className="max-w-prose leading-[1.75] text-ink-2">
@@ -217,7 +222,12 @@ export function BlockRenderer({
       return (
         <section {...anchor}>
           {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
-          {block.heading && <Heading>{block.heading}</Heading>}
+          {block.heading &&
+            (block.sub ? (
+              <Subheading>{block.heading}</Subheading>
+            ) : (
+              <Heading>{block.heading}</Heading>
+            ))}
           <Paragraphs text={block.intro} className="mt-6" />
           <ul className="mt-6 max-w-prose space-y-3">
             {block.items.map((item, i) => (
@@ -259,7 +269,12 @@ export function BlockRenderer({
       return (
         <section {...anchor}>
           {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
-          {block.heading && <Heading>{block.heading}</Heading>}
+          {block.heading &&
+            (block.sub ? (
+              <Subheading>{block.heading}</Subheading>
+            ) : (
+              <Heading>{block.heading}</Heading>
+            ))}
           <Paragraphs text={block.intro} className="mt-6" />
           <table className="mt-9 w-full border-t border-rule text-left">
             <thead>
@@ -286,6 +301,33 @@ export function BlockRenderer({
             </tbody>
           </table>
           <Paragraphs text={block.outro} className="mt-8" />
+        </section>
+      );
+
+    case "findings":
+      return (
+        <section {...anchor}>
+          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+          {block.heading && <Heading>{block.heading}</Heading>}
+          <Paragraphs text={block.intro} className="mt-6" />
+          <ol className="mt-9 space-y-12">
+            {block.items.map((item, i) => (
+              <li key={item.heading} className="border-t border-rule pt-5">
+                <span className="label text-ink-3">{String(i + 1).padStart(2, "0")}</span>
+                <div className="mt-2">
+                  <Subheading>{item.heading}</Subheading>
+                </div>
+                <Paragraphs text={item.body} className="mt-4" />
+                <div className="mt-6 rounded-panel p-5" style={{ backgroundColor: wash }}>
+                  <p className="label" style={{ color: tint }}>So what changed</p>
+                  <p className="mt-2 max-w-prose leading-[1.7] text-ink">
+                    <Marked text={item.change} />
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <Paragraphs text={block.outro} className="mt-9" />
         </section>
       );
 
