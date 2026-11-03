@@ -14,7 +14,8 @@ export const site = {
   email: "arya.pawar6802@gmail.com",
   /** Shown spaced for reading; the tel: link uses the bare digits. */
   phone: { display: "+91 93256 87824", href: "tel:+919325687824" },
-  resumeHref: "#",
+  /** The PDF on Google Drive, shared with anyone who has the link. */
+  resumeHref: "https://drive.google.com/file/d/1x_iVnPSMdZgom44TdjeOxi0Li8ORPHNP/view",
   /** Domains, not client names — the work sits under NDA. */
   domains: ["CPG", "Retail"],
 };

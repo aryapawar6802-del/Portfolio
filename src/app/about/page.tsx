@@ -40,6 +40,8 @@ export default function About() {
           <li>
             <a
               href={site.resumeHref}
+              target="_blank"
+              rel="noreferrer"
               className="text-accent underline underline-offset-4"
             >
               Résumé

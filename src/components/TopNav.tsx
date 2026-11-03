@@ -53,7 +53,12 @@ export function TopNav() {
               );
             })}
             <li>
-              <a href={site.resumeHref} className={`${base} ${quiet}`}>
+              <a
+                href={site.resumeHref}
+                target="_blank"
+                rel="noreferrer"
+                className={`${base} ${quiet}`}
+              >
                 <span aria-hidden="true" className="text-[0.7em] opacity-60">
                   ▤
                 </span>

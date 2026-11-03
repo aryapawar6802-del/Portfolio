@@ -55,6 +55,8 @@ export default function Home() {
               </a>
               <a
                 href={site.resumeHref}
+                target="_blank"
+                rel="noreferrer"
                 className="text-[1.05rem] text-ink-2 underline decoration-rule-strong underline-offset-4 hover:text-ink hover:decoration-ink"
               >
                 Résumé
