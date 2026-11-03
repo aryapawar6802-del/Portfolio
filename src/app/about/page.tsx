@@ -1,10 +1,8 @@
 import { site } from "@/content/site";
 
-/* PLACEHOLDER copy — replace with your own. */
 const paragraphs = [
-  "I'm a product designer. So far most of my work has been enterprise workflow and sales tooling, plus the internal screens that end up deciding whether people use a company's software at all.",
-  "A lot of my projects start before there's anything to draw. The team usually knows something is wrong but can't agree on what to measure, so the first thing I hand over is often a definition of what to measure. The flow comes after that.",
-  "I like working on the screens nobody puts in a demo, like the reconciliation queue, the exception state, or the third step of an eleven-step process. That's where people spend most of their time.",
+  "I like taking something messy and making it make sense. At work, that usually means a huge process that a whole team has been holding together by hand.",
+  "Most of my projects so far have been in CPG and retail, and they usually start with Excel files and a lot of emails. It all works, but it takes a lot of effort, so I spend a lot of time understanding how the work actually happens before I design anything.",
 ];
 
 export default function About() {
