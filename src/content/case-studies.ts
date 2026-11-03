@@ -332,19 +332,19 @@ export const caseStudies: CaseStudy[] = [
       "Rebuilt a single-cell media simulator into one intent-first journey for portfolio planning",
     standfirst:
       "A global CPG company had a media simulator that told planners where to put their money. But it planned one cell at a time (market × brand × region × sub-brand), only from a budget, and everything sat on one page. Planners don’t plan one cell, though. They plan a whole portfolio. So a planner covering four brands ran four scenarios, stitched them together in Excel before anything could go to their leadership, and dropped off. The new simulator asks what you’re trying to do first, and plans the whole portfolio in one run.",
-    role: "[FILL: e.g. Product designer, simulator flow]",
-    timeline: "[FILL]",
+    role: "Sole designer",
+    timeline: "3 months",
     status: "Handed off to engineering",
     platform: "B2B web app · Marketing Mix Modeling",
     years: "",
     details: [
       { label: "Client", value: "A global CPG company" },
-      { label: "Role", value: "[FILL: e.g. Product designer, simulator flow]" },
+      { label: "Role", value: "Sole designer" },
       {
         label: "Process",
         value: "User interviews, three approaches, OOUX, flows, edge states",
       },
-      { label: "Timeline", value: "[FILL]" },
+      { label: "Timeline", value: "3 months" },
     ],
     heroArt: "simulator",
     illustration: "cpg",
@@ -437,7 +437,7 @@ export const caseStudies: CaseStudy[] = [
           ["Comparing only the same type", "Compare across approaches, against the MAT baseline"],
         ],
         outro:
-          "**Role:** [FILL: e.g. Product designer on the simulator flow. Discovery, user interviews, the three approaches, OOUX, flows and all the screens.]",
+          "**Role:** Sole designer. Discovery, user interviews, the three approaches, OOUX, flows and all the screens.",
       },
       {
         type: "options",
@@ -717,7 +717,7 @@ export const caseStudies: CaseStudy[] = [
           {
             label: "What was done",
             value:
-              "We planned and ran discovery with the client’s tech lead and programme lead, kept track of what we had and hadn’t learned, used the gaps to set the agenda for the next call, and pulled 17 user types into one access model. [FILL: confirm]",
+              "We planned and ran discovery with the client’s tech lead and programme lead, kept track of what we had and hadn’t learned, used the gaps to set the agenda for the next call, and pulled 17 user types into one access model.",
           },
           { label: "Team", value: "PM, tech lead, data team" },
           {
@@ -909,8 +909,7 @@ export const caseStudies: CaseStudy[] = [
       {
         type: "list",
         sub: true,
-        heading: "What this role owned",
-        intro: "[FILL: confirm each one, delete what isn’t yours]",
+        heading: "What this role was part of",
         items: [
           "The question bank and the follow-ups",
           "Running the discovery calls",
@@ -946,7 +945,7 @@ export const caseStudies: CaseStudy[] = [
         sub: true,
         heading: "What would change next time",
         body: [
-          "Push to talk to a bottler directly, and not just the global team. Every insight about bottlers here came secondhand [FILL: confirm]. The “as easy as Excel” line was right, but it would’ve been great to watch 15 people actually stitch that Excel file together.",
+          "Push to talk to a bottler directly, and not just the global team. Every insight about bottlers here came secondhand. The “as easy as Excel” line was right, but it would’ve been great to watch 15 people actually stitch that Excel file together.",
           "And count things earlier. The tracker covered what we had learned, but not how many requirements actually changed because of it, and that number would’ve made this story easier to tell.",
         ],
       },
