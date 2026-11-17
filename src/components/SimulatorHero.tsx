@@ -100,10 +100,11 @@ function Caption({ name, children }: { name: string; children: React.ReactNode }
   );
 }
 
-export function SimulatorHero({ label }: { label: string }) {
+/** `still` drops the animation and keeps only the closing caption, for use as a map in the body. */
+export function SimulatorHero({ label, still = false }: { label: string; still?: boolean }) {
   return (
     <svg viewBox="0 0 1080 608" className="block h-auto w-full bg-white" role="img" aria-label={label}>
-      <style>{STYLES}</style>
+      {!still && <style>{STYLES}</style>}
 
       {/* frame label */}
       <text x={48} y={58} fontSize={20} fontWeight={600} fill={NAVY} fontFamily={FONT}>
@@ -203,8 +204,12 @@ export function SimulatorHero({ label }: { label: string }) {
       </g>
 
       {/* captions */}
-      <Caption name="sh-c1">Before: one brand at a time, stitched together by hand.</Caption>
-      <Caption name="sh-c2">After: pick what you’re trying to do, then one journey.</Caption>
+      {!still && (
+        <>
+          <Caption name="sh-c1">Before: one brand at a time, stitched together by hand.</Caption>
+          <Caption name="sh-c2">After: pick what you’re trying to do, then one journey.</Caption>
+        </>
+      )}
       <Caption name="sh-c3">
         4 runs <tspan fill={BLUE}>→ 1 run.</tspan> One portfolio, planned together.
       </Caption>

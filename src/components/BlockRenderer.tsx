@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { Delta } from "./Delta";
 import { JunctionMap } from "./JunctionMap";
-import { CalibrationMap } from "./CalibrationMap";
+import { CalibrationFlow } from "./CalibrationFlow";
+import { ImpactList } from "./ImpactList";
+import { SimulatorHero } from "./SimulatorHero";
 import { UserModelGrid } from "./UserModelGrid";
 import { ACCENTS } from "@/content/palette";
 import type { AccentName } from "@/content/palette";
@@ -496,9 +498,18 @@ export function BlockRenderer({
           {block.heading && <Heading>{block.heading}</Heading>}
           <Paragraphs text={block.intro} className="mt-6" />
           <figure className="-mx-6 mt-9 overflow-x-auto px-6 sm:mx-0 sm:px-0">
-            <div className="min-w-[640px] rounded-panel border border-rule p-4 sm:p-6">
-              {block.name === "calibration" ? (
-                <CalibrationMap tint={tint} wash={wash} />
+            <div
+              className={`rounded-panel border border-rule ${
+                block.name === "calibrationflow" ? "p-5 sm:p-7" : block.name === "simulator" ? "min-w-[640px] overflow-hidden" : "min-w-[640px] p-4 sm:p-6"
+              }`}
+            >
+              {block.name === "calibrationflow" ? (
+                <CalibrationFlow tint={tint} />
+              ) : block.name === "simulator" ? (
+                <SimulatorHero
+                  still
+                  label="Map: before, the simulator was one crowded page, run once per brand and stitched together in a spreadsheet. After, a planner picks an approach and runs one five-stage journey, so four runs become one."
+                />
               ) : block.name === "usermodel" ? (
                 <UserModelGrid tint={tint} wash={wash} />
               ) : (
@@ -692,21 +703,7 @@ export function BlockRenderer({
         <section {...anchor}>
           {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
           {block.heading && <Heading>{block.heading}</Heading>}
-          <dl className="mt-9 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
-            {block.items.map((item) => (
-              <div key={item.label} className="border-t border-rule pt-5">
-                <dt className="sr-only">{item.label}</dt>
-                <dd>
-                  <p className="display text-[2.4rem]" style={{ color: tint }}>
-                    {item.value}
-                  </p>
-                  <p className="mt-3 text-[0.9rem] leading-[1.5] text-ink-2">
-                    {item.label}
-                  </p>
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <ImpactList items={block.items} marker={ACCENTS[accent].solid} columns className="mt-8" />
         </section>
       );
 

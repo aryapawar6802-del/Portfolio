@@ -41,20 +41,20 @@ export const caseStudies: CaseStudy[] = [
     },
     illustration: "retail",
     deltas: [
-      { from: "~210 h", to: "~45 h", label: "Per cycle" },
-      { from: "2–3 weeks", to: "Days", label: "Calibration loop" },
+      { to: "~45 h", label: "per cycle, down from about 210" },
+      { to: "Days", label: "to calibrate, instead of 2 to 3 weeks" },
     ],
     framework: "custom",
     body: [
       {
         type: "stats",
         eyebrow: "At a glance",
-        heading: "What moved",
+        heading: "What changed",
         items: [
-          { value: "~45 h", label: "Per cycle, down from ~210" },
-          { value: "Days", label: "Calibration loop, down from two to three weeks" },
-          { value: "$3.5K", label: "Monthly saving realised for the first business unit" },
-          { value: "4", label: "Teams moved from sequential to parallel" },
+          { value: "~45 h", label: "per cycle, down from about 210" },
+          { value: "Days", label: "to calibrate, instead of 2 to 3 weeks" },
+          { value: "$3.5K", label: "saved every month for the first business unit" },
+          { value: "4", label: "teams working in parallel instead of one after another" },
         ],
       },
       {
@@ -173,31 +173,6 @@ export const caseStudies: CaseStudy[] = [
         caption: "The ORCA board. Every later call about navigation and states came out of this.",
       },
       {
-        type: "diagram",
-        nav: "The object model",
-        heading: "One object at the centre",
-        intro: "The OOUX map is where the roll-up problem became really clear. Everything a team touches is one thing: a calibration slice, like Department · Total market. Metrics, rules, status and the change log all hang off it, and every sign-off runs out of it.",
-        name: "calibration",
-        plugs: [
-          {
-            request: "A number goes past the threshold",
-            object: "Rule violation",
-            note: "Rules run against the slice and raise a violation. That’s the flag the AI shows you.",
-          },
-          {
-            request: "A late edit lower down",
-            object: "Change log",
-            note: "Every edit is logged against its slice, so the impact review can show what it touches, including numbers someone already signed off.",
-          },
-          {
-            request: "The next team’s turn",
-            object: "Status",
-            note: "A slice only opens when its stage does. Completing one stage unlocks the next.",
-          },
-        ],
-        outro: "So the screens didn’t start from a table. They started from this.",
-      },
-      {
         type: "groups",
         nav: "Modes",
         heading: "Every action, sorted into modes",
@@ -244,11 +219,8 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        type: "image",
-        src: "/work/calibration/07-calibration-flow.png",
-        ratio: 1.5,
-        alt: "Calibration flow diagram, titled Every screen answers a question the calibrator was already asking. Three stages: Orient, where home doubles as a progress tracker; Calibrate the level, running Summary, Compare, Edit and Approve, with a Blocked branch that loops back to the summary when a rule conflict stops the level; and Unlock, where finalising a level locks it in and opens the one beneath.",
-        caption: "Each screen next to the question it answers. When a rule conflict blocks a level, it loops back to the summary.",
+        type: "diagram",
+        name: "calibrationflow",
       },
       {
         type: "screens",
@@ -311,10 +283,10 @@ export const caseStudies: CaseStudy[] = [
         nav: "Outcome",
         heading: "Outcome",
         items: [
-          { value: "~45 h", label: "Per cycle, down from ~210" },
-          { value: "Days", label: "Calibration loop, down from two to three weeks" },
-          { value: "$3.5K", label: "Monthly saving realised for the first business unit" },
-          { value: "4", label: "Teams moved from sequential to parallel" },
+          { value: "~45 h", label: "per cycle, down from about 210" },
+          { value: "Days", label: "to calibrate, instead of 2 to 3 weeks" },
+          { value: "$3.5K", label: "saved every month for the first business unit" },
+          { value: "4", label: "teams working in parallel instead of one after another" },
         ],
       },
     ],
@@ -346,23 +318,22 @@ export const caseStudies: CaseStudy[] = [
       },
       { label: "Timeline", value: "3 months" },
     ],
-    heroArt: "simulator",
     illustration: "cpg",
     deltas: [
-      { from: "4 scenarios", to: "1 run", label: "Per portfolio plan" },
-      { from: "1", to: "2", label: "Ways to plan" },
+      { to: "1 run", label: "for a whole portfolio plan, instead of 4 scenarios stitched in Excel" },
+      { to: "2", label: "ways to plan, from a budget or from a target" },
     ],
     framework: "custom",
     body: [
       {
         type: "stats",
         eyebrow: "At a glance",
-        heading: "What moved",
+        heading: "What changed",
         items: [
-          { value: "1 run", label: "Per portfolio plan, down from four scenarios and an Excel file" },
-          { value: "2", label: "Ways to plan: from a budget or from a target" },
-          { value: "5", label: "Stages, the same for every approach" },
-          { value: "3", label: "New objects: combination, portfolio, constraint" },
+          { value: "1 run", label: "for a whole portfolio plan, instead of 4 scenarios and an Excel file" },
+          { value: "2", label: "ways to plan, from a budget or from a target" },
+          { value: "5", label: "stages, the same for every approach" },
+          { value: "3", label: "new objects: combination, portfolio and constraint" },
         ],
       },
       {
@@ -502,6 +473,10 @@ export const caseStudies: CaseStudy[] = [
           { label: "In flight", sub: "Coming next", stages: ["Approach", "Scope", "Plan adapts", "Run", "Compare"], future: true },
         ],
         outro: "Scope, Run and Compare stay exactly where they were. So a planner learns one journey, and a new approach doesn’t reset that.",
+      },
+      {
+        type: "diagram",
+        name: "simulator",
       },
       {
         type: "timeline",

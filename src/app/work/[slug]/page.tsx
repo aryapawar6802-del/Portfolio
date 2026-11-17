@@ -4,8 +4,6 @@ import type { Metadata } from "next";
 import { BlockRenderer } from "@/components/BlockRenderer";
 import { SectionNav, type Section } from "@/components/SectionNav";
 import { caseStudies, getCaseStudy } from "@/content/case-studies";
-import { StudyJar } from "@/components/StudyJar";
-import { SimulatorHero } from "@/components/SimulatorHero";
 import { UserModelHero } from "@/components/UserModelHero";
 import { StudyIllustration } from "@/components/StudyIllustration";
 
@@ -160,19 +158,11 @@ export default async function CaseStudyPage({
               />
             </video>
           </figure>
-        ) : study.heroArt === "simulator" ? (
-          <figure className="mt-12 overflow-hidden border border-rule">
-            <SimulatorHero label="Animation: the old simulator was one crowded page, run four times for four brands and stitched together in a spreadsheet. The new one starts with three intent cards and runs one five-stage journey, so four runs become one." />
-          </figure>
         ) : study.heroArt === "usermodel" ? (
           <figure className="mt-12 overflow-hidden border border-rule">
             <UserModelHero label="Animation: the brief had 3 types of users. When we mapped who actually touches the product, we got 17. We then pulled them into one grid of 6 capabilities across 5 levels, where entering data happens at every level and changing the rules happens only at the top." />
           </figure>
-        ) : (
-          <div className="mx-auto mt-12 w-full max-w-sm">
-            <StudyJar accent={study.accent} />
-          </div>
-        )}
+        ) : null}
       </header>
 
       <div className="lg:flex lg:items-start lg:gap-16">

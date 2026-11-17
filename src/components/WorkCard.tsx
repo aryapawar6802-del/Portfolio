@@ -2,7 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ACCENTS } from "@/content/palette";
 import { StudyIllustration } from "./StudyIllustration";
-import type { CaseStudy, Delta as DeltaType } from "@/content/types";
+import { ImpactList } from "./ImpactList";
+import type { CaseStudy } from "@/content/types";
 
 /**
  * Editorial work entry. No card, no border, no shadow — the image and the
@@ -98,11 +99,11 @@ export function WorkCard({
           </p>
 
           {study.deltas.length > 0 && (
-            <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
-              {study.deltas.slice(0, 2).map((delta) => (
-                <Impact key={delta.label} delta={delta} tint={accent.ink} rule={accent.solid} />
-              ))}
-            </dl>
+            <ImpactList
+              items={study.deltas.slice(0, 2).map((delta) => ({ value: delta.to, label: delta.label }))}
+              marker={accent.solid}
+              className="mt-8"
+            />
           )}
 
           <p className="mt-10 inline-flex items-center gap-2 text-[0.95rem] font-medium text-clay">
@@ -119,36 +120,5 @@ export function WorkCard({
         </div>
       </Link>
     </article>
-  );
-}
-
-/**
- * Result-first impact figure: the number it landed on, large, with the old
- * value struck through underneath. Reads as "now this, it used to be that"
- * rather than the usual before → after arrow.
- */
-function Impact({
-  delta,
-  tint,
-  rule,
-}: {
-  delta: DeltaType;
-  tint: string;
-  rule: string;
-}) {
-  return (
-    <div className="border-l-2 pl-4" style={{ borderColor: rule }}>
-      <dt className="label text-ink-3">{delta.label}</dt>
-      <dd className="mt-1">
-        <span className="display block text-[2rem] leading-none tabular-nums" style={{ color: tint }}>
-          {delta.to}
-        </span>
-        {delta.from && (
-          <span className="mt-1.5 block text-[0.85rem] text-ink-3">
-            Was <s className="tabular-nums">{delta.from}</s>
-          </span>
-        )}
-      </dd>
-    </div>
   );
 }

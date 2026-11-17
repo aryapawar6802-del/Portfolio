@@ -174,7 +174,7 @@ export type Block =
       nav?: string;
       heading?: string;
       intro?: string | string[];
-      name: "junctions" | "calibration" | "usermodel";
+      name: "junctions" | "usermodel" | "simulator" | "calibrationflow";
       plugs?: { request: string; object: string; note: string }[];
       outro?: string | string[];
     }
@@ -283,7 +283,7 @@ export type CaseStudy = {
   /** Looping hero animation. The GIF plays where `<video>` can't. */
   heroVideo?: { mp4: string; gif: string; alt: string; ratio: number };
   /** Hero animation drawn in code, by name, instead of a video file. */
-  heroArt?: "simulator" | "usermodel";
+  heroArt?: "usermodel";
   /** Illustration beside the title, by name. */
   illustration?: StudyIllustrationName;
   /** Who else was on it, and what they owned. */
