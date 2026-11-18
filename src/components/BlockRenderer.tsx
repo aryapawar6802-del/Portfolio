@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Delta } from "./Delta";
 import { JunctionMap } from "./JunctionMap";
 import { CalibrationFlow } from "./CalibrationFlow";
-import { RoiToy } from "./RoiToy";
+import { BrandToy } from "./BrandToy";
 import { StickyNote } from "./StickyNote";
 import { ImpactList } from "./ImpactList";
 import { SimulatorHero } from "./SimulatorHero";
@@ -750,7 +750,7 @@ function BlockBody({ block, id, accent = "orange", stickies = [] }: BlockProps) 
             )}
           </div>
           <div className="mt-9">
-            <RoiToy />
+            <BrandToy />
           </div>
           {notes.length > 0 && (
             <div className="mt-14">

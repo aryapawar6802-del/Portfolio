@@ -73,7 +73,7 @@ export type Block =
    * A playable toy, by name. Its sticky notes sit underneath it rather than
    * in the margin, under "What you just ran into".
    */
-  | { type: "toy"; name: "rapidroi"; eyebrow?: string; nav?: string; heading?: string; intro?: string; aside?: string }
+  | { type: "toy"; name: "brands"; eyebrow?: string; nav?: string; heading?: string; intro?: string; aside?: string }
   /** Impact written as one sentence. `**bold**` numbers get a wavy underline. */
   | { type: "impact"; eyebrow?: string; nav?: string; heading?: string; text: string }
   /** Big-number tile grid — the "outcome at a glance" pattern. */
