@@ -175,7 +175,7 @@ export default async function CaseStudyPage({
       <div className={`lg:flex lg:items-start lg:gap-16 ${hasNotes ? "xl:gap-12" : ""}`}>
         <SectionNav sections={sections} compact={hasNotes} />
 
-        <div className={`min-w-0 flex-1 space-y-20 pb-20 lg:max-w-3xl ${hasNotes ? "xl:max-w-none" : ""}`}>
+        <div className={`min-w-0 flex-1 space-y-20 lg:max-w-3xl ${hasNotes ? "pb-8 xl:max-w-none" : "pb-20"}`}>
         {hasNotes && <StickyLegend />}
         {study.body.map((block, i) => (
           <BlockRenderer
@@ -189,8 +189,10 @@ export default async function CaseStudyPage({
         </div>
       </div>
 
+      {/* The section list stays pinned until the end of the row above, so
+          the board needs its own gap or the list scrolls right into it. */}
       {hasNotes && (
-        <div className="pb-20">
+        <div className="mt-14 pb-20">
           <StickyBoard notes={stickies} />
         </div>
       )}
