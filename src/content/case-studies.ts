@@ -371,18 +371,38 @@ export const caseStudies: CaseStudy[] = [
       { to: "1 run", label: "for a whole portfolio plan, instead of 4 scenarios stitched in Excel" },
       { to: "2", label: "ways to plan, from a budget or from a target" },
     ],
+    stickies: [
+      {
+        id: "B-01",
+        kind: "blocker",
+        front: "“Failed” told planners nothing",
+        why: "Problems only showed up after the run, and an impossible target came back as a plain “no”, with nothing on what to change.",
+        pushback: "[Fill in]",
+        section: "Try it",
+      },
+      {
+        id: "D-01",
+        kind: "decision",
+        front: "Three directions, mapped end to end",
+        why: "Inline, portfolio first and intent first, each mapped as a full journey and taken to the client with the pros and cons side by side. Intent first won, because planners come in with a question and the first screen asks it back.",
+        pushback: "[Fill in]",
+        section: "Try it",
+      },
+      {
+        id: "D-02",
+        kind: "decision",
+        front: "Two ways in, and an honest “no”",
+        why: "Plan from a budget or from a target. When a target can’t be met, the result shows the shortfall, not just a “no”.",
+        pushback: "[Fill in]",
+        section: "Try it",
+      },
+    ],
     framework: "custom",
     body: [
       {
-        type: "stats",
+        type: "impact",
         eyebrow: "At a glance",
-        heading: "What changed",
-        items: [
-          { value: "1 run", label: "for a whole portfolio plan, instead of 4 scenarios and an Excel file" },
-          { value: "2", label: "ways to plan, from a budget or from a target" },
-          { value: "5", label: "stages, the same for every approach" },
-          { value: "3", label: "new objects: combination, portfolio and constraint" },
-        ],
+        text: "A whole portfolio plan now takes **1 run instead of 4 scenarios** stitched together in Excel, and planners can start **from a budget or from a target**, through the same five stages either way.",
       },
       {
         type: "list",
@@ -628,6 +648,14 @@ export const caseStudies: CaseStudy[] = [
           },
         ],
         outro: "So every time a new request comes in, it plugs into one of these objects. The work goes into the new feature, not into rebuilding what’s underneath.",
+      },
+      {
+        type: "toy",
+        name: "rapidroi",
+        nav: "Try it",
+        heading: "Plan a campaign. Then try to break it.",
+        intro: "This is a tiny version of the redesigned tool. Pick how you want to plan, set your numbers and run it. Go ambitious with the target.",
+        aside: "Numbers here are made up. The problem is real.",
       },
       {
         type: "screens",

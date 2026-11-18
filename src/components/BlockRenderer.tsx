@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Delta } from "./Delta";
 import { JunctionMap } from "./JunctionMap";
 import { CalibrationFlow } from "./CalibrationFlow";
+import { RoiToy } from "./RoiToy";
+import { StickyNote } from "./StickyNote";
 import { ImpactList } from "./ImpactList";
 import { SimulatorHero } from "./SimulatorHero";
 import { UserModelGrid } from "./UserModelGrid";
@@ -181,7 +183,7 @@ type BlockProps = {
 export function BlockRenderer(props: BlockProps) {
   const { block, stickies = [] } = props;
   const on = stickies.length > 0;
-  if (!on || block.type === "screens") return <BlockBody {...props} />;
+  if (!on || block.type === "screens" || block.type === "toy") return <BlockBody {...props} />;
   const key = ("nav" in block && block.nav) || ("heading" in block && block.heading) || "";
   const notes = stickies.filter((note) => note.section === key);
   /* A diagram with nothing pinned to it takes the margin too: it's wide
@@ -727,6 +729,42 @@ function BlockBody({ block, id, accent = "orange", stickies = [] }: BlockProps) 
           </div>
         </section>
       );
+
+    case "toy": {
+      const notes = stickies.filter((note) => note.section === (block.nav ?? block.heading));
+      return (
+        <section {...anchor}>
+          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
+            <div>
+              {block.heading && <Heading>{block.heading}</Heading>}
+              <Paragraphs text={block.intro} className="mt-5" />
+            </div>
+            {block.aside && (
+              <p
+                className="font-hand max-w-[15rem] shrink-0 text-[1.4rem] font-semibold leading-[1.15]"
+                style={{ color: ACCENTS.red.ink }}
+              >
+                {block.aside}
+              </p>
+            )}
+          </div>
+          <div className="mt-9">
+            <RoiToy />
+          </div>
+          {notes.length > 0 && (
+            <div className="mt-14">
+              <Subheading>What you just ran into</Subheading>
+              <div className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] items-start gap-6">
+                {notes.map((note) => (
+                  <StickyNote key={note.id} note={note} />
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+      );
+    }
 
     case "impact":
       return (
