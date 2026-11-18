@@ -2,8 +2,38 @@ import Link from "next/link";
 import Image from "next/image";
 import { ACCENTS } from "@/content/palette";
 import { StudyIllustration } from "./StudyIllustration";
-import { ImpactList } from "./ImpactList";
-import type { CaseStudy } from "@/content/types";
+import { ConvergeGlyph } from "./ConvergeGlyph";
+import type { CardThumb, CaseStudy } from "@/content/types";
+
+/** One wobble per card, so no two glyphs tangle the same way. */
+const GLYPH_SEEDS = [11, 23, 31];
+
+/**
+ * A small before/after frame. A real screen is cropped from its top-left,
+ * where the page title sits; a missing one shows as a marked placeholder.
+ */
+function Thumb({ label, thumb }: { label: string; thumb: CardThumb }) {
+  return (
+    <figure>
+      <div className="relative aspect-4/3 overflow-hidden rounded-control bg-paper-deep">
+        {thumb.src ? (
+          <Image
+            src={thumb.src}
+            alt={thumb.alt ?? ""}
+            fill
+            sizes="(min-width: 1024px) 15rem, 45vw"
+            className="object-cover object-left-top"
+          />
+        ) : (
+          <div className="absolute inset-0 grid place-items-center rounded-control border border-dashed border-rule-strong p-3 text-center text-[0.78rem] leading-snug text-ink-3">
+            {thumb.placeholder}
+          </div>
+        )}
+      </div>
+      <figcaption className="label mt-1.5 text-ink-3">{label}</figcaption>
+    </figure>
+  );
+}
 
 /**
  * Editorial work entry. No card, no border, no shadow — the image and the
@@ -23,6 +53,7 @@ export function WorkCard({
   index: number;
 }) {
   const accent = ACCENTS[study.accent];
+  const card = study.card;
   /* Alternate which side the image sits on so a stack of studies has rhythm. */
   const flip = index % 2 === 1;
 
@@ -75,22 +106,16 @@ export function WorkCard({
         </div>
 
         <div className="min-w-0 flex-1 lg:flex lg:flex-col lg:justify-center lg:py-8">
-          {/* Just marks it as client work; the company stays unnamed. */}
-          <p className="label text-ink-3">Client</p>
+          {card && (
+            <ConvergeGlyph
+              from={card.from}
+              to={card.to}
+              seed={GLYPH_SEEDS[index % GLYPH_SEEDS.length]}
+              className="w-full max-w-[260px]"
+            />
+          )}
 
-          <ul className="mt-3 flex flex-wrap gap-x-2 gap-y-2">
-            {study.tags.map((tag) => (
-              <li
-                key={tag}
-                className="rounded-chip px-2.5 py-1 text-[0.78rem]"
-                style={{ backgroundColor: accent.wash, color: accent.ink }}
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
-
-          <h3 className="display mt-9 max-w-[22ch] text-[1.6rem] sm:text-[1.9rem]">
+          <h3 className="display mt-8 max-w-[22ch] text-[1.6rem] sm:text-[1.9rem]">
             {study.question}
           </h3>
 
@@ -98,15 +123,19 @@ export function WorkCard({
             {study.summary}
           </p>
 
-          {study.deltas.length > 0 && (
-            <ImpactList
-              items={study.deltas.slice(0, 2).map((delta) => ({ value: delta.to, label: delta.label }))}
-              marker={accent.solid}
-              className="mt-8"
-            />
+          {card && (
+            <>
+              <div className="mt-7 grid max-w-[30rem] grid-cols-2 gap-3">
+                <Thumb label="Before" thumb={card.before} />
+                <Thumb label="After" thumb={card.after} />
+              </div>
+              <p className="font-hand mt-5 text-[1.35rem] font-semibold leading-[1.2] text-ink">
+                {card.notice}
+              </p>
+            </>
           )}
 
-          <p className="mt-10 inline-flex items-center gap-2 text-[0.95rem] font-medium text-clay">
+          <p className="mt-8 inline-flex items-center gap-2 text-[0.95rem] font-medium text-clay">
             <span className="underline decoration-clay/40 underline-offset-4 group-hover:decoration-clay">
               Read case study
             </span>

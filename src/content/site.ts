@@ -5,12 +5,12 @@ export const site = {
   tagline: "makes messy things make sense",
   /** Hero statement, and the site's meta description. */
   headline: "Designing B2B tools for teams that work in data.",
+  /** The hero sets the headline on these two lines. */
+  headlineLines: ["Designing B2B tools for teams", "that work in data."],
   /** Hero facts. Companies are named but not linked. */
   currently: "MathCo",
   previously: "Monsoonfish",
   experience: "2.5+ years",
-  /** The dashed "Currently" note under the hero. Update it as things change. */
-  now: "Building a decision-log tool · training for my next run · painting a card deck in brush pen",
   /** Non-breaking hyphen, so MIT‑WPU never splits across lines. */
   education: { degree: "B.Des in UX Design", school: "MIT‑WPU" },
   email: "arya.pawar6802@gmail.com",
