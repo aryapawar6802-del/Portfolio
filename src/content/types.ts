@@ -250,25 +250,6 @@ export type Block =
       ratio?: number;
     };
 
-/**
- * A thumbnail on the work card. With `src` it shows the image; without,
- * `placeholder` describes what still has to go there, shown as a marked
- * placeholder until the real picture arrives.
- */
-export type CardThumb = { src?: string; alt?: string; placeholder?: string };
-
-/** What the home page card shows besides the title and summary. */
-export type CardDetails = {
-  /** The line drawing: N messy inputs pulling into M outputs. */
-  from: { count: number; label: string };
-  to: { count: number; label: string };
-  /** The messy source, next to the real screen. */
-  before: CardThumb;
-  after: CardThumb;
-  /** Handwritten: the one thing to look for in the study. */
-  notice: string;
-};
-
 export type CaseStudy = {
   slug: string;
   /** Client or product name, e.g. "Sprouts.ai". */
@@ -277,9 +258,8 @@ export type CaseStudy = {
   title: string;
   /** Card description. Two sentences maximum. */
   summary: string;
-  /** Domain tags, e.g. ["B2B SaaS", "PLG"]. No longer shown on the card. */
+  /** Domain tags shown on the card, e.g. ["B2B SaaS", "PLG"]. */
   tags: string[];
-  card?: CardDetails;
   /**
    * The tension, asked as a question. This is the case study's H1 — it
    * opens on the problem nobody could explain, not on the result.

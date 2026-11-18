@@ -17,16 +17,6 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A calibration tool for a global retailer. It keeps four teams’ edits in the right order, which they used to manage by hand over email.",
     tags: ["B2B web app", "Agentic AI", "Human-in-the-loop", "Enterprise"],
-    card: {
-      from: { count: 4, label: "4 teams, 1 Excel file" },
-      to: { count: 1, label: "1 tool" },
-      before: { placeholder: "[Blurred Excel screenshot]" },
-      after: {
-        src: "/work/calibration/01-home.png",
-        alt: "The calibration home screen: one level open to calibrate, the rest locked.",
-      },
-      notice: "Look at how the AI says “this one needs you”.",
-    },
     question: "Moving a four-team Excel process into one tool",
     headline:
       "Cut a three-week calibration cycle to a few days by letting four teams work in parallel",
@@ -309,16 +299,6 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A media simulator that planned one cell at a time, only from a budget, all on one page. Rebuilt around intent, so planners plan a whole portfolio in one run.",
     tags: ["B2B web app", "Marketing Mix Modeling", "Enterprise", "Data product"],
-    card: {
-      from: { count: 4, label: "4 scenarios, stitched in Excel" },
-      to: { count: 1, label: "1 run" },
-      before: { placeholder: "[The 4-scenario spreadsheet]" },
-      after: {
-        src: "/work/rapid-roi/05-results.png",
-        alt: "The scenario results screen: headline metrics, a results breakdown and a channel table.",
-      },
-      notice: "Try to break it: there is a toy inside.",
-    },
     question: "Rebuilding a media simulator that planners kept leaving for spreadsheets",
     headline:
       "Rebuilt a single-cell media simulator into one intent-first journey for portfolio planning",
@@ -678,13 +658,6 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Discovery for a 7-year-old supply chain programme at a global beverage company. The brief already told us what to build, but once we started talking to people, 10 things in it changed before a single screen got designed.",
     tags: ["Discovery", "User research", "Requirements", "Enterprise"],
-    card: {
-      from: { count: 17, label: "17 user types" },
-      to: { count: 5, label: "5 flows" },
-      before: { placeholder: "[The brief, marked up in pen]" },
-      after: { placeholder: "[Your final model]" },
-      notice: "The brief was wrong in 10 places.",
-    },
     question: "Simplifying a messy problem into a clear model",
     headline:
       "10 things in the brief changed before a single screen got designed",
