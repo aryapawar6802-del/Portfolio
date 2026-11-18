@@ -16,22 +16,23 @@ export function TopNav() {
      shapes with no outlines, and the nav is the first thing that has to
      agree with it. */
   const base =
-    "flex items-center gap-1.5 rounded-control px-4 py-2 text-[0.85rem] transition-colors";
+    "flex items-center gap-1.5 rounded-control px-3 py-2 text-[0.85rem] transition-colors sm:px-4";
   const quiet = "bg-paper-deep text-ink-2 hover:bg-clay-wash hover:text-ink";
 
   return (
-    <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-sm">
+    <header className="z-50 bg-paper/90 backdrop-blur-sm sm:sticky sm:top-0">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-2.5 px-6 py-4 sm:flex-row sm:justify-between sm:gap-3 sm:px-8">
-        {/* Plain wordmark, not a pill: name in full ink, role a step quieter. */}
+        {/* Plain wordmark, not a pill: name in full ink, the tagline in
+            handwriting beside it, a note scribbled next to a signature. */}
         <Link href="/" className="group flex items-baseline gap-3">
           <span className="display text-[1.35rem] text-ink">{site.name}</span>
-          <span className="text-[0.85rem] text-ink-3 transition-colors group-hover:text-ink-2">
-            {site.role}
+          <span className="font-hand text-[1.15rem] font-semibold text-ink-3 transition-colors group-hover:text-ink-2">
+            {site.tagline}
           </span>
         </Link>
 
         <nav aria-label="Main">
-          <ul className="flex flex-wrap items-center justify-center gap-2">
+          <ul className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
             {nav.map((item) => {
               const active =
                 item.href === "/" ? onWork : pathname.startsWith(item.href);
@@ -44,7 +45,7 @@ export function TopNav() {
                       active ? "bg-clay text-white" : quiet
                     }`}
                   >
-                    <span aria-hidden="true" className="text-[0.7em] opacity-60">
+                    <span aria-hidden="true" className="hidden text-[0.7em] opacity-60 sm:inline">
                       {item.glyph}
                     </span>
                     {item.label}
@@ -59,7 +60,7 @@ export function TopNav() {
                 rel="noreferrer"
                 className={`${base} ${quiet}`}
               >
-                <span aria-hidden="true" className="text-[0.7em] opacity-60">
+                <span aria-hidden="true" className="hidden text-[0.7em] opacity-60 sm:inline">
                   ▤
                 </span>
                 Résumé
