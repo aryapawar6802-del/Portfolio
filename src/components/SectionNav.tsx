@@ -17,7 +17,14 @@ export type Section = { id: string; label: string };
  * gives a stable answer where "which section is visible" flickers between
  * two at once.
  */
-export function SectionNav({ sections }: { sections: Section[] }) {
+export function SectionNav({
+  sections,
+  compact = false,
+}: {
+  sections: Section[];
+  /** Narrower on very wide screens, to leave room for a sticky-note margin. */
+  compact?: boolean;
+}) {
   const [active, setActive] = useState(sections[0]?.id);
 
   useEffect(() => {
@@ -45,11 +52,11 @@ export function SectionNav({ sections }: { sections: Section[] }) {
   return (
     <nav
       aria-label="On this page"
-      className="
-        sticky top-[3.9rem] z-30 -mx-6 mb-10 border-y border-rule bg-paper/95 px-6 py-3 backdrop-blur-sm
+      className={`
+        sticky top-0 z-30 sm:top-[3.9rem] -mx-6 mb-10 border-y border-rule bg-paper/95 px-6 py-3 backdrop-blur-sm
         sm:-mx-8 sm:px-8
-        lg:top-24 lg:z-auto lg:mx-0 lg:mb-0 lg:w-56 lg:shrink-0 lg:self-start lg:border-0 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none
-      "
+        lg:top-24 lg:z-auto lg:mx-0 lg:mb-0 lg:w-56 lg:shrink-0 ${compact ? "xl:w-44" : ""} lg:self-start lg:border-0 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none
+      `}
     >
       <p className="label mb-4 hidden text-ink-3 lg:block">On this page</p>
 

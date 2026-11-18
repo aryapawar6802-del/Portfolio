@@ -69,6 +69,8 @@ export type Block =
     }
   /** Metric row rendered with the delta-arrow signature. */
   | { type: "metrics"; eyebrow?: string; items: Delta[] }
+  /** Impact written as one sentence. `**bold**` numbers get a wavy underline. */
+  | { type: "impact"; eyebrow?: string; nav?: string; heading?: string; text: string }
   /** Big-number tile grid — the "outcome at a glance" pattern. */
   | {
       type: "stats";
@@ -250,6 +252,23 @@ export type Block =
       ratio?: number;
     };
 
+/**
+ * A sticky note pinned beside a section: a decision, something that got in
+ * the way, or what would change now. The front shows the ID and a short
+ * title; flipping it shows why, and any pushback. `section` is the `nav`
+ * (or heading) of the block it sits beside, or the heading of one screen
+ * inside a screens block. Text in [square brackets] is still to be written
+ * and shows as a marked placeholder.
+ */
+export type Sticky = {
+  id: string;
+  kind: "decision" | "blocker" | "change";
+  front: string;
+  why: string;
+  pushback?: string;
+  section: string;
+};
+
 export type CaseStudy = {
   slug: string;
   /** Client or product name, e.g. "Sprouts.ai". */
@@ -293,6 +312,8 @@ export type CaseStudy = {
   cover?: string;
   /** Which ingredient on the chopping board this study is keyed to. */
   accent: AccentName;
+  /** Sticky notes in the margin, gathered again on a board at the end. */
+  stickies?: Sticky[];
   /** Headline metrics. The first one surfaces on the home page ticker. */
   deltas: Delta[];
   framework: Framework;

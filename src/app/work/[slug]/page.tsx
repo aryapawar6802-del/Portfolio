@@ -6,6 +6,7 @@ import { SectionNav, type Section } from "@/components/SectionNav";
 import { caseStudies, getCaseStudy } from "@/content/case-studies";
 import { UserModelHero } from "@/components/UserModelHero";
 import { StudyIllustration } from "@/components/StudyIllustration";
+import { StickyBoard, StickyLegend } from "@/components/Stickies";
 
 export function generateStaticParams() {
   return caseStudies.map((study) => ({ slug: study.slug }));
@@ -56,6 +57,12 @@ export default async function CaseStudyPage({
     { label: "Status", value: `${study.status} · ${study.years}` },
     { label: "Platform", value: study.platform },
   ];
+
+  /* A study with sticky notes gives them a margin on big screens. The
+     page keeps its width so it still lines up with the header; the section
+     list narrows a little instead, so the reading column isn't squeezed. */
+  const stickies = study.stickies ?? [];
+  const hasNotes = stickies.length > 0;
 
   return (
     <div className="mx-auto max-w-6xl px-6 pt-10 sm:px-8">
@@ -165,20 +172,28 @@ export default async function CaseStudyPage({
         ) : null}
       </header>
 
-      <div className="lg:flex lg:items-start lg:gap-16">
-        <SectionNav sections={sections} />
+      <div className={`lg:flex lg:items-start lg:gap-16 ${hasNotes ? "xl:gap-12" : ""}`}>
+        <SectionNav sections={sections} compact={hasNotes} />
 
-        <div className="min-w-0 flex-1 space-y-20 pb-20 lg:max-w-3xl">
+        <div className={`min-w-0 flex-1 space-y-20 pb-20 lg:max-w-3xl ${hasNotes ? "xl:max-w-none" : ""}`}>
+        {hasNotes && <StickyLegend />}
         {study.body.map((block, i) => (
           <BlockRenderer
             key={i}
             block={block}
             id={anchors[i]?.id}
             accent={study.accent}
+            stickies={stickies}
           />
         ))}
         </div>
       </div>
+
+      {hasNotes && (
+        <div className="pb-20">
+          <StickyBoard notes={stickies} />
+        </div>
+      )}
 
       <nav className="border-t border-rule py-12">
         <p className="label text-ink-3">

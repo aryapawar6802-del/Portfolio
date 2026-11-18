@@ -18,3 +18,14 @@ export const ACCENTS = {
 } as const;
 
 export type AccentName = keyof typeof ACCENTS;
+
+/**
+ * Sticky notes, softened so they sit on white paper next to the riso
+ * colours rather than shouting over them. Ink and ink-2 both clear 7:1 on
+ * all three.
+ */
+export const STICKY = {
+  decision: { bg: "#F7E9A8", label: "A decision" },
+  blocker: { bg: "#F5D3DE", label: "Something that got in the way" },
+  change: { bg: "#D3E4F2", label: "What would change now" },
+} as const;

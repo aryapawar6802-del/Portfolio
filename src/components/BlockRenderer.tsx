@@ -7,7 +7,8 @@ import { SimulatorHero } from "./SimulatorHero";
 import { UserModelGrid } from "./UserModelGrid";
 import { ACCENTS } from "@/content/palette";
 import type { AccentName } from "@/content/palette";
-import type { Block, NumberedItem } from "@/content/types";
+import type { Block, NumberedItem, Sticky } from "@/content/types";
+import { NoteMargin } from "./Stickies";
 
 /**
  * Draft markers. Content still carrying the author's own [FILL: …] or
@@ -165,15 +166,35 @@ function NumberedRow({
   );
 }
 
-export function BlockRenderer({
-  block,
-  id,
-  accent = "orange",
-}: {
+type BlockProps = {
   block: Block;
   id?: string;
   accent?: AccentName;
-}) {
+  /** The study's sticky notes. Each block picks out the ones pinned to it. */
+  stickies?: Sticky[];
+};
+
+/**
+ * A block, with its sticky notes in the margin when the study has any.
+ * A screens block pins notes to each screen, so it lays out its own margin.
+ */
+export function BlockRenderer(props: BlockProps) {
+  const { block, stickies = [] } = props;
+  const on = stickies.length > 0;
+  if (!on || block.type === "screens") return <BlockBody {...props} />;
+  const key = ("nav" in block && block.nav) || ("heading" in block && block.heading) || "";
+  const notes = stickies.filter((note) => note.section === key);
+  /* A diagram with nothing pinned to it takes the margin too: it's wide
+     by nature, and squeezing it would cost more than the column edge. */
+  if (block.type === "diagram" && notes.length === 0) return <BlockBody {...props} />;
+  return (
+    <NoteMargin on notes={notes}>
+      <BlockBody {...props} />
+    </NoteMargin>
+  );
+}
+
+function BlockBody({ block, id, accent = "orange", stickies = [] }: BlockProps) {
   const tint = ACCENTS[accent].ink;
   const wash = ACCENTS[accent].wash;
   /* Every branch spreads this so anchors resolve for the section navigator
@@ -609,35 +630,44 @@ export function BlockRenderer({
         </section>
       );
 
-    case "screens":
+    case "screens": {
+      const on = stickies.length > 0;
       return (
         <section {...anchor}>
-          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
-          {block.heading && <Heading>{block.heading}</Heading>}
+          <NoteMargin on={on} notes={[]}>
+            {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+            {block.heading && <Heading>{block.heading}</Heading>}
+          </NoteMargin>
           <ol className="mt-9 space-y-14">
             {block.items.map((item, i) => (
               <li key={item.heading} className="border-t border-rule pt-5">
-                <span className="label text-ink-3">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-2 text-[1.05rem] font-medium text-ink">
-                  {item.heading}
-                </h3>
-                <Figure
-                  src={item.src}
-                  alt={item.alt}
-                  caption={item.caption}
-                  ratio={item.ratio}
-                  className="mt-5"
-                />
-                <p className="mt-5 max-w-prose leading-[1.7] text-ink-2">
-                  <Marked text={item.body} />
-                </p>
+                <NoteMargin
+                  on={on}
+                  notes={stickies.filter((note) => note.section === item.heading)}
+                >
+                  <span className="label text-ink-3">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-2 text-[1.05rem] font-medium text-ink">
+                    {item.heading}
+                  </h3>
+                  <Figure
+                    src={item.src}
+                    alt={item.alt}
+                    caption={item.caption}
+                    ratio={item.ratio}
+                    className="mt-5"
+                  />
+                  <p className="mt-5 max-w-prose leading-[1.7] text-ink-2">
+                    <Marked text={item.body} />
+                  </p>
+                </NoteMargin>
               </li>
             ))}
           </ol>
         </section>
       );
+    }
 
     case "themes":
       return (
@@ -695,6 +725,19 @@ export function BlockRenderer({
               </div>
             ))}
           </div>
+        </section>
+      );
+
+    case "impact":
+      return (
+        <section {...anchor}>
+          {block.eyebrow && <Eyebrow tint={tint}>{block.eyebrow}</Eyebrow>}
+          {block.heading && <Heading>{block.heading}</Heading>}
+          <p
+            className={`${block.heading ? "mt-6" : ""} max-w-2xl text-pretty text-[1.3rem] leading-[1.5] text-ink sm:text-[1.55rem] [&_strong]:font-semibold [&_strong]:underline [&_strong]:decoration-wavy [&_strong]:decoration-[1.5px] [&_strong]:underline-offset-[6px] [&_strong]:decoration-[#C8443C]`}
+          >
+            <Marked text={block.text} />
+          </p>
         </section>
       );
 
